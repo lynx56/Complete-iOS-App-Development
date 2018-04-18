@@ -8,18 +8,35 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController{
+    @IBOutlet weak var diceImageView1: UIImageView!
+    @IBOutlet weak var diceImageView2: UIImageView!
+    
+    var diceImages = ["dice1", "dice2", "dice3", "dice4", "dice5", "dice6"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        updateDiceImages()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return UIStatusBarStyle.lightContent
     }
-
-
+    
+    @IBAction func roll(_ sender: Any){
+        updateDiceImages()
+    }
+    
+    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+        updateDiceImages()
+    }
+    
+    func updateDiceImages(){
+        let randomImageIndex1 = Int(arc4random_uniform(6))
+        let randomImageIndex2 = Int(arc4random_uniform(6))
+        
+        diceImageView1.image = UIImage(named: diceImages[randomImageIndex1])
+        diceImageView2.image = UIImage(named: diceImages[randomImageIndex2])
+    }
 }
 

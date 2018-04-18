@@ -12,6 +12,8 @@
 		BFF6A86E20879D1E00273B43 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFF6A86C20879D1E00273B43 /* Main.storyboard */; };
 		BFF6A87020879D1E00273B43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFF6A86F20879D1E00273B43 /* Assets.xcassets */; };
 		BFF6A87320879D1E00273B43 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFF6A87120879D1E00273B43 /* LaunchScreen.storyboard */; };
+		BFF6A87B2087A63700273B43 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6A87A2087A63700273B43 /* UIView.swift */; };
+		BFF6A87D2087A6D600273B43 /* CGColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6A87C2087A6D600273B43 /* CGColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		BFF6A86F20879D1E00273B43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BFF6A87220879D1E00273B43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BFF6A87420879D1E00273B43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BFF6A87A2087A63700273B43 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		BFF6A87C2087A6D600273B43 /* CGColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,8 @@
 		BFF6A86720879D1E00273B43 /* Dices */ = {
 			isa = PBXGroup;
 			children = (
+				BFF6A87C2087A6D600273B43 /* CGColor.swift */,
+				BFF6A87A2087A63700273B43 /* UIView.swift */,
 				BFF6A86820879D1E00273B43 /* AppDelegate.swift */,
 				BFF6A86A20879D1E00273B43 /* ViewController.swift */,
 				BFF6A86C20879D1E00273B43 /* Main.storyboard */,
@@ -137,6 +143,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFF6A86B20879D1E00273B43 /* ViewController.swift in Sources */,
+				BFF6A87D2087A6D600273B43 /* CGColor.swift in Sources */,
+				BFF6A87B2087A63700273B43 /* UIView.swift in Sources */,
 				BFF6A86920879D1E00273B43 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -278,10 +286,10 @@
 				DEVELOPMENT_TEAM = 5BEQK45V59;
 				INFOPLIST_FILE = Dices/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Gulnaz.Dices;
+				PRODUCT_BUNDLE_IDENTIFIER = com.GulnazCompany.dices;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -293,10 +301,10 @@
 				DEVELOPMENT_TEAM = 5BEQK45V59;
 				INFOPLIST_FILE = Dices/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Gulnaz.Dices;
+				PRODUCT_BUNDLE_IDENTIFIER = com.GulnazCompany.dices;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
