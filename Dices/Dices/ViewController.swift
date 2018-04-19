@@ -19,12 +19,12 @@ class ViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         updateDiceImages()
-        do{
-            let soundUrl = Bundle.main.url(forResource: "DICE", withExtension: "mp3")! as NSURL
-            AudioServicesCreateSystemSoundID(soundUrl, &sound)
-        }catch{
-            print(error)
-        }
+        initSound()
+    }
+    
+    func initSound(){
+        let soundUrl = Bundle.main.url(forResource: "DICE", withExtension: "mp3")! as NSURL
+        AudioServicesCreateSystemSoundID(soundUrl, &sound)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle{
