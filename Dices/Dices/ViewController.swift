@@ -7,16 +7,24 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class ViewController: UIViewController{
     @IBOutlet weak var diceImageView1: UIImageView!
     @IBOutlet weak var diceImageView2: UIImageView!
     
     var diceImages = ["dice1", "dice2", "dice3", "dice4", "dice5", "dice6"]
+    var sound: SystemSoundID = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateDiceImages()
+        do{
+            let soundUrl = Bundle.main.url(forResource: "DICE", withExtension: "mp3")! as NSURL
+            AudioServicesCreateSystemSoundID(soundUrl, &sound)
+        }catch{
+            print(error)
+        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle{
@@ -27,7 +35,20 @@ class ViewController: UIViewController{
         updateDiceImages()
     }
     
+    let queue = DispatchQueue(label: "audio")
+    override func motionBegan(_ motion: UIEventSubtype, with event: UIEvent?) {
+        if motion != .motionShake{
+            return
+        }
+     
+        queue.async(execute: { AudioServicesPlaySystemSound(self.sound) })
+    }
+    
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+        if motion != .motionShake{
+            return
+        }
+        
         updateDiceImages()
     }
     
