@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Respective.ttf">
+            <string>Respective</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="IAmRich" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="diamond" translatesAutoresizingMaskIntoConstraints="NO" id="TIg-2h-rdg">
+                                <rect key="frame" x="0.0" y="286" width="375" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="Npw-XH-tou"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I Am Rich" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eKt-gG-kCb">
+                                <rect key="frame" x="59.333333333333343" y="119" width="256.66666666666663" height="116"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="116" id="nhx-td-JQS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Respective" family="Respective" pointSize="55"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JZx-fM-yW4">
+                                <rect key="frame" x="59" y="596" width="257" height="152"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="257" id="dIK-gq-qEl"/>
+                                </constraints>
+                                <string key="text">Деньги идут ко мне все возрастающим потоком, у меня их все больше и больше, денег на все хватает, я легко покупаю все, что хочу.</string>
+                                <color key="textColor" red="0.81568627450980391" green="0.81960784313725488" blue="0.82745098039215681" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="JZx-fM-yW4" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-30" id="QPS-7h-39M"/>
+                            <constraint firstItem="eKt-gG-kCb" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Z8t-cF-5al"/>
+                            <constraint firstItem="TIg-2h-rdg" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ZXb-X6-jtQ"/>
+                            <constraint firstItem="eKt-gG-kCb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="75" id="g2k-4a-BHx"/>
+                            <constraint firstItem="JZx-fM-yW4" firstAttribute="top" secondItem="TIg-2h-rdg" secondAttribute="bottom" constant="60" id="jyZ-sM-WE8"/>
+                            <constraint firstItem="TIg-2h-rdg" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="rnJ-eh-Jjy"/>
+                            <constraint firstItem="JZx-fM-yW4" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ud2-qI-HzX"/>
+                            <constraint firstItem="TIg-2h-rdg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zvP-Hm-0az"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="mindForm" destination="JZx-fM-yW4" id="SVJ-V6-yri"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="33.733133433283363"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="diamond" width="1154" height="1154"/>
+    </resources>
+</document>
