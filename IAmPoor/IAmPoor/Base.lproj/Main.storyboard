@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="IAmPoor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please don't ask me money," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z3B-d2-58L">
+                                <rect key="frame" x="33" y="179" width="309" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="jSr-Uw-3z5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I am Poor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhJ-q5-42b">
+                                <rect key="frame" x="85.666666666666686" y="598" width="204" height="63"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="63" id="rMh-RN-bNb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="52"/>
+                                <color key="textColor" red="0.55363982915878296" green="0.32669556140899658" blue="0.0906328484416008" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="252" verticalHuggingPriority="252" image="coal" translatesAutoresizingMaskIntoConstraints="NO" id="rAt-xh-Wcr">
+                                <rect key="frame" x="21" y="311" width="333" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="NSr-ws-dnS"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.090022161815228374" green="0.026048517540176144" blue="0.028274508958596924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="rAt-xh-Wcr" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="9IL-nv-Ljv"/>
+                            <constraint firstItem="rAt-xh-Wcr" firstAttribute="top" secondItem="Z3B-d2-58L" secondAttribute="bottom" constant="100" id="Kuf-B1-PPX"/>
+                            <constraint firstItem="yhJ-q5-42b" firstAttribute="top" secondItem="rAt-xh-Wcr" secondAttribute="bottom" constant="87" id="Z1o-47-NcI"/>
+                            <constraint firstItem="rAt-xh-Wcr" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="dVO-Kv-ye7"/>
+                            <constraint firstItem="yhJ-q5-42b" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="10" id="dfi-70-Anc"/>
+                            <constraint firstItem="Z3B-d2-58L" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="dju-DH-xHt"/>
+                            <constraint firstItem="yhJ-q5-42b" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="q2K-lx-LKJ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="coal" width="333" height="221"/>
+    </resources>
+</document>
