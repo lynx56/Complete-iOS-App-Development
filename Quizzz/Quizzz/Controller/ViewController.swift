@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var questionContent: UITextView!
     @IBOutlet weak var progressView: UIView!
     @IBOutlet weak var questionsProgress: UILabel!
+    @IBOutlet weak var progressViewWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var questionNumber: UILabel!
     
     var questionList: LinkedList<Question>!
     var currentQuestion: Node<Question>?
@@ -26,6 +28,17 @@ class ViewController: UIViewController {
         
         questionList = LinkedList<Question>(questionSource.questions)!
         currentQuestion = questionList.head
+        
+        let gradient = CAGradientLayer()
+        gradient.frame = view.frame
+        gradient.colors = [#colorLiteral(red: 0.9349222716, green: 0.08037676937, blue: 0.4038850846, alpha: 1).cgColor,#colorLiteral(red: 0.3490196078, green: 0.01568627451, blue: 0.2392156863, alpha: 1).cgColor, #colorLiteral(red: 0.168627451, green: 0.007843137255, blue: 0.1960784314, alpha: 1).cgColor]
+
+        gradient.startPoint = CGPoint(x: 1, y: 1)
+        gradient.endPoint = CGPoint(x: 0, y: 0)
+        
+        
+        view.layer.insertSublayer(gradient, at: 0)
+        
         updateUI()
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -65,10 +78,15 @@ class ViewController: UIViewController {
     func updateUI(){
         if currentQuestion != nil{
             self.questionContent.text = currentQuestion!.data.text
-            self.questionsProgress.text = "\(String(describing: currentQuestion!.position))/\(questionList.count - 1)"
+            let qnum = String(describing: currentQuestion!.position + 1)
+            self.questionsProgress.text = "\(qnum)/\(questionList.count)"
             self.questionsProgress.sizeToFit()
-            let progressWidth = (self.view.bounds.width / CGFloat(questionList.count) * CGFloat(currentQuestion!.position))
-            self.progressView.frame = CGRect(origin: .zero, size: CGSize(width: progressWidth, height: self.progressView.bounds.height))
+            let progressWidth = (self.view.bounds.width / CGFloat(questionList.count - 1) * CGFloat(currentQuestion!.position))
+            
+            progressViewWidthConstraint.constant = progressWidth
+            self.progressView.setNeedsLayout()
+            
+            questionNumber.text = "QUESTION \(qnum)"
             
         }else{
             let alert = UIAlertController(title: "Congratulation!", message: "The questions is over.", preferredStyle: .alert)
