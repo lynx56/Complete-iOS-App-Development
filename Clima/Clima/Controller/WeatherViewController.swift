@@ -23,9 +23,10 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.delegate = self
-        locationManager.desiredAccuracy = CLLocationAccuracy.greatestFiniteMagnitude
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -35,7 +36,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        
+        print(error)
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -46,7 +47,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
         if !locations.isEmpty{
             let location = locations[0]
             locationManager.stopUpdatingLocation()
-            locationManager.delegate = nil
+           // locationManager.delegate = nil
             
            updateWeatherByCoordinates(location.coordinate)
             
