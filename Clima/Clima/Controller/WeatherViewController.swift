@@ -35,6 +35,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
         // Dispose of any resources that can be recreated.
     }
     
+    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error)
     }
@@ -58,9 +59,11 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
         weatherProvider.getWeatherByCity(name: to) { (weather, error) in
             if let error = error{
                 print(error)
+                return
             }
-            
-            self.updateUI(weather: weather!)
+            if let weather = weather{
+                self.updateUI(weather: weather)
+            }
         }
     }
     
