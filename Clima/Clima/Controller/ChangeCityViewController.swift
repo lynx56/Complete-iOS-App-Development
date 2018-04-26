@@ -18,10 +18,11 @@ class ChangeCityViewController: UIViewController, ACEAutocompleteDataSource, ACE
         super.viewDidLoad()
 
         cityName.autocorrectionType = .no
+        cityName.enablesReturnKeyAutomatically = true
         cityName.setAutocompleteWith(self, delegate: self) { (view) in
             view?.font = UIFont.systemFont(ofSize: 20)
             view?.textColor = UIColor.white
-            view?.backgroundColor = UIColor(red: 0.2, green: 0.3, blue: 0.9, alpha: 0.8)
+            view?.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4)
             
         }
         // Do any additional setup after loading the view.

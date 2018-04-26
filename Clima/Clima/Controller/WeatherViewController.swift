@@ -17,6 +17,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
     @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var cityName: UILabel!
     
+    @IBOutlet weak var activity: UIActivityIndicatorView!
     var weatherProvider: WeatherProvider = OpenWeatherMapWeatherProvider()
     var locationManager = CLLocationManager()
     
@@ -25,9 +26,9 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
-        
         // Do any additional setup after loading the view, typically from a nib.
+    
+        navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSAttributedStringKey.font : UIFont.systemFont(ofSize: 20)], for: .normal)
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,11 +38,34 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
     
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error)
+        cityName.text = "No defined"
+        weatherIcon.image = nil
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        
+        switch status {
+        case .notDetermined:  locationManager.requestWhenInUseAuthorization()
+        case .denied:
+            let alert = UIAlertController(title: "Unable to access the location", message: "To enable access, go to Settings > Clima > Location and check While using the App", preferredStyle: .alert)
+            if let url = NSURL(string: UIApplicationOpenSettingsURLString) as URL? {
+              
+            alert.addAction(UIAlertAction(title: "Go to Settings", style: .default, handler: { (action) in
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }))
+            }
+            
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
+                self.updateUI(weather: nil)
+            }))
+            
+            self.present(alert, animated: true, completion: nil)
+            
+        case .authorizedAlways: fallthrough
+        case .authorizedWhenInUse: locationManager.startUpdatingLocation()
+        case .restricted:
+            print("restricted")
+            updateUI(weather: nil)
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -50,18 +74,26 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
             locationManager.stopUpdatingLocation()
            // locationManager.delegate = nil
             
-           updateWeatherByCoordinates(location.coordinate)
+            DispatchQueue.global(qos: .default).async {
+                self.updateWeatherByCoordinates(location.coordinate)
+            }
             
         }
     }
     
+    var userInputCity: String?
     func cityChanged(to: String) {
-        weatherProvider.getWeatherByCity(name: to) { (weather, error) in
-            if let error = error{
-                print(error)
-                return
+        DispatchQueue.global(qos: .userInitiated).async {
+            
+            DispatchQueue.main.async {
+                self.activity.startAnimating()
             }
-            if let weather = weather{
+            
+            self.weatherProvider.getWeatherByCity(name: to) { (weather, error) in
+                if let error = error{
+                    print(error)
+                }
+                self.userInputCity = to
                 self.updateUI(weather: weather)
             }
         }
@@ -73,15 +105,28 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
                 print(error)
             }
             
-            self.updateUI(weather: weather!)
+            self.updateUI(weather: weather)
         }
     }
 
     
-    func updateUI(weather: Weather){
-        temperatureLabel.text = String(Int(weather.temperature.converted(to: UnitTemperature.celsius).value)) + "°"
-        weatherIcon.image = UIImage(named: getWeatherIconName(condition: weather.condition))
-        cityName.text = weather.city
+    func updateUI(weather: Weather?){
+        DispatchQueue.main.async {
+            self.activity.stopAnimating()
+            
+            guard let weather = weather else{
+                self.cityName.text = "Unknown location"
+                self.cityName.sizeToFit()
+                self.weatherIcon.image = nil
+                self.temperatureLabel.text = ""
+                
+                return
+            }
+            
+            self.temperatureLabel.text = String(Int(weather.temperature.converted(to: UnitTemperature.celsius).value)) + "°"
+            self.weatherIcon.image = UIImage(named: self.getWeatherIconName(condition: weather.condition))
+            self.cityName.text = weather.city
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -15,7 +15,7 @@ class OpenWeatherMapWeatherProvider: WeatherProvider{
     let API_KEY = "a654d28a55508178760673a829095080"
     
     func getWeatherByCity(name cityName: String, handler: @escaping ((Weather?, ProviderErrors?) -> Void)) {
-        getWeather(params: ["q": cityName, "APPID" : API_KEY], handler: handler)
+         getWeather(params: ["q": cityName, "APPID" : API_KEY], handler: handler)
     }
     
     func getWeatherByLocation(longitude: Double, latitude: Double, handler: @escaping ((Weather?, ProviderErrors?) -> Void)) {

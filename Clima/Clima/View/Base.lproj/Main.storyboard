@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -39,10 +38,9 @@
                                         <rect key="frame" x="16" y="129" width="343" height="229"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B8H-vv-cDz" userLabel="City Label">
-                                        <rect key="frame" x="16" y="360" width="269" height="94"/>
+                                        <rect key="frame" x="16" y="360" width="140.5" height="94"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="94" id="Vno-k5-xiw"/>
-                                            <constraint firstAttribute="width" constant="269" id="fpA-fC-Zau"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="33"/>
                                         <color key="textColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -51,6 +49,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="B8H-vv-cDz" firstAttribute="top" secondItem="OsT-eZ-EWt" secondAttribute="bottom" constant="2" id="2k4-In-Og9"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="B8H-vv-cDz" secondAttribute="trailing" constant="20" symbolic="YES" id="2wx-Cy-83m"/>
                                     <constraint firstItem="G8n-E5-tGJ" firstAttribute="top" secondItem="wDx-cn-e4z" secondAttribute="top" id="7P7-MW-KFy"/>
                                     <constraint firstItem="OsT-eZ-EWt" firstAttribute="top" secondItem="G8n-E5-tGJ" secondAttribute="bottom" constant="2" id="7g6-cW-P5A"/>
                                     <constraint firstItem="B8H-vv-cDz" firstAttribute="leading" secondItem="wDx-cn-e4z" secondAttribute="leading" constant="16" id="C20-5u-EvO"/>
@@ -59,30 +58,41 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="454" id="W8P-MF-YsZ"/>
                                     <constraint firstAttribute="trailing" secondItem="OsT-eZ-EWt" secondAttribute="trailing" constant="16" id="bTm-gy-2xm"/>
                                     <constraint firstItem="OsT-eZ-EWt" firstAttribute="leading" secondItem="wDx-cn-e4z" secondAttribute="leading" constant="16" id="eZA-ZE-7JP"/>
+                                    <constraint firstItem="G8n-E5-tGJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wDx-cn-e4z" secondAttribute="leading" constant="20" symbolic="YES" id="gkW-q0-5eH"/>
                                     <constraint firstAttribute="bottom" secondItem="B8H-vv-cDz" secondAttribute="bottom" id="pwU-uO-uPu"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" alpha="0.84999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="wP1-8t-fQO">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.97636467220000001" green="0.97653168440000004" blue="0.9763541818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="color" red="0.12283867385786806" green="0.041455074174026101" blue="0.046170363499935502" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="wP1-8t-fQO" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="91E-t3-Dl3"/>
                             <constraint firstAttribute="trailing" secondItem="wDx-cn-e4z" secondAttribute="trailing" id="9Zc-ie-3oq"/>
                             <constraint firstItem="wDx-cn-e4z" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="O17-kh-c2r"/>
                             <constraint firstAttribute="bottom" secondItem="eVG-1T-f7V" secondAttribute="bottom" id="QZg-zH-sL5"/>
+                            <constraint firstItem="wP1-8t-fQO" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="XXY-UN-paP"/>
                             <constraint firstItem="eVG-1T-f7V" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Xgp-gQ-Mtu"/>
+                            <constraint firstItem="wP1-8t-fQO" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="dhb-3f-EX3"/>
                             <constraint firstItem="wDx-cn-e4z" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottomMargin" constant="-30" id="pOU-Dz-jfD"/>
+                            <constraint firstItem="wP1-8t-fQO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="sgt-RN-9jq"/>
                             <constraint firstAttribute="trailing" secondItem="eVG-1T-f7V" secondAttribute="trailing" id="wki-qR-QYe"/>
                             <constraint firstItem="eVG-1T-f7V" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="z7B-sl-5jT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="kgX-zT-nAm">
-                        <barButtonItem key="rightBarButtonItem" title="City" id="2TP-sN-bMs">
+                        <barButtonItem key="rightBarButtonItem" title="Change City" id="2TP-sN-bMs">
                             <connections>
                                 <segue destination="nKi-vD-VnV" kind="show" identifier="ShowChangeCity" id="foa-5e-rNg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activity" destination="wP1-8t-fQO" id="ALV-DO-F9E"/>
                         <outlet property="cityName" destination="B8H-vv-cDz" id="MXd-a6-tKb"/>
                         <outlet property="temperatureLabel" destination="G8n-E5-tGJ" id="07s-9l-CBW"/>
                         <outlet property="weatherIcon" destination="OsT-eZ-EWt" id="hVb-mZ-DiG"/>
@@ -100,7 +110,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cityBackground" translatesAutoresizingMaskIntoConstraints="NO" id="1u0-TL-Hdw">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cityBackground" translatesAutoresizingMaskIntoConstraints="NO" id="1u0-TL-Hdw">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sJM-DZ-Nog">
@@ -113,8 +123,9 @@
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" textContentType="address-level1+2"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kf7-sp-Jcp">
-                                <rect key="frame" x="161" y="154" width="53" height="30"/>
-                                <state key="normal" title="Change">
+                                <rect key="frame" x="134" y="154" width="107" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Get weather">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -130,8 +141,8 @@
                             <constraint firstItem="sJM-DZ-Nog" firstAttribute="centerX" secondItem="PXu-ps-oBY" secondAttribute="centerX" id="RFU-Xs-crp"/>
                             <constraint firstItem="1u0-TL-Hdw" firstAttribute="top" secondItem="PXu-ps-oBY" secondAttribute="top" id="RUy-n4-jYr"/>
                             <constraint firstItem="kf7-sp-Jcp" firstAttribute="centerX" secondItem="zvd-c2-SnO" secondAttribute="centerX" id="d4h-BU-X2s"/>
-                            <constraint firstAttribute="bottom" secondItem="1u0-TL-Hdw" secondAttribute="bottom" id="thj-cF-NMg"/>
-                            <constraint firstAttribute="trailing" secondItem="1u0-TL-Hdw" secondAttribute="trailing" id="xIn-XT-6JG"/>
+                            <constraint firstItem="1u0-TL-Hdw" firstAttribute="bottom" secondItem="PXu-ps-oBY" secondAttribute="bottom" id="thj-cF-NMg"/>
+                            <constraint firstItem="1u0-TL-Hdw" firstAttribute="trailing" secondItem="PXu-ps-oBY" secondAttribute="trailing" id="xIn-XT-6JG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zvd-c2-SnO"/>
                     </view>
