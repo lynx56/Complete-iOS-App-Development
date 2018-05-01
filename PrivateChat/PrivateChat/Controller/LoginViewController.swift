@@ -25,16 +25,16 @@ final class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        passwordTextField.layer.cornerRadius = 4.07
-        emailTextField.layer.cornerRadius = 4.07
-        
-        passwordTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-        emailTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-        passwordTextField.delegate = self
-        emailTextField.delegate = self
-        
+        setup(textfield: emailTextField)
+        setup(textfield: passwordTextField)
         setUpGestures()
         setUpNotification()
+    }
+    
+    private func setup(textfield: UITextField){
+        textfield.layer.cornerRadius = 4.07
+        textfield.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        textfield.delegate = self
     }
 
     // MARK: - UITextFieldDelegate
@@ -83,9 +83,8 @@ final class LoginViewController: UIViewController, UITextFieldDelegate {
 
     private func fractionComplete(for textField: UITextField) -> Float {
         guard let text = textField.text, let font = textField.font else { return 0 }
-        let textFieldHorizontalMargin = CGFloat(16.5)
         
-        let textFieldWidth = textField.bounds.width - (2 * textFieldHorizontalMargin)
+        let textFieldWidth = textField.bounds.width
         return min(Float(text.size(withAttributes: [NSAttributedStringKey.font : font]).width / textFieldWidth), 1)
     }
 
