@@ -10,12 +10,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CalculatorBMI/ViewController.swift"
-            timestampString = "546878548.450929"
+            timestampString = "546959392.452257"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "viewDidLayoutSubviews()"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "chooseGender(gesture:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CalculatorBMI/ViewController.swift"
+            timestampString = "546959392.452714"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "updateGenderIcons()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
