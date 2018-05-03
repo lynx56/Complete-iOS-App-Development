@@ -10,11 +10,13 @@ import Foundation
 
 class Calculator{
     
-    func calculateBMI(weight: Measurement<UnitMass>, height: Measurement<UnitLength>)->Double{
+    func calculateBMI(weight: Measurement<UnitMass>, height: Measurement<UnitLength>, handler: (_ bmi: Double?, _ error: Error?)->Void){
         
         let weightKg = weight.converted(to: UnitMass.kilograms)
         let heightMeters = height.converted(to: UnitLength.meters)
         
-        return weightKg.value / pow(heightMeters.value, 2)
+        let bmi = weightKg.value / pow(heightMeters.value, 2)
+        //todo
+        handler(bmi, nil)
     }
 }

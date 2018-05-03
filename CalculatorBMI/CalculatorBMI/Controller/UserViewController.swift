@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class UserViewController: UIViewController, UITextFieldDelegate{
     
     @IBOutlet weak var maleBackground: UIImageView!
     @IBOutlet weak var maleIcon: UIImageView!
@@ -17,10 +17,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var femaleIcon: UIImageView!
     
     @IBOutlet weak var ageLabel: UILabel!
-    
-    @IBOutlet weak var heightLabel: UILabel!
-    
-    @IBOutlet weak var weightLabel: UILabel!
     
     @IBOutlet weak var heightMesure: UILabel!
     
@@ -31,6 +27,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var middleView: UIView!
     @IBOutlet weak var ageUp: UIButton!
     @IBOutlet weak var ageDown: UIButton!
+    @IBOutlet weak var weightField: UITextField!
+    @IBOutlet weak var heightField: UITextField!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +45,62 @@ class ViewController: UIViewController {
         ageUp.addGestureRecognizer(AgeAppendLongPressGestureRecognizer(target: self, action: #selector(longPressHandler), appendCountToAge: 1, bounds: self.ageBounds))
         ageDown.addGestureRecognizer(AgeAppendLongPressGestureRecognizer(target: self, action: #selector(longPressHandler), appendCountToAge: -1, bounds: self.ageBounds))
         
+        weightField.addTarget(self, action: #selector(changeWeight), for: .allEditingEvents)
+        heightField.addTarget(self, action: #selector(changeHeight), for: .allEditingEvents)
+        
+        weightField.delegate = self
+        heightField.delegate = self
+        
         updateAge(value: 27)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewEndEditing)))
+        
+        self.weightField.addDoneCancelToolbar(onDone: (target: self, action: #selector(calculate)), onCancel: nil)
+        
+        self.heightField.addDoneCancelToolbar(onDone: (target: self, action: #selector(focusOnWeight)), onCancel: nil)
+        
+    }
+    
+    var height: CGFloat = 0
+    
+    @objc func focusOnWeight(){
+        self.weightField.becomeFirstResponder()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification){
+        let keyboardSize = (notification.userInfo![UIKeyboardFrameBeginUserInfoKey] as! CGRect).size
+       
+        var contentInsets: UIEdgeInsets
+    
+        if UIApplication.shared.statusBarOrientation == .portrait{
+            contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height + self.height, right: 0)
+        }else{
+            contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.width + self.height, right: 0)
+        }
+        
+        
+        self.scrollView.contentInset = contentInsets
+        self.scrollView.scrollIndicatorInsets = contentInsets
+    }
+    
+    @objc func viewEndEditing(){
+        self.view.endEditing(true)
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification){
+        let rate = notification.userInfo![UIKeyboardAnimationDurationUserInfoKey] as! Double
+        UIView.animate(withDuration: rate) {
+            self.scrollView.contentInset = UIEdgeInsets.zero
+            self.scrollView.scrollIndicatorInsets = UIEdgeInsets.zero
+        }
     }
     
     var timer: Timer?
@@ -62,7 +116,23 @@ class ViewController: UIViewController {
     
     @objc func handleTimer(timer: Timer) {
         let count = timer.userInfo as! Int
-        updateAge(value: age + count)
+        updateAge(value: user.age + count)
+    }
+    
+    @objc func changeWeight(_ sender: UITextField){
+        if let text = sender.text{
+            user.weight = Float(text)
+        }else{
+            user.weight = nil
+        }
+    }
+    
+    @objc func changeHeight(_ sender: UITextField){
+        if let text = sender.text{
+            user.height = Int(text)
+        }else{
+            user.height = nil
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -73,10 +143,12 @@ class ViewController: UIViewController {
         
         addHorizontalGradient(view: calculateBMIButton)
         addBorderLines(view: middleView)
+        
+        self.height = self.weightField.inputAccessoryView?.bounds.height ?? 0
     }
     
     func updateGenderIcons(){
-        if gender == .male{
+        if user.gender == .male{
             addGradient(to: maleBackground)
             femaleBackground.backgroundColor = .black
             removeGradient(from: femaleBackground)
@@ -125,7 +197,7 @@ class ViewController: UIViewController {
     
     @objc func chooseGender(gesture: GenderChooseGesture){
         if gesture.state == .ended{
-            self.gender = gesture.gender
+            self.user.gender = gesture.gender
             DispatchQueue.main.async {
                 self.updateGenderIcons()
             }
@@ -134,21 +206,38 @@ class ViewController: UIViewController {
     
     
     @IBAction func calculateBMI(_ sender: Any){
+        calculate()
+    }
+    
+    @objc func calculate(){
+        self.view.endEditing(true)
+        let calculator = Calculator()
+        let weight = Measurement<UnitMass>(value: Double(self.user.weight ?? 0), unit: .kilograms)
+        let height = Measurement<UnitLength>(value: Double(self.user.height ?? 0), unit: .centimeters)
+        calculator.calculateBMI(weight: weight, height: height){ (bmi, error) in
+            //todo
+            if let bmi = bmi{
+                let ctr = storyboard?.instantiateViewController(withIdentifier: "CalculationResultViewController") as! CalculationResultViewController
+                ctr.user = self.user
+                ctr.bmi = bmi
+                self.navigationController?.pushViewController(ctr, animated: true)
+            }
+        }
     }
     
     func updateAge(value: Int){
         if value >= self.ageBounds.lowerBound && value <= self.ageBounds.upperBound{
-            self.age = value
-            self.ageLabel.text = String(age)
+            self.user.age = value
+            self.ageLabel.text = String(user.age)
         }
     }
     
     @IBAction func ageUp(_ sender: Any) {
-        updateAge(value: age + 1)
+        updateAge(value: user.age + 1)
     }
     
     @IBAction func ageDown(_ sender: Any) {
-        updateAge(value: age - 1)
+        updateAge(value: user.age - 1)
     }
     
     func addBorderLines(view: UIView){
@@ -169,16 +258,16 @@ class ViewController: UIViewController {
         view.layer.addSublayer(bottomLine)
     }
     
-    var gender: Gender = .male
-    var age: Int = 0
+    var user = UserModel(gender: .male, age: 0, height: nil, weight: nil)
+    
+  /*  var gender: Gender = .male
+    var age: Int = 0*/
     var ageBounds: Range<Int> = Range<Int>(uncheckedBounds: (lower: 1, upper: 99))
+  /*  var height: Int?
+    var weight: Float?*/
     
 }
 
-enum Gender{
-    case male
-    case female
-}
 
 class GenderChooseGesture: UITapGestureRecognizer{
     var gender: Gender
@@ -199,4 +288,6 @@ class AgeAppendLongPressGestureRecognizer: UILongPressGestureRecognizer{
         super.init(target: target, action: action)
     }
 }
+
+
 

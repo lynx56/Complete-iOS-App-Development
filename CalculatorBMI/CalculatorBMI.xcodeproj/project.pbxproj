@@ -8,24 +8,38 @@
 
 /* Begin PBXBuildFile section */
 		BF0D0C9220936A0D00B61DBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0D0C9120936A0D00B61DBC /* AppDelegate.swift */; };
-		BF0D0C9420936A0D00B61DBC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0D0C9320936A0D00B61DBC /* ViewController.swift */; };
+		BF0D0C9420936A0D00B61DBC /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0D0C9320936A0D00B61DBC /* UserViewController.swift */; };
 		BF0D0C9720936A0D00B61DBC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF0D0C9520936A0D00B61DBC /* Main.storyboard */; };
 		BF0D0C9920936A0F00B61DBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF0D0C9820936A0F00B61DBC /* Assets.xcassets */; };
 		BF0D0C9C20936A0F00B61DBC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF0D0C9A20936A0F00B61DBC /* LaunchScreen.storyboard */; };
 		BF0D0CA420936A3300B61DBC /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0D0CA320936A3300B61DBC /* Calculator.swift */; };
 		BF1AAC2C2099E301001E00EE /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AAC2B2099E301001E00EE /* Line.swift */; };
+		BF1AAC2E209B03D4001E00EE /* UITextField+Length.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AAC2D209B03D4001E00EE /* UITextField+Length.swift */; };
+		BF1AAC32209B0676001E00EE /* CalculationResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AAC31209B0676001E00EE /* CalculationResultViewController.swift */; };
+		BF1AAC37209B1981001E00EE /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AAC36209B1981001E00EE /* UserModel.swift */; };
+		BF1AAC39209B19A8001E00EE /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AAC38209B19A8001E00EE /* Gender.swift */; };
+		BF1AAC3B209B27E7001E00EE /* PercentileCDC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AAC3A209B27E7001E00EE /* PercentileCDC.swift */; };
+		BF1AAC3D209B281B001E00EE /* BmiCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AAC3C209B281B001E00EE /* BmiCategory.swift */; };
+		BF1AAC3F209B2FBC001E00EE /* UITextField+DoneCancel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AAC3E209B2FBC001E00EE /* UITextField+DoneCancel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BF0D0C8E20936A0D00B61DBC /* CalculatorBMI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalculatorBMI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF0D0C9120936A0D00B61DBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BF0D0C9320936A0D00B61DBC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BF0D0C9320936A0D00B61DBC /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		BF0D0C9620936A0D00B61DBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BF0D0C9820936A0F00B61DBC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF0D0C9B20936A0F00B61DBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF0D0C9D20936A0F00B61DBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF0D0CA320936A3300B61DBC /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		BF1AAC2B2099E301001E00EE /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
+		BF1AAC2D209B03D4001E00EE /* UITextField+Length.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Length.swift"; sourceTree = "<group>"; };
+		BF1AAC31209B0676001E00EE /* CalculationResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationResultViewController.swift; sourceTree = "<group>"; };
+		BF1AAC36209B1981001E00EE /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		BF1AAC38209B19A8001E00EE /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
+		BF1AAC3A209B27E7001E00EE /* PercentileCDC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentileCDC.swift; sourceTree = "<group>"; };
+		BF1AAC3C209B281B001E00EE /* BmiCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BmiCategory.swift; sourceTree = "<group>"; };
+		BF1AAC3E209B2FBC001E00EE /* UITextField+DoneCancel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+DoneCancel.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +72,47 @@
 		BF0D0C9020936A0D00B61DBC /* CalculatorBMI */ = {
 			isa = PBXGroup;
 			children = (
+				BF1AAC33209B1919001E00EE /* Controller */,
+				BF1AAC34209B1944001E00EE /* View */,
+				BF1AAC35209B195E001E00EE /* Model */,
+				BF1AAC2D209B03D4001E00EE /* UITextField+Length.swift */,
+				BF1AAC3E209B2FBC001E00EE /* UITextField+DoneCancel.swift */,
 				BF0D0C9120936A0D00B61DBC /* AppDelegate.swift */,
-				BF0D0C9320936A0D00B61DBC /* ViewController.swift */,
-				BF0D0C9520936A0D00B61DBC /* Main.storyboard */,
-				BF0D0C9820936A0F00B61DBC /* Assets.xcassets */,
-				BF0D0C9A20936A0F00B61DBC /* LaunchScreen.storyboard */,
 				BF0D0C9D20936A0F00B61DBC /* Info.plist */,
-				BF0D0CA320936A3300B61DBC /* Calculator.swift */,
-				BF1AAC2B2099E301001E00EE /* Line.swift */,
 			);
 			path = CalculatorBMI;
+			sourceTree = "<group>";
+		};
+		BF1AAC33209B1919001E00EE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BF0D0C9320936A0D00B61DBC /* UserViewController.swift */,
+				BF1AAC31209B0676001E00EE /* CalculationResultViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		BF1AAC34209B1944001E00EE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BF0D0C9520936A0D00B61DBC /* Main.storyboard */,
+				BF0D0C9A20936A0F00B61DBC /* LaunchScreen.storyboard */,
+				BF0D0C9820936A0F00B61DBC /* Assets.xcassets */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BF1AAC35209B195E001E00EE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BF0D0CA320936A3300B61DBC /* Calculator.swift */,
+				BF1AAC36209B1981001E00EE /* UserModel.swift */,
+				BF1AAC38209B19A8001E00EE /* Gender.swift */,
+				BF1AAC2B2099E301001E00EE /* Line.swift */,
+				BF1AAC3A209B27E7001E00EE /* PercentileCDC.swift */,
+				BF1AAC3C209B281B001E00EE /* BmiCategory.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,9 +186,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF0D0C9420936A0D00B61DBC /* ViewController.swift in Sources */,
+				BF1AAC3F209B2FBC001E00EE /* UITextField+DoneCancel.swift in Sources */,
+				BF0D0C9420936A0D00B61DBC /* UserViewController.swift in Sources */,
+				BF1AAC2E209B03D4001E00EE /* UITextField+Length.swift in Sources */,
+				BF1AAC37209B1981001E00EE /* UserModel.swift in Sources */,
 				BF1AAC2C2099E301001E00EE /* Line.swift in Sources */,
+				BF1AAC32209B0676001E00EE /* CalculationResultViewController.swift in Sources */,
+				BF1AAC3D209B281B001E00EE /* BmiCategory.swift in Sources */,
+				BF1AAC39209B19A8001E00EE /* Gender.swift in Sources */,
 				BF0D0C9220936A0D00B61DBC /* AppDelegate.swift in Sources */,
+				BF1AAC3B209B27E7001E00EE /* PercentileCDC.swift in Sources */,
 				BF0D0CA420936A3300B61DBC /* Calculator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
