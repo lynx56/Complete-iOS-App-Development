@@ -215,14 +215,38 @@ class UserViewController: UIViewController, UITextFieldDelegate{
         let weight = Measurement<UnitMass>(value: Double(self.user.weight ?? 0), unit: .kilograms)
         let height = Measurement<UnitLength>(value: Double(self.user.height ?? 0), unit: .centimeters)
         calculator.calculateBMI(weight: weight, height: height){ (bmi, error) in
-            //todo
+            if let error = error{
+                self.showCalculationError(error: error)
+                return
+            }
+            
             if let bmi = bmi{
                 let ctr = storyboard?.instantiateViewController(withIdentifier: "CalculationResultViewController") as! CalculationResultViewController
                 ctr.user = self.user
                 ctr.bmi = bmi
                 self.navigationController?.pushViewController(ctr, animated: true)
+            }else{
+                showCalculationError(error: .unknown)
             }
         }
+    }
+    
+    func showCalculationError(error: CalculatorError){
+        var message: String = ""
+        switch error{
+        case .heightMustBeBiggerThanZero:
+            message = "Height should not be zero"
+        case .unknown:
+            message = "Error occur while calculating body mass index"
+        case .weightMustBeBiggerThanZero:
+            message = "Weight should not be zero"
+        }
+        
+        
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     func updateAge(value: Int){
