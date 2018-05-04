@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A9802B4C2BE676C14F0CDD67 /* Pods_PrivateChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C2925B7BDD6B40A6EDDBE66 /* Pods_PrivateChat.framework */; };
 		BF1AABED2094800C001E00EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AABEC2094800C001E00EE /* AppDelegate.swift */; };
 		BF1AABEF2094800C001E00EE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AABEE2094800C001E00EE /* ViewController.swift */; };
 		BF1AABF22094800C001E00EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF1AABF02094800C001E00EE /* Main.storyboard */; };
@@ -32,9 +33,13 @@
 		BF1AAC2620948048001E00EE /* Mouth.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AAC1620948048001E00EE /* Mouth.swift */; };
 		BF1AAC2720948048001E00EE /* CritterAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AAC1720948048001E00EE /* CritterAssets.swift */; };
 		BF1AAC2920948059001E00EE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AAC2820948059001E00EE /* LoginViewController.swift */; };
+		BF7D9477209C74020081A9E9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF7D9476209C74020081A9E9 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C2925B7BDD6B40A6EDDBE66 /* Pods_PrivateChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PrivateChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EB898563BCB2A127145A496 /* Pods-PrivateChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrivateChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PrivateChat/Pods-PrivateChat.debug.xcconfig"; sourceTree = "<group>"; };
+		B1FD24C87B7806F336ED73EE /* Pods-PrivateChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrivateChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-PrivateChat/Pods-PrivateChat.release.xcconfig"; sourceTree = "<group>"; };
 		BF1AABE92094800C001E00EE /* PrivateChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PrivateChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF1AABEC2094800C001E00EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF1AABEE2094800C001E00EE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +67,7 @@
 		BF1AAC1620948048001E00EE /* Mouth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mouth.swift; sourceTree = "<group>"; };
 		BF1AAC1720948048001E00EE /* CritterAssets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CritterAssets.swift; sourceTree = "<group>"; };
 		BF1AAC2820948059001E00EE /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		BF7D9476209C74020081A9E9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,17 +75,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9802B4C2BE676C14F0CDD67 /* Pods_PrivateChat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6B7E1BC161D9C2E03A5BB3B6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1EB898563BCB2A127145A496 /* Pods-PrivateChat.debug.xcconfig */,
+				B1FD24C87B7806F336ED73EE /* Pods-PrivateChat.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		BF1AABE02094800C001E00EE = {
 			isa = PBXGroup;
 			children = (
 				BF1AABEB2094800C001E00EE /* PrivateChat */,
 				BF1AABEA2094800C001E00EE /* Products */,
+				6B7E1BC161D9C2E03A5BB3B6 /* Pods */,
+				FD9529EF596D1C06EDB2F2DE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +117,7 @@
 				BF1AAC2A20948093001E00EE /* Controller */,
 				BF1AABEC2094800C001E00EE /* AppDelegate.swift */,
 				BF1AABF82094800C001E00EE /* Info.plist */,
+				BF7D9476209C74020081A9E9 /* GoogleService-Info.plist */,
 			);
 			path = PrivateChat;
 			sourceTree = "<group>";
@@ -165,6 +184,14 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		FD9529EF596D1C06EDB2F2DE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0C2925B7BDD6B40A6EDDBE66 /* Pods_PrivateChat.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -172,9 +199,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BF1AABFB2094800C001E00EE /* Build configuration list for PBXNativeTarget "PrivateChat" */;
 			buildPhases = (
+				5E682FFDB8F2E652CE2E86C1 /* [CP] Check Pods Manifest.lock */,
 				BF1AABE52094800C001E00EE /* Sources */,
 				BF1AABE62094800C001E00EE /* Frameworks */,
 				BF1AABE72094800C001E00EE /* Resources */,
+				940C94B047D546897CA96E55 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -224,12 +253,60 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF1AABF72094800C001E00EE /* LaunchScreen.storyboard in Resources */,
+				BF7D9477209C74020081A9E9 /* GoogleService-Info.plist in Resources */,
 				BF1AABF42094800C001E00EE /* Assets.xcassets in Resources */,
 				BF1AABF22094800C001E00EE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5E682FFDB8F2E652CE2E86C1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PrivateChat-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		940C94B047D546897CA96E55 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-PrivateChat/Pods-PrivateChat-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/ProgressHUD/ProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PrivateChat/Pods-PrivateChat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BF1AABE52094800C001E00EE /* Sources */ = {
@@ -399,15 +476,13 @@
 		};
 		BF1AABFC2094800C001E00EE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1EB898563BCB2A127145A496 /* Pods-PrivateChat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5BEQK45V59;
 				INFOPLIST_FILE = PrivateChat/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Gulnaz.PrivateChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -417,15 +492,13 @@
 		};
 		BF1AABFD2094800C001E00EE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B1FD24C87B7806F336ED73EE /* Pods-PrivateChat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5BEQK45V59;
 				INFOPLIST_FILE = PrivateChat/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Gulnaz.PrivateChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import Firebase
 
 final class LoginViewController: UIViewController, UITextFieldDelegate {
 
@@ -29,6 +31,7 @@ final class LoginViewController: UIViewController, UITextFieldDelegate {
         setup(textfield: passwordTextField)
         setUpGestures()
         setUpNotification()
+        database = Database.database().reference()
     }
     
     private func setup(textfield: UITextField){
@@ -112,7 +115,40 @@ final class LoginViewController: UIViewController, UITextFieldDelegate {
         notificationCenter.addObserver(self, selector: #selector(applicationDidEnterBackground), name: .UIApplicationDidEnterBackground, object: nil)
     }
 
+    var database: DatabaseReference!
+    
+    @IBAction func login(_ sender: Any) {
+        if let login = self.emailTextField.text, let password = self.passwordTextField.text{
+            Auth.auth().signInAndRetrieveData(withEmail: login, password: password) { (user, error) in
+                if let error = error{
+                    print(error)
+                    return
+                }
+                
+                if let user = user{
+                    print("login")
+                }
+            }
+        }
+        
+    }
+    @IBAction func signup(_ sender: Any) {
+        if let login = self.emailTextField.text, let password = self.passwordTextField.text{
+            Auth.auth().createUser(withEmail: login, password: password) { (user, error) in
+                if let error = error{
+                    print(error)
+                    return
+                }
+                
+                if let user = user{
+                    print("register ok")
+                }
+            }
+        }
+    }
     @objc private func applicationDidEnterBackground() {
         stopHeadRotation()
     }
+    
+var userpics = ["anteater","baboon","bear","beaver","bee","beetle","bison","boar","bug","bulldog","bullfinch","butterfly-1","butterfly","capybara","cat","centipede","chameleon","chimpanzee","cock","colibri","cow","crab","crane","crocodile","deadlock","deer","dog","dolphin","dove","dragonfly","duck","eagle","elephant","fennec","flounder","fly","fox","frog","giraffe","globefish","goat-1","goat","guinea-pig","hedgehog","hippopotamus","horse","hyena","kangaroo","koala","ladybug","lemur","lion","llama","mink","mite","mole","moose","moray","mosquito","mouse","orca","ostrich","owl","panda-bear","parrot","penguin","pig","pike","piranha","platypus","rabbit","salmon","scorpio","sea-urchin","seal","shark","sheep","shrimp","silverfish","skunk","sloth","snake","sparrow","spider","squid","squirrel","starfish","swan","swordfish","tiger","tuna","turtle","wasp","wolf","zander"]
 }
