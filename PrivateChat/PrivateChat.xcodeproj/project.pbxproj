@@ -33,6 +33,10 @@
 		BF1AAC2620948048001E00EE /* Mouth.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AAC1620948048001E00EE /* Mouth.swift */; };
 		BF1AAC2720948048001E00EE /* CritterAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AAC1720948048001E00EE /* CritterAssets.swift */; };
 		BF1AAC2920948059001E00EE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AAC2820948059001E00EE /* LoginViewController.swift */; };
+		BF64384A209E364D00D7E68A /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF643849209E364D00D7E68A /* Message.swift */; };
+		BF64384C209E36AE00D7E68A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF64384B209E36AE00D7E68A /* User.swift */; };
+		BF64384E209E371300D7E68A /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF64384D209E371300D7E68A /* ChatTableViewController.swift */; };
+		BF643850209E403800D7E68A /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF64384F209E403800D7E68A /* MessageTableViewCell.swift */; };
 		BF7D9477209C74020081A9E9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF7D9476209C74020081A9E9 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +71,10 @@
 		BF1AAC1620948048001E00EE /* Mouth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mouth.swift; sourceTree = "<group>"; };
 		BF1AAC1720948048001E00EE /* CritterAssets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CritterAssets.swift; sourceTree = "<group>"; };
 		BF1AAC2820948059001E00EE /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		BF643849209E364D00D7E68A /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		BF64384B209E36AE00D7E68A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		BF64384D209E371300D7E68A /* ChatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewController.swift; sourceTree = "<group>"; };
+		BF64384F209E403800D7E68A /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		BF7D9476209C74020081A9E9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,6 +120,7 @@
 		BF1AABEB2094800C001E00EE /* PrivateChat */ = {
 			isa = PBXGroup;
 			children = (
+				BF643848209E363C00D7E68A /* Model */,
 				BF1AAC052094803F001E00EE /* View */,
 				BF1AABFE20948033001E00EE /* Helpers */,
 				BF1AAC2A20948093001E00EE /* Controller */,
@@ -138,6 +147,7 @@
 			children = (
 				BF1AABF02094800C001E00EE /* Main.storyboard */,
 				BF1AABF52094800C001E00EE /* LaunchScreen.storyboard */,
+				BF64384F209E403800D7E68A /* MessageTableViewCell.swift */,
 				BF1AABF32094800C001E00EE /* Assets.xcassets */,
 				BF1AAC0620948048001E00EE /* Critter */,
 			);
@@ -180,8 +190,18 @@
 			children = (
 				BF1AABEE2094800C001E00EE /* ViewController.swift */,
 				BF1AAC2820948059001E00EE /* LoginViewController.swift */,
+				BF64384D209E371300D7E68A /* ChatTableViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		BF643848209E363C00D7E68A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BF643849209E364D00D7E68A /* Message.swift */,
+				BF64384B209E36AE00D7E68A /* User.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		FD9529EF596D1C06EDB2F2DE /* Frameworks */ = {
@@ -320,6 +340,7 @@
 				BF1AAC2420948048001E00EE /* Body.swift in Sources */,
 				BF1AAC1A20948048001E00EE /* Nose.swift in Sources */,
 				BF1AAC2320948048001E00EE /* RightEar.swift in Sources */,
+				BF643850209E403800D7E68A /* MessageTableViewCell.swift in Sources */,
 				BF1AAC2120948048001E00EE /* Muzzle.swift in Sources */,
 				BF1AAC1820948048001E00EE /* CritterView.swift in Sources */,
 				BF1AAC1F20948048001E00EE /* LeftEarMask.swift in Sources */,
@@ -327,11 +348,14 @@
 				BF1AAC2220948048001E00EE /* RightArm.swift in Sources */,
 				BF1AAC0320948033001E00EE /* Colors.swift in Sources */,
 				BF1AAC1E20948048001E00EE /* RightEye.swift in Sources */,
+				BF64384E209E371300D7E68A /* ChatTableViewController.swift in Sources */,
 				BF1AABED2094800C001E00EE /* AppDelegate.swift in Sources */,
 				BF1AAC1C20948048001E00EE /* RightEarMask.swift in Sources */,
 				BF1AAC1920948048001E00EE /* CritterAnimatable.swift in Sources */,
+				BF64384A209E364D00D7E68A /* Message.swift in Sources */,
 				BF1AAC0220948033001E00EE /* CATransform3D+Helper.swift in Sources */,
 				BF1AAC1D20948048001E00EE /* LeftEye.swift in Sources */,
+				BF64384C209E36AE00D7E68A /* User.swift in Sources */,
 				BF1AAC2520948048001E00EE /* LeftEar.swift in Sources */,
 				BF1AAC2020948048001E00EE /* LeftArm.swift in Sources */,
 				BF1AAC2620948048001E00EE /* Mouth.swift in Sources */,
@@ -482,7 +506,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5BEQK45V59;
 				INFOPLIST_FILE = PrivateChat/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = Gulnaz.PrivateChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -498,7 +525,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5BEQK45V59;
 				INFOPLIST_FILE = PrivateChat/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = Gulnaz.PrivateChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
