@@ -10,5 +10,5 @@ import Foundation
 
 struct User{
     var id: String
-    var photo: Data
+    var photo: String
 }

@@ -127,6 +127,20 @@ final class LoginViewController: UIViewController, UITextFieldDelegate {
                 
                 if let user = user{
                     print("login")
+                    
+                    let chatController = self.storyboard?.instantiateViewController(withIdentifier: "ChatTableViewController") as! ChatTableViewController
+                    
+                    _ = self.database.child("Users").child(user.user.uid).observe(.value, with: { (snap) in
+                        let userPhoto = snap.value as! [String: String]
+                        
+                        chatController.user = User(id: user.user.uid, photo: userPhoto["photo"]!)
+                        
+                        self.navigationController?.pushViewController(chatController, animated: true)
+                        
+                    })
+
+                    
+                    
                 }
             }
         }
@@ -141,6 +155,15 @@ final class LoginViewController: UIViewController, UITextFieldDelegate {
                 }
                 
                 if let user = user{
+                    let userDb = self.database.child("Users")
+                    let randomImageIdx = Int(arc4random_uniform(UInt32(self.userpics.count)))
+                    let dic = ["photo": self.userpics[randomImageIdx] ]
+                    userDb.child(user.uid).setValue(dic, withCompletionBlock: { (error, ref) in
+                        if error == nil{
+                             print("update photo")
+                        }
+                    })
+                    
                     print("register ok")
                 }
             }
