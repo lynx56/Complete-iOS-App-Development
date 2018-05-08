@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import FirebaseAuth
 import Firebase
+import FirebaseAuth
 
 final class LoginViewController: UIViewController, UITextFieldDelegate {
 
@@ -17,6 +17,7 @@ final class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     
     @IBOutlet weak var textfieldLeadingMargin: NSLayoutConstraint!
+    var storage: Storage = FirebaseStorage.shared
     
     private let notificationCenter: NotificationCenter = .default
 
@@ -31,7 +32,6 @@ final class LoginViewController: UIViewController, UITextFieldDelegate {
         setup(textfield: passwordTextField)
         setUpGestures()
         setUpNotification()
-        database = Database.database().reference()
     }
     
     private func setup(textfield: UITextField){
@@ -115,60 +115,62 @@ final class LoginViewController: UIViewController, UITextFieldDelegate {
         notificationCenter.addObserver(self, selector: #selector(applicationDidEnterBackground), name: .UIApplicationDidEnterBackground, object: nil)
     }
 
-    var database: DatabaseReference!
     
     @IBAction func login(_ sender: Any) {
         if let login = self.emailTextField.text, let password = self.passwordTextField.text{
-            Auth.auth().signInAndRetrieveData(withEmail: login, password: password) { (user, error) in
+            storage.login(email: login, password: password) { (user, error) in
                 if let error = error{
-                    print(error)
+                    self.showError(title: "Log In is failed", error: error)
                     return
                 }
                 
                 if let user = user{
-                    print("login")
-                    
-                    let chatController = self.storyboard?.instantiateViewController(withIdentifier: "ChatTableViewController") as! ChatTableViewController
-                    
-                    _ = self.database.child("Users").child(user.user.uid).observe(.value, with: { (snap) in
-                        let userPhoto = snap.value as! [String: String]
-                        
-                        chatController.user = User(id: user.user.uid, photo: userPhoto["photo"]!)
-                        
-                        self.navigationController?.pushViewController(chatController, animated: true)
-                        
-                    })
-
-                    
-                    
+                    self.showChat(user: user)
                 }
+                
             }
         }
-        
     }
+    
+    private func showChat(user: User){
+        let chatController = self.storyboard?.instantiateViewController(withIdentifier: "ChatTableViewController") as! ChatTableViewController
+        chatController.user = user
+        self.navigationController?.pushViewController(chatController, animated: true)
+    }
+    
+    private func showError(title: String, error: Error){
+        let ctr = UIAlertController(title: title, message: error.localizedDescription, preferredStyle: .alert)
+        
+        ctr.addAction(UIAlertAction(title: "Got it", style: .default, handler: nil))
+            
+        self.present(ctr, animated: true, completion: nil)
+    }
+    
     @IBAction func signup(_ sender: Any) {
         if let login = self.emailTextField.text, let password = self.passwordTextField.text{
-            Auth.auth().createUser(withEmail: login, password: password) { (user, error) in
+            let randomImageIdx = Int(arc4random_uniform(UInt32(self.userpics.count)))
+            let randomPhoto = self.userpics[randomImageIdx]
+            
+            self.storage.signup(email: login, password: password, photo: randomPhoto) { (user, error) in
                 if let error = error{
-                    print(error)
+                    self.showError(title: "Sign up is failed", error: error)
                     return
                 }
                 
                 if let user = user{
-                    let userDb = self.database.child("Users")
-                    let randomImageIdx = Int(arc4random_uniform(UInt32(self.userpics.count)))
-                    let dic = ["photo": self.userpics[randomImageIdx] ]
-                    userDb.child(user.uid).setValue(dic, withCompletionBlock: { (error, ref) in
-                        if error == nil{
-                             print("update photo")
-                        }
-                    })
+                    let ctr = UIAlertController(title: nil, message: "Creating account is successful.", preferredStyle: .alert)
+                    ctr.addAction(UIAlertAction(title: "Go to chat", style: .cancel, handler: { (action) in
+                        self.showChat(user: user)
+                    }))
+                    ctr.addAction(UIAlertAction(title: "Leave here", style: .default, handler: nil))
                     
-                    print("register ok")
+                    self.present(ctr, animated: true, completion: nil)
                 }
+                
             }
         }
     }
+    
     @objc private func applicationDidEnterBackground() {
         stopHeadRotation()
     }

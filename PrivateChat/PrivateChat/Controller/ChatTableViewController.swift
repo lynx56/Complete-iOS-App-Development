@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 
 class ChatTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate{
 
@@ -16,9 +15,9 @@ class ChatTableViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var message: UITextField!
     
-    var messages: [Message] = []
+    var messages: [(message: Message, from: User)] = []
     public var user: User?
-    var database: DatabaseReference!
+    var storage = FirebaseStorage.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,42 +29,15 @@ class ChatTableViewController: UIViewController, UITableViewDelegate, UITableVie
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
         self.tableView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(focusOnTable)))
-        database = Database.database().reference()
-        loadMessages()
-        loadUserPicture(userId: user!.id)
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        storage.newMessageEvent = newMessage
     }
     
-    func loadMessages(){
-        database.child("Messages").observe(.childAdded) { (snapshot) in
-            let messages = snapshot.value as! [String: String]
-            
-            let message = Message(authorId: messages["autorId"]!, text: messages["text"]!, id: "")
-            
-            self.messages.append(message)
-            
-            self.loadUserPicture(userId: messages["autorId"]!)
-            
+    func newMessage( message: Message, user: User)->Void{
+            messages.append((message, user))
             self.tableView.reloadData()
-        }
     }
-    
-    var preloadUserPictures: [String: String] = [:]
-    func loadUserPicture(userId: String){
-            if preloadUserPictures[userId] == nil{
-                database.child("Users").child(userId).observe(.value) { (snap) in
-                    let uservalues = snap.value as! [String: String]
-                    self.preloadUserPictures[userId] = uservalues["photo"]
-                    
-                    self.tableView.reloadData()
-                }
-        }
-    }
-
+  
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -98,92 +70,48 @@ class ChatTableViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
 
+    private func showError(title: String, error: Error){
+        let ctr = UIAlertController(title: title, message: error.localizedDescription, preferredStyle: .alert)
+        
+        ctr.addAction(UIAlertAction(title: "Got it", style: .default, handler: nil))
+        
+        self.present(ctr, animated: true, completion: nil)
+    }
+    
     @IBAction func sendMessage(_ sender: UIButton) {
         sender.isEnabled = false
         self.message.endEditing(true)
         if let text = self.message.text{
-            database.child("Messages").childByAutoId().setValue(["autorId":  self.user!.id, "text": text], withCompletionBlock: { (error, db) in
-                if error != nil{
-                    print(error)
-                }else{
-                    print("message saved")
-                }
+            let newMessage = Message(authorId:  self.user!.id, text: text, id: UUID().uuidString)
+            
+            self.storage.sendMessage(message: newMessage) { (success, error) in
                 self.message.text = nil
                 sender.isEnabled = true
-            })
+                
+                if !success{
+                    self.showError(title: "Error occur while sending message", error: error!)
+                }
+            }
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let message = messages[indexPath.row]
+        let userMessage = messages[indexPath.row]
         guard let user = user else {
             return UITableViewCell(style: .default, reuseIdentifier: nil)
         }
         
-        let cell = tableView.dequeueReusableCell( withIdentifier : user.id == message.authorId ? "MyCell" : "InterlocutorCell", for: indexPath) as! MessageTableViewCell
+        let cell = tableView.dequeueReusableCell( withIdentifier : user.id == userMessage.message.authorId ? "MyCell" : "InterlocutorCell", for: indexPath) as! MessageTableViewCell
         
-        if let userPic = preloadUserPictures[message.authorId]{
-            cell.logo.image = UIImage(named: userPic)
-            cell.bubble.image = UIImage(named: user.id == message.authorId ? "chat_bubble_sent" : "chat_bubble_received")?.resizableImage(withCapInsets:
-                UIEdgeInsetsMake(17, 21, 17, 21), resizingMode: .stretch)
-                .withRenderingMode(.alwaysTemplate)
-            
-            cell.bubble.tintColor = user.id == message.authorId ? UIColor.blue : UIColor.green
-        }
-        else{
-            cell.logo.image = nil
-            cell.bubble.image = nil
-        }
+        let userPic = userMessage.from.photo
+        cell.logo.image = UIImage(named: userPic)
+        cell.bubble.image = UIImage(named: user.id == userMessage.message.authorId ? "chat_bubble_sent" : "chat_bubble_received")?.resizableImage(withCapInsets:
+            UIEdgeInsetsMake(17, 21, 17, 21), resizingMode: .stretch)
+            .withRenderingMode(.alwaysTemplate)
         
-        cell.message.text = message.text
+        cell.bubble.tintColor = user.id == userMessage.message.authorId ? UIColor.blue : UIColor.green
+        cell.message.text = userMessage.message.text
         
         return cell
     }
-    
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
