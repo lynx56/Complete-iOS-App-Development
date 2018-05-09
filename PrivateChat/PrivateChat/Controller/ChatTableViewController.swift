@@ -31,7 +31,43 @@ class ChatTableViewController: UIViewController, UITableViewDelegate, UITableVie
         self.tableView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(focusOnTable)))
         
         storage.newMessageEvent = newMessage
+        
+        subscribeToKeyboardEvents()
     }
+    
+    func subscribeToKeyboardEvents(){
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification){
+        let keyboardSize = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! CGRect).size
+        
+        if self.heightConstraint.constant < keyboardSize.height{
+            self.heightConstraint.constant = keyboardSize.height + self.message.bounds.height
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification){
+        let rate = notification.userInfo![UIKeyboardAnimationDurationUserInfoKey] as! Double
+        UIView.animate(withDuration: rate) {
+            self.heightConstraint.constant = 108
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func scrollToLastMessage(){
+        if self.messages.count > 0{
+            self.tableView.scrollToRow(at: IndexPath(row: self.messages.count - 1, section: 0), at: .bottom, animated: true)
+        }
+    }
+
     
     func newMessage( message: Message, user: User)->Void{
             messages.append((message, user))
@@ -45,7 +81,7 @@ class ChatTableViewController: UIViewController, UITableViewDelegate, UITableVie
     
     @objc func focusOnTable(_ gesture: UITapGestureRecognizer){
         if gesture.state == .ended{
-            self.view.endEditing(true)
+            self.message.endEditing(true)
         }
     }
     
@@ -54,20 +90,6 @@ class ChatTableViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return messages.count
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        UIView.animate(withDuration: 0.5) {
-            self.heightConstraint.constant = 315
-            self.view.layoutIfNeeded()
-        }
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        UIView.animate(withDuration: 0.5) {
-            self.heightConstraint.constant = 44
-            self.view.layoutIfNeeded()
-        }
     }
 
     private func showError(title: String, error: Error){
