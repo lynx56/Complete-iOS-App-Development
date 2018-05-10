@@ -133,9 +133,8 @@ final class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func showChat(user: User){
-        let chatController = self.storyboard?.instantiateViewController(withIdentifier: "ChatTableViewController") as! ChatTableViewController
-        chatController.user = user
-        self.navigationController?.pushViewController(chatController, animated: true)
+        performSegue(withIdentifier: "goToChat", sender: user)
+
     }
     
     private func showError(title: String, error: Error){
@@ -173,6 +172,17 @@ final class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @objc private func applicationDidEnterBackground() {
         stopHeadRotation()
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToChat"{
+            if let destination = segue.destination.content as? ChatTableViewController, let user = sender as? User{
+                destination.user = user
+            }
+            
+            self.passwordTextField.text = nil
+        }
     }
     
 var userpics = ["anteater","baboon","bear","beaver","bee","beetle","bison","boar","bug","bulldog","bullfinch","butterfly-1","butterfly","capybara","cat","centipede","chameleon","chimpanzee","cock","colibri","cow","crab","crane","crocodile","deadlock","deer","dog","dolphin","dove","dragonfly","duck","eagle","elephant","fennec","flounder","fly","fox","frog","giraffe","globefish","goat-1","goat","guinea-pig","hedgehog","hippopotamus","horse","hyena","kangaroo","koala","ladybug","lemur","lion","llama","mink","mite","mole","moose","moray","mosquito","mouse","orca","ostrich","owl","panda-bear","parrot","penguin","pig","pike","piranha","platypus","rabbit","salmon","scorpio","sea-urchin","seal","shark","sheep","shrimp","silverfish","skunk","sloth","snake","sparrow","spider","squid","squirrel","starfish","swan","swordfish","tiger","tuna","turtle","wasp","wolf","zander"]

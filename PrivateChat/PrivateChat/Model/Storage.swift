@@ -106,6 +106,32 @@ class FirebaseStorage: NSObject, Storage{
             })
     }
     
+    func history(completeHandler: @escaping ([Message], Error?)->Void) {
+        messageDb.observeSingleEvent(of: .value) { (snapshot) in
+            let messages = snapshot.value as! [String: AnyObject]
+            
+            var result: [Message] = []
+            
+            for message in messages{
+                let newMessage = Message(authorId: message.value["autorId"]! as! String, text: message.value["text"]! as! String, id: message.value["id"]! as! String)
+                result.append(newMessage)
+            }
+            
+            completeHandler(result, nil)
+        }
+    }
+    
+    func logOut()->Error?{
+        do{
+            try Auth.auth().signOut()
+        }catch{
+            return error
+        }
+        
+        return nil
+    }
+    
     
     var preloadUserPictures: [String: String] = [:]
 }
+

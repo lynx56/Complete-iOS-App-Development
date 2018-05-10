@@ -14,6 +14,7 @@ class ChatTableViewController: UIViewController, UITableViewDelegate, UITableVie
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var message: UITextField!
+    @IBOutlet weak var messageView: UIView!
     
     var messages: [(message: Message, from: User)] = []
     public var user: User?
@@ -29,8 +30,13 @@ class ChatTableViewController: UIViewController, UITableViewDelegate, UITableVie
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
         self.tableView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(focusOnTable)))
-        
+        self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.1294117647, green: 0.7450980392, blue: 0.7176470588, alpha: 1)
         storage.newMessageEvent = newMessage
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.heightConstraint.constant = self.navigationController!.navigationBar.bounds.height + UIApplication.shared.statusBarFrame.height
         
         subscribeToKeyboardEvents()
     }
@@ -49,7 +55,7 @@ class ChatTableViewController: UIViewController, UITableViewDelegate, UITableVie
         let keyboardSize = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! CGRect).size
         
         if self.heightConstraint.constant < keyboardSize.height{
-            self.heightConstraint.constant = keyboardSize.height + self.message.bounds.height
+            self.heightConstraint.constant = keyboardSize.height + self.messageView.bounds.height
             self.view.layoutIfNeeded()
         }
     }
@@ -57,7 +63,7 @@ class ChatTableViewController: UIViewController, UITableViewDelegate, UITableVie
     @objc func keyboardWillHide(_ notification: Notification){
         let rate = notification.userInfo![UIKeyboardAnimationDurationUserInfoKey] as! Double
         UIView.animate(withDuration: rate) {
-            self.heightConstraint.constant = 108
+            self.heightConstraint.constant = self.navigationController!.navigationBar.bounds.height + UIApplication.shared.statusBarFrame.height
             self.view.layoutIfNeeded()
         }
     }
@@ -67,11 +73,15 @@ class ChatTableViewController: UIViewController, UITableViewDelegate, UITableVie
             self.tableView.scrollToRow(at: IndexPath(row: self.messages.count - 1, section: 0), at: .bottom, animated: true)
         }
     }
-
     
     func newMessage( message: Message, user: User)->Void{
             messages.append((message, user))
             self.tableView.reloadData()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
     }
   
     override func didReceiveMemoryWarning() {
@@ -135,5 +145,14 @@ class ChatTableViewController: UIViewController, UITableViewDelegate, UITableVie
         cell.message.text = userMessage.message.text
         
         return cell
+    }
+    
+    @IBAction func logout(_ sender: Any) {
+        if let error = storage.logOut(){
+            showError(title: "Log Out error", error: error)
+        }else{
+            user = nil
+            dismiss(animated: true, completion: nil)
+        }
     }
 }
