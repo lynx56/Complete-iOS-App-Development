@@ -30,6 +30,12 @@ final class LoginViewController: UIViewController, UITextFieldDelegate {
         
         setup(textfield: emailTextField)
         setup(textfield: passwordTextField)
+        
+        passwordTextField.rightView = UIView()
+        passwordTextField.rightView = showHidePasswordButton
+        passwordTextField.rightViewMode = .always
+        showHidePasswordButton.isHidden = true
+        
         setUpGestures()
         setUpNotification()
     }
@@ -50,10 +56,11 @@ final class LoginViewController: UIViewController, UITextFieldDelegate {
                 let fractionComplete = self.fractionComplete(for: textField)
                 self.critterView.startHeadRotation(startAt: fractionComplete)
             }
-        }
-
-        DispatchQueue.main.asyncAfter(deadline: deadlineTime) { // 🎩✨ Magic to ensure animation starts
-            self.critterView.isShy = textField == self.passwordTextField
+        }else if textField == passwordTextField {
+            DispatchQueue.main.asyncAfter(deadline: deadlineTime) { // 🎩✨ Magic to ensure animation starts
+                self.critterView.isShy = true
+                self.showHidePasswordButton.isHidden = false
+            }
         }
     }
 
@@ -95,7 +102,39 @@ final class LoginViewController: UIViewController, UITextFieldDelegate {
         emailTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
         critterView.stopHeadRotation()
+        passwordDidResignAsFirstResponder()
+    }
+    
+    private func passwordDidResignAsFirstResponder() {
+        critterView.isPeeking = false
         critterView.isShy = false
+        showHidePasswordButton.isHidden = true
+        showHidePasswordButton.isSelected = false
+        passwordTextField.isSecureTextEntry = true
+    }
+    
+    private lazy var showHidePasswordButton: UIButton = {
+        let button = UIButton(type: .custom)
+        let h = passwordTextField.bounds.height
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)
+        button.frame = CGRect(x: 0, y: 0, width: 26, height: 26)
+        button.tintColor = .text
+        button.setImage(#imageLiteral(resourceName: "do visible"), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "undo visible"), for: .selected)
+        button.addTarget(self, action: #selector(togglePasswordVisibility(_:)), for: .touchUpInside)
+        return button
+    }()
+    
+    @objc private func togglePasswordVisibility(_ sender: UIButton) {
+        let isPasswordVisible = !sender.isSelected
+        sender.isSelected = isPasswordVisible
+        passwordTextField.isSecureTextEntry = !isPasswordVisible
+        critterView.isPeeking = isPasswordVisible
+        
+        // 🎩✨ Magic to fix cursor position when toggling password visibility
+        if let textRange = passwordTextField.textRange(from: passwordTextField.beginningOfDocument, to: passwordTextField.endOfDocument), let password = passwordTextField.text {
+            passwordTextField.replace(textRange, withText: password)
+        }
     }
 
     // MARK: - Gestures

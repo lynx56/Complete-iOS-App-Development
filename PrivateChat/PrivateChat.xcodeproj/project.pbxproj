@@ -8,29 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		A9802B4C2BE676C14F0CDD67 /* Pods_PrivateChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C2925B7BDD6B40A6EDDBE66 /* Pods_PrivateChat.framework */; };
+		BF05302D20A5E96C00F7EAA9 /* UIColors+ColorPallete.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF05302A20A5E96C00F7EAA9 /* UIColors+ColorPallete.swift */; };
+		BF05302E20A5E96C00F7EAA9 /* Degree.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF05302B20A5E96C00F7EAA9 /* Degree.swift */; };
+		BF05302F20A5E96C00F7EAA9 /* CATransform3D+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF05302C20A5E96C00F7EAA9 /* CATransform3D+Helper.swift */; };
+		BF05304220A5E98800F7EAA9 /* CritterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF05303120A5E98800F7EAA9 /* CritterView.swift */; };
+		BF05304320A5E98800F7EAA9 /* CritterAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF05303220A5E98800F7EAA9 /* CritterAnimatable.swift */; };
+		BF05304420A5E98800F7EAA9 /* Nose.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF05303420A5E98800F7EAA9 /* Nose.swift */; };
+		BF05304520A5E98800F7EAA9 /* Head.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF05303520A5E98800F7EAA9 /* Head.swift */; };
+		BF05304620A5E98800F7EAA9 /* RightEarMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF05303620A5E98800F7EAA9 /* RightEarMask.swift */; };
+		BF05304720A5E98800F7EAA9 /* LeftEye.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF05303720A5E98800F7EAA9 /* LeftEye.swift */; };
+		BF05304820A5E98800F7EAA9 /* RightEye.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF05303820A5E98800F7EAA9 /* RightEye.swift */; };
+		BF05304920A5E98800F7EAA9 /* LeftEarMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF05303920A5E98800F7EAA9 /* LeftEarMask.swift */; };
+		BF05304A20A5E98800F7EAA9 /* LeftArm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF05303A20A5E98800F7EAA9 /* LeftArm.swift */; };
+		BF05304B20A5E98800F7EAA9 /* Muzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF05303B20A5E98800F7EAA9 /* Muzzle.swift */; };
+		BF05304C20A5E98800F7EAA9 /* RightArm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF05303C20A5E98800F7EAA9 /* RightArm.swift */; };
+		BF05304D20A5E98800F7EAA9 /* RightEar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF05303D20A5E98800F7EAA9 /* RightEar.swift */; };
+		BF05304E20A5E98800F7EAA9 /* Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF05303E20A5E98800F7EAA9 /* Body.swift */; };
+		BF05304F20A5E98800F7EAA9 /* LeftEar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF05303F20A5E98800F7EAA9 /* LeftEar.swift */; };
+		BF05305020A5E98800F7EAA9 /* Mouth.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF05304020A5E98800F7EAA9 /* Mouth.swift */; };
+		BF05305120A5E98800F7EAA9 /* CritterAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF05304120A5E98800F7EAA9 /* CritterAssets.swift */; };
+		BF05305320A5F12200F7EAA9 /* CritterAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF05305220A5F12200F7EAA9 /* CritterAssets.xcassets */; };
 		BF1AABED2094800C001E00EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AABEC2094800C001E00EE /* AppDelegate.swift */; };
 		BF1AABF22094800C001E00EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF1AABF02094800C001E00EE /* Main.storyboard */; };
 		BF1AABF42094800C001E00EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF1AABF32094800C001E00EE /* Assets.xcassets */; };
 		BF1AABF72094800C001E00EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF1AABF52094800C001E00EE /* LaunchScreen.storyboard */; };
-		BF1AAC0220948033001E00EE /* CATransform3D+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AABFF20948033001E00EE /* CATransform3D+Helper.swift */; };
-		BF1AAC0320948033001E00EE /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AAC0020948033001E00EE /* Colors.swift */; };
-		BF1AAC0420948033001E00EE /* Degree.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AAC0120948033001E00EE /* Degree.swift */; };
-		BF1AAC1820948048001E00EE /* CritterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AAC0720948048001E00EE /* CritterView.swift */; };
-		BF1AAC1920948048001E00EE /* CritterAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AAC0820948048001E00EE /* CritterAnimatable.swift */; };
-		BF1AAC1A20948048001E00EE /* Nose.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AAC0A20948048001E00EE /* Nose.swift */; };
-		BF1AAC1B20948048001E00EE /* Head.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AAC0B20948048001E00EE /* Head.swift */; };
-		BF1AAC1C20948048001E00EE /* RightEarMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AAC0C20948048001E00EE /* RightEarMask.swift */; };
-		BF1AAC1D20948048001E00EE /* LeftEye.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AAC0D20948048001E00EE /* LeftEye.swift */; };
-		BF1AAC1E20948048001E00EE /* RightEye.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AAC0E20948048001E00EE /* RightEye.swift */; };
-		BF1AAC1F20948048001E00EE /* LeftEarMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AAC0F20948048001E00EE /* LeftEarMask.swift */; };
-		BF1AAC2020948048001E00EE /* LeftArm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AAC1020948048001E00EE /* LeftArm.swift */; };
-		BF1AAC2120948048001E00EE /* Muzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AAC1120948048001E00EE /* Muzzle.swift */; };
-		BF1AAC2220948048001E00EE /* RightArm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AAC1220948048001E00EE /* RightArm.swift */; };
-		BF1AAC2320948048001E00EE /* RightEar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AAC1320948048001E00EE /* RightEar.swift */; };
-		BF1AAC2420948048001E00EE /* Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AAC1420948048001E00EE /* Body.swift */; };
-		BF1AAC2520948048001E00EE /* LeftEar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AAC1520948048001E00EE /* LeftEar.swift */; };
-		BF1AAC2620948048001E00EE /* Mouth.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AAC1620948048001E00EE /* Mouth.swift */; };
-		BF1AAC2720948048001E00EE /* CritterAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AAC1720948048001E00EE /* CritterAssets.swift */; };
 		BF1AAC2920948059001E00EE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AAC2820948059001E00EE /* LoginViewController.swift */; };
 		BF64384A209E364D00D7E68A /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF643849209E364D00D7E68A /* Message.swift */; };
 		BF64384C209E36AE00D7E68A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF64384B209E36AE00D7E68A /* User.swift */; };
@@ -45,31 +46,32 @@
 		0C2925B7BDD6B40A6EDDBE66 /* Pods_PrivateChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PrivateChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EB898563BCB2A127145A496 /* Pods-PrivateChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrivateChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PrivateChat/Pods-PrivateChat.debug.xcconfig"; sourceTree = "<group>"; };
 		B1FD24C87B7806F336ED73EE /* Pods-PrivateChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrivateChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-PrivateChat/Pods-PrivateChat.release.xcconfig"; sourceTree = "<group>"; };
+		BF05302A20A5E96C00F7EAA9 /* UIColors+ColorPallete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColors+ColorPallete.swift"; sourceTree = "<group>"; };
+		BF05302B20A5E96C00F7EAA9 /* Degree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Degree.swift; sourceTree = "<group>"; };
+		BF05302C20A5E96C00F7EAA9 /* CATransform3D+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CATransform3D+Helper.swift"; sourceTree = "<group>"; };
+		BF05303120A5E98800F7EAA9 /* CritterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CritterView.swift; sourceTree = "<group>"; };
+		BF05303220A5E98800F7EAA9 /* CritterAnimatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CritterAnimatable.swift; sourceTree = "<group>"; };
+		BF05303420A5E98800F7EAA9 /* Nose.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Nose.swift; sourceTree = "<group>"; };
+		BF05303520A5E98800F7EAA9 /* Head.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Head.swift; sourceTree = "<group>"; };
+		BF05303620A5E98800F7EAA9 /* RightEarMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightEarMask.swift; sourceTree = "<group>"; };
+		BF05303720A5E98800F7EAA9 /* LeftEye.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftEye.swift; sourceTree = "<group>"; };
+		BF05303820A5E98800F7EAA9 /* RightEye.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightEye.swift; sourceTree = "<group>"; };
+		BF05303920A5E98800F7EAA9 /* LeftEarMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftEarMask.swift; sourceTree = "<group>"; };
+		BF05303A20A5E98800F7EAA9 /* LeftArm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftArm.swift; sourceTree = "<group>"; };
+		BF05303B20A5E98800F7EAA9 /* Muzzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Muzzle.swift; sourceTree = "<group>"; };
+		BF05303C20A5E98800F7EAA9 /* RightArm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightArm.swift; sourceTree = "<group>"; };
+		BF05303D20A5E98800F7EAA9 /* RightEar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightEar.swift; sourceTree = "<group>"; };
+		BF05303E20A5E98800F7EAA9 /* Body.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Body.swift; sourceTree = "<group>"; };
+		BF05303F20A5E98800F7EAA9 /* LeftEar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftEar.swift; sourceTree = "<group>"; };
+		BF05304020A5E98800F7EAA9 /* Mouth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mouth.swift; sourceTree = "<group>"; };
+		BF05304120A5E98800F7EAA9 /* CritterAssets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CritterAssets.swift; sourceTree = "<group>"; };
+		BF05305220A5F12200F7EAA9 /* CritterAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CritterAssets.xcassets; sourceTree = "<group>"; };
 		BF1AABE92094800C001E00EE /* PrivateChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PrivateChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF1AABEC2094800C001E00EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF1AABF12094800C001E00EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BF1AABF32094800C001E00EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF1AABF62094800C001E00EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF1AABF82094800C001E00EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BF1AABFF20948033001E00EE /* CATransform3D+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CATransform3D+Helper.swift"; sourceTree = "<group>"; };
-		BF1AAC0020948033001E00EE /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		BF1AAC0120948033001E00EE /* Degree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Degree.swift; sourceTree = "<group>"; };
-		BF1AAC0720948048001E00EE /* CritterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CritterView.swift; sourceTree = "<group>"; };
-		BF1AAC0820948048001E00EE /* CritterAnimatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CritterAnimatable.swift; sourceTree = "<group>"; };
-		BF1AAC0A20948048001E00EE /* Nose.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Nose.swift; sourceTree = "<group>"; };
-		BF1AAC0B20948048001E00EE /* Head.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Head.swift; sourceTree = "<group>"; };
-		BF1AAC0C20948048001E00EE /* RightEarMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightEarMask.swift; sourceTree = "<group>"; };
-		BF1AAC0D20948048001E00EE /* LeftEye.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftEye.swift; sourceTree = "<group>"; };
-		BF1AAC0E20948048001E00EE /* RightEye.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightEye.swift; sourceTree = "<group>"; };
-		BF1AAC0F20948048001E00EE /* LeftEarMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftEarMask.swift; sourceTree = "<group>"; };
-		BF1AAC1020948048001E00EE /* LeftArm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftArm.swift; sourceTree = "<group>"; };
-		BF1AAC1120948048001E00EE /* Muzzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Muzzle.swift; sourceTree = "<group>"; };
-		BF1AAC1220948048001E00EE /* RightArm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightArm.swift; sourceTree = "<group>"; };
-		BF1AAC1320948048001E00EE /* RightEar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightEar.swift; sourceTree = "<group>"; };
-		BF1AAC1420948048001E00EE /* Body.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Body.swift; sourceTree = "<group>"; };
-		BF1AAC1520948048001E00EE /* LeftEar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftEar.swift; sourceTree = "<group>"; };
-		BF1AAC1620948048001E00EE /* Mouth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mouth.swift; sourceTree = "<group>"; };
-		BF1AAC1720948048001E00EE /* CritterAssets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CritterAssets.swift; sourceTree = "<group>"; };
 		BF1AAC2820948059001E00EE /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BF643849209E364D00D7E68A /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		BF64384B209E36AE00D7E68A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -99,6 +101,39 @@
 				B1FD24C87B7806F336ED73EE /* Pods-PrivateChat.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		BF05303020A5E98800F7EAA9 /* Critter */ = {
+			isa = PBXGroup;
+			children = (
+				BF05305220A5F12200F7EAA9 /* CritterAssets.xcassets */,
+				BF05303120A5E98800F7EAA9 /* CritterView.swift */,
+				BF05303220A5E98800F7EAA9 /* CritterAnimatable.swift */,
+				BF05303320A5E98800F7EAA9 /* Parts */,
+				BF05304120A5E98800F7EAA9 /* CritterAssets.swift */,
+			);
+			name = Critter;
+			path = "../../../../../Users/gulnazalmuhametova/Downloads/LoginCritter-master-2/LoginCritter/Sources/Login/Critter";
+			sourceTree = "<group>";
+		};
+		BF05303320A5E98800F7EAA9 /* Parts */ = {
+			isa = PBXGroup;
+			children = (
+				BF05303420A5E98800F7EAA9 /* Nose.swift */,
+				BF05303520A5E98800F7EAA9 /* Head.swift */,
+				BF05303620A5E98800F7EAA9 /* RightEarMask.swift */,
+				BF05303720A5E98800F7EAA9 /* LeftEye.swift */,
+				BF05303820A5E98800F7EAA9 /* RightEye.swift */,
+				BF05303920A5E98800F7EAA9 /* LeftEarMask.swift */,
+				BF05303A20A5E98800F7EAA9 /* LeftArm.swift */,
+				BF05303B20A5E98800F7EAA9 /* Muzzle.swift */,
+				BF05303C20A5E98800F7EAA9 /* RightArm.swift */,
+				BF05303D20A5E98800F7EAA9 /* RightEar.swift */,
+				BF05303E20A5E98800F7EAA9 /* Body.swift */,
+				BF05303F20A5E98800F7EAA9 /* LeftEar.swift */,
+				BF05304020A5E98800F7EAA9 /* Mouth.swift */,
+			);
+			path = Parts;
 			sourceTree = "<group>";
 		};
 		BF1AABE02094800C001E00EE = {
@@ -136,9 +171,9 @@
 		BF1AABFE20948033001E00EE /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				BF1AABFF20948033001E00EE /* CATransform3D+Helper.swift */,
-				BF1AAC0020948033001E00EE /* Colors.swift */,
-				BF1AAC0120948033001E00EE /* Degree.swift */,
+				BF05302C20A5E96C00F7EAA9 /* CATransform3D+Helper.swift */,
+				BF05302B20A5E96C00F7EAA9 /* Degree.swift */,
+				BF05302A20A5E96C00F7EAA9 /* UIColors+ColorPallete.swift */,
 			);
 			name = Helpers;
 			path = "../../../../Users/gulnazalmuhametova/Downloads/LoginCritter-master/LoginCritter/Sources/Helpers";
@@ -151,40 +186,9 @@
 				BF1AABF52094800C001E00EE /* LaunchScreen.storyboard */,
 				BF64384F209E403800D7E68A /* MessageTableViewCell.swift */,
 				BF1AABF32094800C001E00EE /* Assets.xcassets */,
-				BF1AAC0620948048001E00EE /* Critter */,
+				BF05303020A5E98800F7EAA9 /* Critter */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		BF1AAC0620948048001E00EE /* Critter */ = {
-			isa = PBXGroup;
-			children = (
-				BF1AAC0720948048001E00EE /* CritterView.swift */,
-				BF1AAC0820948048001E00EE /* CritterAnimatable.swift */,
-				BF1AAC0920948048001E00EE /* Parts */,
-				BF1AAC1720948048001E00EE /* CritterAssets.swift */,
-			);
-			path = Critter;
-			sourceTree = "<group>";
-		};
-		BF1AAC0920948048001E00EE /* Parts */ = {
-			isa = PBXGroup;
-			children = (
-				BF1AAC0A20948048001E00EE /* Nose.swift */,
-				BF1AAC0B20948048001E00EE /* Head.swift */,
-				BF1AAC0C20948048001E00EE /* RightEarMask.swift */,
-				BF1AAC0D20948048001E00EE /* LeftEye.swift */,
-				BF1AAC0E20948048001E00EE /* RightEye.swift */,
-				BF1AAC0F20948048001E00EE /* LeftEarMask.swift */,
-				BF1AAC1020948048001E00EE /* LeftArm.swift */,
-				BF1AAC1120948048001E00EE /* Muzzle.swift */,
-				BF1AAC1220948048001E00EE /* RightArm.swift */,
-				BF1AAC1320948048001E00EE /* RightEar.swift */,
-				BF1AAC1420948048001E00EE /* Body.swift */,
-				BF1AAC1520948048001E00EE /* LeftEar.swift */,
-				BF1AAC1620948048001E00EE /* Mouth.swift */,
-			);
-			path = Parts;
 			sourceTree = "<group>";
 		};
 		BF1AAC2A20948093001E00EE /* Controller */ = {
@@ -284,6 +288,7 @@
 				BF7D9477209C74020081A9E9 /* GoogleService-Info.plist in Resources */,
 				BF1AABF42094800C001E00EE /* Assets.xcassets in Resources */,
 				BF1AABF22094800C001E00EE /* Main.storyboard in Resources */,
+				BF05305320A5F12200F7EAA9 /* CritterAssets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,33 +346,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF1AAC1B20948048001E00EE /* Head.swift in Sources */,
-				BF1AAC2720948048001E00EE /* CritterAssets.swift in Sources */,
-				BF1AAC0420948033001E00EE /* Degree.swift in Sources */,
-				BF1AAC2420948048001E00EE /* Body.swift in Sources */,
-				BF1AAC1A20948048001E00EE /* Nose.swift in Sources */,
+				BF05304820A5E98800F7EAA9 /* RightEye.swift in Sources */,
+				BF05305120A5E98800F7EAA9 /* CritterAssets.swift in Sources */,
+				BF05304C20A5E98800F7EAA9 /* RightArm.swift in Sources */,
+				BF05304D20A5E98800F7EAA9 /* RightEar.swift in Sources */,
+				BF05304E20A5E98800F7EAA9 /* Body.swift in Sources */,
+				BF05304920A5E98800F7EAA9 /* LeftEarMask.swift in Sources */,
+				BF05302E20A5E96C00F7EAA9 /* Degree.swift in Sources */,
 				BFDD500020A4385B00789A6F /* UIViewController+.swift in Sources */,
-				BF1AAC2320948048001E00EE /* RightEar.swift in Sources */,
+				BF05305020A5E98800F7EAA9 /* Mouth.swift in Sources */,
 				BF643850209E403800D7E68A /* MessageTableViewCell.swift in Sources */,
-				BF1AAC2120948048001E00EE /* Muzzle.swift in Sources */,
-				BF1AAC1820948048001E00EE /* CritterView.swift in Sources */,
-				BF1AAC1F20948048001E00EE /* LeftEarMask.swift in Sources */,
+				BF05302D20A5E96C00F7EAA9 /* UIColors+ColorPallete.swift in Sources */,
 				BF1AAC2920948059001E00EE /* LoginViewController.swift in Sources */,
-				BF1AAC2220948048001E00EE /* RightArm.swift in Sources */,
-				BF1AAC0320948033001E00EE /* Colors.swift in Sources */,
+				BF05304B20A5E98800F7EAA9 /* Muzzle.swift in Sources */,
+				BF05304A20A5E98800F7EAA9 /* LeftArm.swift in Sources */,
+				BF05304720A5E98800F7EAA9 /* LeftEye.swift in Sources */,
+				BF05304320A5E98800F7EAA9 /* CritterAnimatable.swift in Sources */,
+				BF05304520A5E98800F7EAA9 /* Head.swift in Sources */,
 				BF64385420A195F000D7E68A /* Storage.swift in Sources */,
-				BF1AAC1E20948048001E00EE /* RightEye.swift in Sources */,
 				BF64384E209E371300D7E68A /* ChatTableViewController.swift in Sources */,
 				BF1AABED2094800C001E00EE /* AppDelegate.swift in Sources */,
-				BF1AAC1C20948048001E00EE /* RightEarMask.swift in Sources */,
-				BF1AAC1920948048001E00EE /* CritterAnimatable.swift in Sources */,
+				BF05304220A5E98800F7EAA9 /* CritterView.swift in Sources */,
+				BF05304420A5E98800F7EAA9 /* Nose.swift in Sources */,
+				BF05302F20A5E96C00F7EAA9 /* CATransform3D+Helper.swift in Sources */,
 				BF64384A209E364D00D7E68A /* Message.swift in Sources */,
-				BF1AAC0220948033001E00EE /* CATransform3D+Helper.swift in Sources */,
-				BF1AAC1D20948048001E00EE /* LeftEye.swift in Sources */,
 				BF64384C209E36AE00D7E68A /* User.swift in Sources */,
-				BF1AAC2520948048001E00EE /* LeftEar.swift in Sources */,
-				BF1AAC2020948048001E00EE /* LeftArm.swift in Sources */,
-				BF1AAC2620948048001E00EE /* Mouth.swift in Sources */,
+				BF05304F20A5E98800F7EAA9 /* LeftEar.swift in Sources */,
+				BF05304620A5E98800F7EAA9 /* RightEarMask.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
