@@ -12,4 +12,5 @@ struct Message{
     var authorId: String
     var text: String
     var id: String
+    var timestamp: Double
 }

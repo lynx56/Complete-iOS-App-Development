@@ -35,6 +35,12 @@ class FirebaseStorage: NSObject, Storage{
         messageDb = database.child("Messages")
     }
     
+    func reinit(){
+        database = Database.database().reference()
+        userDb = database.child("Users")
+        messageDb = database.child("Messages")
+    }
+    
     func login(email: String, password: String, completeHandler: @escaping (_ user: User?, _ error: Error?) -> Void ){
         Auth.auth().signInAndRetrieveData(withEmail: email, password: password) { (user, error) in
             if let error = error{
@@ -78,26 +84,37 @@ class FirebaseStorage: NSObject, Storage{
             }
     }
     
+    
+    func timestamp()->Double{
+        return Date().timeIntervalSince1970 * 1000
+    }
+    
     func loadMessages(){
-        messageDb.observe(.childAdded) { (snapshot) in
-            let messages = snapshot.value as! [String: String]
+        messageDb.queryOrdered(byChild: "timestamp").queryStarting(atValue: timestamp()).observe(.childAdded) { (snapshot) in
+            let messages = snapshot.value as! [String: Any]
             
-            let message = Message(authorId: messages["autorId"]!, text: messages["text"]!, id: "")
+            let message = Message(authorId: messages["autorId"]! as! String, text: messages["text"]! as! String, id: messages["id"]!   as! String, timestamp: messages["timestamp"]! as! Double)
             
-            if self.preloadUserPictures[messages["autorId"]!] == nil{
-                self.userDb.child(messages["autorId"]!).observe(.value) { (snap) in
-                    let uservalues = snap.value as! [String: String]
-                    self.preloadUserPictures[messages["autorId"]!] = uservalues["photo"]
-                    self.newMessageEvent!(message, User(id: messages["autorId"]!, photo: uservalues["photo"]!))
-                }
-            }else{
-                self.newMessageEvent!(message, User(id: messages["autorId"]!, photo: self.preloadUserPictures[messages["autorId"]!]!))
+            self.getUser(message: message, handle: { (user) in
+                 self.newMessageEvent!(message, user)
+            })
+        }
+    }
+    
+    func getUser(message: Message, handle: @escaping (User)->Void){
+        if self.preloadUserPictures[message.authorId] == nil{
+            self.userDb.child(message.authorId).observe(.value) { (snap) in
+                let uservalues = snap.value as! [String: String]
+                self.preloadUserPictures[message.authorId] = uservalues["photo"]
+                handle(User(id: message.authorId, photo: uservalues["photo"]!))
             }
+        }else{
+            handle(User(id: message.authorId, photo: self.preloadUserPictures[message.authorId]! ))
         }
     }
     
     func sendMessage(message: Message, completeHandler: @escaping (Bool, Error?)->Void) {
-            messageDb.childByAutoId().setValue(["autorId":  message.authorId, "text": message.text], withCompletionBlock: { (error, db) in
+        messageDb.childByAutoId().setValue(["autorId":  message.authorId, "text": message.text, "id": message.id, "timestamp" : message.timestamp], withCompletionBlock: { (error, db) in
                 if error != nil{
                     completeHandler(false, error)
                 }else{
@@ -106,18 +123,30 @@ class FirebaseStorage: NSObject, Storage{
             })
     }
     
-    func history(completeHandler: @escaping ([Message], Error?)->Void) {
+    func history(completeHandler: @escaping ([(message: Message, user: User)], Error?)->Void) {
         messageDb.observeSingleEvent(of: .value) { (snapshot) in
-            let messages = snapshot.value as! [String: AnyObject]
-            
-            var result: [Message] = []
-            
-            for message in messages{
-                let newMessage = Message(authorId: message.value["autorId"]! as! String, text: message.value["text"]! as! String, id: message.value["id"]! as! String)
-                result.append(newMessage)
+            if snapshot.childrenCount == 0{
+                completeHandler([],nil)
+                return
             }
             
-            completeHandler(result, nil)
+            let messages = snapshot.value as! [String: AnyObject]
+            let group = DispatchGroup()
+            var result: [(message: Message, user: User)] = []
+            
+            for message in messages{
+                group.enter()
+                let newMessage = Message(authorId: message.value["autorId"]! as! String, text: message.value["text"]! as! String, id: message.value["id"]! as! String, timestamp: message.value["timestamp"] as! Double)
+                self.getUser(message: newMessage, handle: { (user) in
+                    result.append((message: newMessage, user: user))
+                    group.leave()
+                })
+                
+            }
+            
+            group.notify(queue: DispatchQueue.main){
+                completeHandler(result, nil)
+            }
         }
     }
     

@@ -16,7 +16,7 @@ class ChatTableViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var message: UITextField!
     @IBOutlet weak var messageView: UIView!
     
-    var messages: [(message: Message, from: User)] = []
+    var messages: [(message: Message, user: User)] = []
     public var user: User?
     var storage = FirebaseStorage.shared
     
@@ -31,12 +31,20 @@ class ChatTableViewController: UIViewController, UITableViewDelegate, UITableVie
         
         self.tableView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(focusOnTable)))
         self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.1294117647, green: 0.7450980392, blue: 0.7176470588, alpha: 1)
-        storage.newMessageEvent = newMessage
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.heightConstraint.constant = self.navigationController!.navigationBar.bounds.height + UIApplication.shared.statusBarFrame.height
+        
+        storage.history { (result, error) in
+            self.messages = result
+            self.messages.sort(by: {$0.message.timestamp < $1.message.timestamp})
+            self.tableView.reloadData()
+            self.storage.newMessageEvent = self.newMessage
+            self.scrollToLastMessage()
+        }
         
         subscribeToKeyboardEvents()
     }
@@ -76,6 +84,7 @@ class ChatTableViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func newMessage( message: Message, user: User)->Void{
             messages.append((message, user))
+            messages.sort(by: {$0.message.timestamp < $1.message.timestamp})
             self.tableView.reloadData()
     }
     
@@ -114,11 +123,12 @@ class ChatTableViewController: UIViewController, UITableViewDelegate, UITableVie
         sender.isEnabled = false
         self.message.endEditing(true)
         if let text = self.message.text{
-            let newMessage = Message(authorId:  self.user!.id, text: text, id: UUID().uuidString)
+            let newMessage = Message(authorId:  self.user!.id, text: text, id: UUID().uuidString, timestamp: Date().timeIntervalSince1970 * 1000)
             
             self.storage.sendMessage(message: newMessage) { (success, error) in
                 self.message.text = nil
                 sender.isEnabled = true
+                self.scrollToLastMessage()
                 
                 if !success{
                     self.showError(title: "Error occur while sending message", error: error!)
@@ -135,7 +145,7 @@ class ChatTableViewController: UIViewController, UITableViewDelegate, UITableVie
         
         let cell = tableView.dequeueReusableCell( withIdentifier : user.id == userMessage.message.authorId ? "MyCell" : "InterlocutorCell", for: indexPath) as! MessageTableViewCell
         
-        let userPic = userMessage.from.photo
+        let userPic = userMessage.user.photo
         cell.logo.image = UIImage(named: userPic)
         cell.bubble.image = UIImage(named: user.id == userMessage.message.authorId ? "chat_bubble_sent" : "chat_bubble_received")?.resizableImage(withCapInsets:
             UIEdgeInsetsMake(17, 21, 17, 21), resizingMode: .stretch)
