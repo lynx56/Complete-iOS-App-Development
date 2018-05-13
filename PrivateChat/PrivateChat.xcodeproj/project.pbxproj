@@ -40,7 +40,7 @@
 		BF64385420A195F000D7E68A /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF64385320A195F000D7E68A /* Storage.swift */; };
 		BF7D9477209C74020081A9E9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF7D9476209C74020081A9E9 /* GoogleService-Info.plist */; };
 		BFDD500020A4385B00789A6F /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDD4FFF20A4385B00789A6F /* UIViewController+.swift */; };
-		BFF5395D20A84669000B74DA /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF5395C20A84669000B74DA /* File.swift */; };
+		BFF5395D20A84669000B74DA /* UITextView+Height.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF5395C20A84669000B74DA /* UITextView+Height.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,7 +81,7 @@
 		BF64385320A195F000D7E68A /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		BF7D9476209C74020081A9E9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BFDD4FFF20A4385B00789A6F /* UIViewController+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
-		BFF5395C20A84669000B74DA /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		BFF5395C20A84669000B74DA /* UITextView+Height.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Height.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,7 +176,7 @@
 				BF05302C20A5E96C00F7EAA9 /* CATransform3D+Helper.swift */,
 				BF05302B20A5E96C00F7EAA9 /* Degree.swift */,
 				BF05302A20A5E96C00F7EAA9 /* UIColors+ColorPallete.swift */,
-				BFF5395C20A84669000B74DA /* File.swift */,
+				BFF5395C20A84669000B74DA /* UITextView+Height.swift */,
 			);
 			name = Helpers;
 			path = "../../../../Users/gulnazalmuhametova/Downloads/LoginCritter-master/LoginCritter/Sources/Helpers";
@@ -358,7 +358,7 @@
 				BF05302E20A5E96C00F7EAA9 /* Degree.swift in Sources */,
 				BFDD500020A4385B00789A6F /* UIViewController+.swift in Sources */,
 				BF05305020A5E98800F7EAA9 /* Mouth.swift in Sources */,
-				BFF5395D20A84669000B74DA /* File.swift in Sources */,
+				BFF5395D20A84669000B74DA /* UITextView+Height.swift in Sources */,
 				BF643850209E403800D7E68A /* MessageTableViewCell.swift in Sources */,
 				BF05302D20A5E96C00F7EAA9 /* UIColors+ColorPallete.swift in Sources */,
 				BF1AAC2920948059001E00EE /* LoginViewController.swift in Sources */,
