@@ -55,6 +55,7 @@ final class LoginViewController: UIViewController, UITextFieldDelegate {
             DispatchQueue.main.asyncAfter(deadline: deadlineTime) { // 🎩✨ Magic to ensure animation starts
                 let fractionComplete = self.fractionComplete(for: textField)
                 self.critterView.startHeadRotation(startAt: fractionComplete)
+                self.passwordDidResignAsFirstResponder()
             }
         }else if textField == passwordTextField {
             DispatchQueue.main.asyncAfter(deadline: deadlineTime) { // 🎩✨ Magic to ensure animation starts
@@ -70,6 +71,7 @@ final class LoginViewController: UIViewController, UITextFieldDelegate {
         }
         else {
             passwordTextField.resignFirstResponder()
+            passwordDidResignAsFirstResponder()
         }
         return true
     }
