@@ -8,15 +8,17 @@
 
 import UIKit
 
-class ChatTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate{
+class ChatTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate{
 
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var message: UITextField!
+    @IBOutlet weak var message: UITextView!
     @IBOutlet weak var messageView: UIView!
+    @IBOutlet weak var textHeight: NSLayoutConstraint!
+    var originalTextHeight: CGFloat = 0
     
-    var messages: [(message: Message, user: User)] = []
+    var messages: [UserMessage] = []
     public var user: User?
     var storage = FirebaseStorage.shared
     
@@ -31,7 +33,8 @@ class ChatTableViewController: UIViewController, UITableViewDelegate, UITableVie
         
         self.tableView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(focusOnTable)))
         self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.1294117647, green: 0.7450980392, blue: 0.7176470588, alpha: 1)
-        
+        self.originalTextHeight = textHeight.constant
+        self.message.layer.cornerRadius = 4.07
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,14 +79,22 @@ class ChatTableViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
+    func textViewDidChange(_ textView: UITextView) {
+        let textHeight = textView.textHeight(withWidth: textView.bounds.width)
+        if  textHeight > textView.bounds.height && textView.bounds.height < 55{
+            self.textHeight.constant = textHeight
+            textView.layoutIfNeeded()
+        }
+    }
+    
     func scrollToLastMessage(){
         if self.messages.count > 0{
             self.tableView.scrollToRow(at: IndexPath(row: self.messages.count - 1, section: 0), at: .bottom, animated: true)
         }
     }
     
-    func newMessage( message: Message, user: User)->Void{
-            messages.append((message, user))
+    func newMessage(_ userMessage: UserMessage)->Void{
+            messages.append(userMessage)
             messages.sort(by: {$0.message.timestamp < $1.message.timestamp})
             self.tableView.reloadData()
     }
@@ -127,6 +138,8 @@ class ChatTableViewController: UIViewController, UITableViewDelegate, UITableVie
             
             self.storage.sendMessage(message: newMessage) { (success, error) in
                 self.message.text = nil
+                self.textHeight.constant = self.originalTextHeight
+                self.message.layoutIfNeeded()
                 sender.isEnabled = true
                 self.scrollToLastMessage()
                 
@@ -147,12 +160,24 @@ class ChatTableViewController: UIViewController, UITableViewDelegate, UITableVie
         
         let userPic = userMessage.user.photo
         cell.logo.image = UIImage(named: userPic)
-        cell.bubble.image = UIImage(named: user.id == userMessage.message.authorId ? "chat_bubble_sent" : "chat_bubble_received")?.resizableImage(withCapInsets:
+        cell.message.text = userMessage.message.text
+        
+        let bubbleImage: UIImage
+        
+        if userMessage.fromAuthor(user.id){
+            bubbleImage = UIImage(named: "chat_bubble_sent")!
+            cell.bubble.tintColor = #colorLiteral(red: 0.9606800675, green: 0.9608443379, blue: 0.9606696963, alpha: 1)
+        }else{
+            bubbleImage = UIImage(named: "chat_bubble_received")!
+            cell.bubble.tintColor = #colorLiteral(red: 0.7764705882, green: 1, blue: 0.9764705882, alpha: 1)
+        }
+        
+        cell.message.textColor = #colorLiteral(red: 0.3215686275, green: 0.3254901961, blue: 0.3411764706, alpha: 1)
+        cell.bubble.image = bubbleImage.resizableImage(withCapInsets:
             UIEdgeInsetsMake(17, 21, 17, 21), resizingMode: .stretch)
             .withRenderingMode(.alwaysTemplate)
-        
-        cell.bubble.tintColor = user.id == userMessage.message.authorId ? UIColor.blue : UIColor.green
-        cell.message.text = userMessage.message.text
+    
+        cell.message.sizeToFit()
         
         return cell
     }
@@ -166,3 +191,15 @@ class ChatTableViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
 }
+
+struct UserMessage{
+    var user: User
+    var message: Message
+}
+
+extension UserMessage{
+    func fromAuthor(_ id: String)->Bool{
+        return self.message.authorId == id
+    }
+}
+

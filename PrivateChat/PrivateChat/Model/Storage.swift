@@ -22,14 +22,14 @@ class FirebaseStorage: NSObject, Storage{
     
     static let shared = FirebaseStorage()
     
-    var newMessageEvent: ((Message, User)->Void)?{
+    var newMessageEvent: ((UserMessage)->Void)?{
         didSet{
             loadMessages()
         }
     }
     
     private override init(){
-      //  FirebaseApp.configure()
+        FirebaseApp.configure()
         database = Database.database().reference()
         userDb = database.child("Users")
         messageDb = database.child("Messages")
@@ -96,7 +96,7 @@ class FirebaseStorage: NSObject, Storage{
             let message = Message(authorId: messages["autorId"]! as! String, text: messages["text"]! as! String, id: messages["id"]!   as! String, timestamp: messages["timestamp"]! as! Double)
             
             self.getUser(message: message, handle: { (user) in
-                 self.newMessageEvent!(message, user)
+                self.newMessageEvent!(UserMessage(user: user, message: message))
             })
         }
     }
@@ -123,7 +123,7 @@ class FirebaseStorage: NSObject, Storage{
             })
     }
     
-    func history(completeHandler: @escaping ([(message: Message, user: User)], Error?)->Void) {
+    func history(completeHandler: @escaping ([UserMessage], Error?)->Void) {
         messageDb.observeSingleEvent(of: .value) { (snapshot) in
             if snapshot.childrenCount == 0{
                 completeHandler([],nil)
@@ -132,13 +132,13 @@ class FirebaseStorage: NSObject, Storage{
             
             let messages = snapshot.value as! [String: AnyObject]
             let group = DispatchGroup()
-            var result: [(message: Message, user: User)] = []
+            var result: [UserMessage] = []
             
             for message in messages{
                 group.enter()
                 let newMessage = Message(authorId: message.value["autorId"]! as! String, text: message.value["text"]! as! String, id: message.value["id"]! as! String, timestamp: message.value["timestamp"] as! Double)
                 self.getUser(message: newMessage, handle: { (user) in
-                    result.append((message: newMessage, user: user))
+                    result.append(UserMessage(user: user, message: newMessage))
                     group.leave()
                 })
                 
