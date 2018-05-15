@@ -16,6 +16,12 @@ class CategoriesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+       
+        
+        // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         storage.categories { (result, error) in
             if error == nil{
                 categories = result
@@ -23,7 +29,6 @@ class CategoriesTableViewController: UITableViewController {
                 print(error)
             }
         }
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
@@ -86,4 +91,3 @@ class CategoriesTableViewController: UITableViewController {
         }
     }
 }
-

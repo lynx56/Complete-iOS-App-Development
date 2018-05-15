@@ -11,6 +11,8 @@ import Foundation
 class StorageManager{
     func getStorage()->Storage{
         //get from config
-        return PlistStorage.shared
+        //return PlistStorage.shared
+        
+        return CoreDataStorage.shared
     }
 }

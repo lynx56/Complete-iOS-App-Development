@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BFEC4E3B20AAD15D000A2CC0 /* StorageModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BFEC4E3920AAD15D000A2CC0 /* StorageModel.xcdatamodeld */; };
+		BFEC4E3F20AAD494000A2CC0 /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEC4E3E20AAD494000A2CC0 /* CoreDataStorage.swift */; };
 		BFF5396B20A9692D000B74DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF5396A20A9692D000B74DA /* AppDelegate.swift */; };
 		BFF5396D20A9692D000B74DA /* CategoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF5396C20A9692D000B74DA /* CategoriesTableViewController.swift */; };
 		BFF5397020A9692D000B74DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFF5396E20A9692D000B74DA /* Main.storyboard */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BFEC4E3A20AAD15D000A2CC0 /* StorageModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StorageModel.xcdatamodel; sourceTree = "<group>"; };
+		BFEC4E3E20AAD494000A2CC0 /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
 		BFF5396720A9692D000B74DA /* Mojo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mojo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFF5396A20A9692D000B74DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFF5396C20A9692D000B74DA /* CategoriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesTableViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +106,8 @@
 				BFF5398520A98760000B74DA /* Storage.swift */,
 				BFF5398720A98765000B74DA /* StorageManager.swift */,
 				BFF5398920A9876A000B74DA /* PlistStorage.swift */,
+				BFEC4E3920AAD15D000A2CC0 /* StorageModel.xcdatamodeld */,
+				BFEC4E3E20AAD494000A2CC0 /* CoreDataStorage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -177,10 +183,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFEC4E3F20AAD494000A2CC0 /* CoreDataStorage.swift in Sources */,
 				BFF5398620A98760000B74DA /* Storage.swift in Sources */,
 				BFF5398420A98759000B74DA /* Item.swift in Sources */,
 				BFF5396D20A9692D000B74DA /* CategoriesTableViewController.swift in Sources */,
 				BFF5396B20A9692D000B74DA /* AppDelegate.swift in Sources */,
+				BFEC4E3B20AAD15D000A2CC0 /* StorageModel.xcdatamodeld in Sources */,
 				BFF5397F20A9838A000B74DA /* ItemsTableViewController.swift in Sources */,
 				BFF5397D20A96A5B000B74DA /* Category.swift in Sources */,
 				BFF5398A20A9876A000B74DA /* PlistStorage.swift in Sources */,
@@ -382,6 +390,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BFEC4E3920AAD15D000A2CC0 /* StorageModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BFEC4E3A20AAD15D000A2CC0 /* StorageModel.xcdatamodel */,
+			);
+			currentVersion = BFEC4E3A20AAD15D000A2CC0 /* StorageModel.xcdatamodel */;
+			path = StorageModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = BFF5395F20A9692D000B74DA /* Project object */;
 }
