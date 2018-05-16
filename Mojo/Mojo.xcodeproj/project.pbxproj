@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28849C4620BFAEBEBF473E32 /* Pods_Mojo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EB9197B79A8F38789703979 /* Pods_Mojo.framework */; };
+		BF39C36A20AC61FD00FE1154 /* RealmStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF39C36920AC61FD00FE1154 /* RealmStorage.swift */; };
 		BFEC4E3B20AAD15D000A2CC0 /* StorageModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BFEC4E3920AAD15D000A2CC0 /* StorageModel.xcdatamodeld */; };
 		BFEC4E3F20AAD494000A2CC0 /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEC4E3E20AAD494000A2CC0 /* CoreDataStorage.swift */; };
 		BFF5396B20A9692D000B74DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF5396A20A9692D000B74DA /* AppDelegate.swift */; };
@@ -23,6 +25,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		46D46EE042E2D353E60402F5 /* Pods-Mojo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mojo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mojo/Pods-Mojo.debug.xcconfig"; sourceTree = "<group>"; };
+		8EB9197B79A8F38789703979 /* Pods_Mojo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mojo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF39C36920AC61FD00FE1154 /* RealmStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmStorage.swift; sourceTree = "<group>"; };
 		BFEC4E3A20AAD15D000A2CC0 /* StorageModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StorageModel.xcdatamodel; sourceTree = "<group>"; };
 		BFEC4E3E20AAD494000A2CC0 /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
 		BFF5396720A9692D000B74DA /* Mojo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mojo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -38,6 +43,7 @@
 		BFF5398520A98760000B74DA /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		BFF5398720A98765000B74DA /* StorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		BFF5398920A9876A000B74DA /* PlistStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlistStorage.swift; sourceTree = "<group>"; };
+		F956F57B6549B020B8BC478D /* Pods-Mojo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mojo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mojo/Pods-Mojo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28849C4620BFAEBEBF473E32 /* Pods_Mojo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +63,8 @@
 			children = (
 				BFF5396920A9692D000B74DA /* Mojo */,
 				BFF5396820A9692D000B74DA /* Products */,
+				F010455D2EE2CFD000C5034C /* Pods */,
+				F3B93D6CEA753D9E44378842 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -108,8 +117,26 @@
 				BFF5398920A9876A000B74DA /* PlistStorage.swift */,
 				BFEC4E3920AAD15D000A2CC0 /* StorageModel.xcdatamodeld */,
 				BFEC4E3E20AAD494000A2CC0 /* CoreDataStorage.swift */,
+				BF39C36920AC61FD00FE1154 /* RealmStorage.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		F010455D2EE2CFD000C5034C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				46D46EE042E2D353E60402F5 /* Pods-Mojo.debug.xcconfig */,
+				F956F57B6549B020B8BC478D /* Pods-Mojo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F3B93D6CEA753D9E44378842 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8EB9197B79A8F38789703979 /* Pods_Mojo.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,9 +146,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BFF5397920A9692F000B74DA /* Build configuration list for PBXNativeTarget "Mojo" */;
 			buildPhases = (
+				7AC4BC46E96154A81257E7EE /* [CP] Check Pods Manifest.lock */,
 				BFF5396320A9692D000B74DA /* Sources */,
 				BFF5396420A9692D000B74DA /* Frameworks */,
 				BFF5396520A9692D000B74DA /* Resources */,
+				BB5D8A1BDA2FFF2342824457 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -178,6 +207,49 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7AC4BC46E96154A81257E7EE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Mojo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BB5D8A1BDA2FFF2342824457 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Mojo/Pods-Mojo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mojo/Pods-Mojo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BFF5396320A9692D000B74DA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -186,6 +258,7 @@
 				BFEC4E3F20AAD494000A2CC0 /* CoreDataStorage.swift in Sources */,
 				BFF5398620A98760000B74DA /* Storage.swift in Sources */,
 				BFF5398420A98759000B74DA /* Item.swift in Sources */,
+				BF39C36A20AC61FD00FE1154 /* RealmStorage.swift in Sources */,
 				BFF5396D20A9692D000B74DA /* CategoriesTableViewController.swift in Sources */,
 				BFF5396B20A9692D000B74DA /* AppDelegate.swift in Sources */,
 				BFEC4E3B20AAD15D000A2CC0 /* StorageModel.xcdatamodeld in Sources */,
@@ -334,6 +407,7 @@
 		};
 		BFF5397A20A9692F000B74DA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 46D46EE042E2D353E60402F5 /* Pods-Mojo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -352,6 +426,7 @@
 		};
 		BFF5397B20A9692F000B74DA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F956F57B6549B020B8BC478D /* Pods-Mojo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

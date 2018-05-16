@@ -9,7 +9,7 @@
 import UIKit
 
 class CategoriesTableViewController: UITableViewController, UISearchBarDelegate {
-    var storageManager = StorageManager()
+    var storageManager = StorageManager(.realm)
     var storage: Storage!
     var categories: [Category] = []
     

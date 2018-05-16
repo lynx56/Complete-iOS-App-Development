@@ -10,7 +10,7 @@ import UIKit
 
 class ItemsTableViewController: UITableViewController, UISearchBarDelegate {
     
-    var storageManager = StorageManager()
+    var storageManager = StorageManager(.realm)
     var storage: Storage!
     var category: Category?
     var items: [Item] = []

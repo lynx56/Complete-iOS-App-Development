@@ -9,28 +9,53 @@
 import Foundation
 
 class StorageManager{
+    enum StorageType{
+        case realm
+        case coreData
+    }
+    
+    var type: StorageType
+    init(_ type: StorageType){
+        self.type = type
+    }
+    
     func getStorage()->Storage{
         //get from config
         //return PlistStorage.shared
         
-        return CoreDataStorage.shared
+        switch type {
+        case .realm:
+            return RealmStorage.shared
+        case .coreData:
+            return CoreDataStorage.shared
+        }
     }
     
     func getCategory(by name: String)->[Category]{
         
         let predicate = NSPredicate(format: "name CONTAINS[c] %@", name)
         
-        let sort = NSSortDescriptor(key: "name", ascending: true)
-        
-        return CoreDataStorage.shared.filterCategories(by: predicate, sort: [sort])
+        switch type {
+        case .realm:
+            return RealmStorage.shared.filterCategories(by: predicate, sortKey: "name")
+        case .coreData:
+            let sort = NSSortDescriptor(key: "name", ascending: true)
+            
+            return CoreDataStorage.shared.filterCategories(by: predicate, sort: [sort])
+        }
     }
     
     func getItem(by name: String, in category: Category)->[Item]{
         
         let predicate = NSPredicate(format: "name CONTAINS[c] %@ AND category.id == %@", name, category.id)
         
-        let sort = NSSortDescriptor(key: "name", ascending: true)
-        
-        return CoreDataStorage.shared.filterItems(by: predicate, sort: [sort])
+        switch type {
+        case .realm:
+            return RealmStorage.shared.filterItems(by: predicate, sortKey: "name")
+        case .coreData:
+            let sort = NSSortDescriptor(key: "name", ascending: true)
+            
+            return CoreDataStorage.shared.filterItems(by: predicate, sort: [sort])
+        }
     }
 }
