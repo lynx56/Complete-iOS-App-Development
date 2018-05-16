@@ -8,16 +8,19 @@
 
 import UIKit
 
-class ItemsTableViewController: UITableViewController {
+class ItemsTableViewController: UITableViewController, UISearchBarDelegate {
     
-    var storage: Storage = StorageManager().getStorage()
+    var storageManager = StorageManager()
+    var storage: Storage!
     var category: Category?
     var items: [Item] = []
     
+    @IBOutlet weak var searchbar: UISearchBar!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.storage = storageManager.getStorage()
         self.items = category?.items ?? []
+        searchbar.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -72,6 +75,25 @@ class ItemsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if let text = searchbar.text, !text.isEmpty{
+            self.items = self.storageManager.getItem(by: text, in: category!)
+            self.tableView.reloadData()
+        }else{
+            storage.items(handler: { (res, error) in
+                self.items = res
+                self.tableView.reloadData()
+            })
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        storage.items(handler: { (res, error) in
+            self.items = res
+            self.tableView.reloadData()
+        })
     }
 }
 

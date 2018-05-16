@@ -55,6 +55,54 @@ class CoreDataStorage: Storage{
         handler(true, nil)
     }
     
+    func categoryCoreDataToCategory(result: [CategoryCoreData])->[Category]{
+        return result.map({Category(id: $0.id ?? "", name: $0.name ?? "", colorHex: $0.colorHex ?? "", items: $0.tasks == nil ? [] : $0.tasks!.map({(tt) -> Item in
+            let t = tt as! TaskCoreData
+            return Item(id: t.id ?? "",
+                        name: t.name ?? "",
+                        colorHex: t.colorHex ?? "",
+                        done: t.done )
+        }))})
+    }
+    
+    func taskCoreDataToItem(result: [TaskCoreData])->[Item]{
+        return result.map({ Item(id: $0.id ?? "", name: $0.name ?? "", colorHex: $0.colorHex ?? "", done: $0.done ) })
+    }
+    
+    func filterCategories(by predicate: NSPredicate?, sort: [NSSortDescriptor]?) -> [Category]{
+        let request: NSFetchRequest<CategoryCoreData> = CategoryCoreData.fetchRequest()
+        request.predicate = predicate
+        request.sortDescriptors = sort
+        do{
+            let result = try persistentContainer.viewContext.fetch(request)
+            return categoryCoreDataToCategory(result: result)
+        
+        }catch{
+            print(error)
+        }
+        
+        return []
+    }
+    
+    func filterItems(by predicate: NSPredicate?, sort: [NSSortDescriptor]?) -> [Item]{
+        let request: NSFetchRequest<TaskCoreData> = TaskCoreData.fetchRequest()
+        request.predicate = predicate
+        request.sortDescriptors = sort
+        do{
+            let result = try persistentContainer.viewContext.fetch(request)
+            return taskCoreDataToItem(result: result)
+            
+        }catch{
+            print(error)
+        }
+        
+        return []
+    }
+    
+    func items(handler: ([Item], Error?) -> Void) {
+        handler(filterItems(by: nil, sort: nil), nil)
+    }
+    
     func categories(handler: ([Category], Error?) -> Void) {
         let request: NSFetchRequest<CategoryCoreData> = CategoryCoreData.fetchRequest()
         

@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mojo/Model/CoreDataStorage.swift"
-            timestampString = "548071435.491062"
+            timestampString = "548165380.794602"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
@@ -42,12 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mojo/Model/CoreDataStorage.swift"
-            timestampString = "548071435.491133"
+            timestampString = "548165380.794677"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
-            landmarkName = "saveContext()"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
+            landmarkName = "saveItems(_:to:handler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -58,12 +58,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mojo/Model/CoreDataStorage.swift"
-            timestampString = "548071435.491191"
+            timestampString = "548165380.794734"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "categories(handler:)"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "filterItems(by:sort:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -121,12 +121,92 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mojo/Model/CoreDataStorage.swift"
-            timestampString = "548071435.4912421"
+            timestampString = "548165380.794787"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "categories(handler:)"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "filterCategories(by:sort:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Mojo/Model/CoreDataStorage.swift"
+            timestampString = "548165380.794839"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "taskCoreDataToItem(result:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Mojo/Controller/CategoriesTableViewController.swift"
+            timestampString = "548165380.794897"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "searchBar(_:textDidChange:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Mojo.CategoriesTableViewController.searchBar(__ObjC.UISearchBar, textDidChange: Swift.String) -&gt; ()"
+                  moduleName = "Mojo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Developer/Udemy/Mojo/Mojo/Controller/CategoriesTableViewController.swift"
+                  timestampString = "548164185.524467"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "98"
+                  endingLineNumber = "98"
+                  offsetFromSymbolStart = "1141">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Array&lt;Mojo.Category&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Mojo.CategoriesTableViewController.searchBar(__ObjC.UISearchBar, textDidChange: Swift.String) -&gt; ()"
+                  moduleName = "Mojo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Developer/Udemy/Mojo/Mojo/Controller/CategoriesTableViewController.swift"
+                  timestampString = "548164185.5274709"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "99"
+                  endingLineNumber = "99"
+                  offsetFromSymbolStart = "26">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Mojo/Controller/CategoriesTableViewController.swift"
+            timestampString = "548165380.795231"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "searchBar(_:textDidChange:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

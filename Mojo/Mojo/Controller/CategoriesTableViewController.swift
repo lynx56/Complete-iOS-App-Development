@@ -8,17 +8,16 @@
 
 import UIKit
 
-class CategoriesTableViewController: UITableViewController {
-    
-    var storage: Storage = StorageManager().getStorage()
+class CategoriesTableViewController: UITableViewController, UISearchBarDelegate {
+    var storageManager = StorageManager()
+    var storage: Storage!
     var categories: [Category] = []
     
+    @IBOutlet weak var searchbar: UISearchBar!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-       
-        
-        // Do any additional setup after loading the view, typically from a nib.
+        storage = storageManager.getStorage()
+        searchbar.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,6 +87,28 @@ class CategoriesTableViewController: UITableViewController {
         if segue.identifier == "showItems"{
             let ctr = segue.destination as! ItemsTableViewController
             ctr.category = self.categories[self.tableView.indexPathForSelectedRow?.row ?? 0]
+            if let selectedRow = tableView.indexPathForSelectedRow{
+                tableView.deselectRow(at: selectedRow, animated: false)
+            }
+        }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if let text = searchbar.text, !text.isEmpty{
+            self.categories = self.storageManager.getCategory(by: text)
+            self.tableView.reloadData()
+        }else{
+            storage.categories { (res, error) in
+                self.categories = res
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        storage.categories { (res, error) in
+            self.categories = res
+            self.tableView.reloadData()
         }
     }
 }

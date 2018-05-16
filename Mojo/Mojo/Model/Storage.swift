@@ -12,4 +12,5 @@ protocol Storage{
     func saveCategories(_ categories: [Category], handler: (Bool, Error?) -> Void)
     func categories( handler: ([Category], Error?)->Void)
     func saveItems(_ items: [Item], to category: Category, handler: (Bool, Error?)->Void)
+    func items(handler: ([Item], Error?)->Void)
 }

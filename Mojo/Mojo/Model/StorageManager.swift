@@ -15,4 +15,22 @@ class StorageManager{
         
         return CoreDataStorage.shared
     }
+    
+    func getCategory(by name: String)->[Category]{
+        
+        let predicate = NSPredicate(format: "name CONTAINS[c] %@", name)
+        
+        let sort = NSSortDescriptor(key: "name", ascending: true)
+        
+        return CoreDataStorage.shared.filterCategories(by: predicate, sort: [sort])
+    }
+    
+    func getItem(by name: String, in category: Category)->[Item]{
+        
+        let predicate = NSPredicate(format: "name CONTAINS[c] %@ AND category.id == %@", name, category.id)
+        
+        let sort = NSSortDescriptor(key: "name", ascending: true)
+        
+        return CoreDataStorage.shared.filterItems(by: predicate, sort: [sort])
+    }
 }

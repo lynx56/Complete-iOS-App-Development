@@ -9,6 +9,10 @@
 import Foundation
 
 class PlistStorage: Storage {
+    func items(handler: ([Item], Error?) -> Void) {
+        fatalError()
+    }
+    
     func categories(handler: ([Category], Error?) -> Void) {
         do{
             let decoder = PropertyListDecoder()
