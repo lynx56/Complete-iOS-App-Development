@@ -7,29 +7,26 @@
 //
 
 import UIKit
+import ChameleonFramework
 
 class CategoriesTableViewController: UITableViewController, UISearchBarDelegate {
-    var storageManager = StorageManager(.realm)
-    var storage: Storage!
-    var categories: [Category] = []
-    
     @IBOutlet weak var searchbar: UISearchBar!
+   
+    var state: CategoriesTableViewControllerState = CoreDataSource()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        storage = storageManager.getStorage()
         searchbar.delegate = self
+        
+        self.navigationController?.navigationBar.barTintColor = UIColor.flatBlue
+        self.navigationController?.navigationBar.tintColor = .white
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
+        self.tableView.rowHeight = 100
+        self.tableView.separatorStyle = .none
+        
+         searchbar.barTintColor = self.navigationController?.navigationBar.barTintColor
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        storage.categories { (result, error) in
-            if error == nil{
-                categories = result
-            }else{
-                print(error)
-            }
-        }
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -40,20 +37,13 @@ class CategoriesTableViewController: UITableViewController, UISearchBarDelegate 
         alert.addAction(UIAlertAction(title: "Create", style: .default, handler: { (action) in
             if let textfieldValue = alert.textFields?.first?.text{
                 
-                let newCategory = Category(id: UUID().uuidString, name: textfieldValue, colorHex: "", items: [])
-             
-                var changedCategories = self.categories
-                changedCategories.append(newCategory)
-                
-                self.storage.saveCategories(changedCategories) { (added, error) in
+                self.state.createCategoryHandler!(textfieldValue){ (success, error) in
                     if let error = error{
                         self.showError(title: "Error occur while creating category", error: error)
                     }
                     
-                    self.categories = changedCategories
                     self.tableView.reloadData()
                 }
-                
             }}))
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -73,20 +63,24 @@ class CategoriesTableViewController: UITableViewController, UISearchBarDelegate 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "category", for: indexPath) as UITableViewCell
+        let category = self.state.getCategory!(indexPath.row)
         
-        cell.textLabel?.text = categories[indexPath.row].name
-        
+        cell.textLabel?.text = category.name
+        cell.backgroundColor = UIColor(hexString: category.colorHex) ?? .white
+        cell.textLabel?.textColor = UIColor(contrastingBlackOrWhiteColorOn: cell.backgroundColor!, isFlat: true)
+       
         return cell
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categories.count
+        return self.state.countCategories!()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showItems"{
             let ctr = segue.destination as! ItemsTableViewController
-            ctr.category = self.categories[self.tableView.indexPathForSelectedRow?.row ?? 0]
+            self.state.setSelectedCategory!(tableView.indexPathForSelectedRow!.row)
+            ctr.state = self.state as! ItemsTableViewControllerState
             if let selectedRow = tableView.indexPathForSelectedRow{
                 tableView.deselectRow(at: selectedRow, animated: false)
             }
@@ -94,21 +88,12 @@ class CategoriesTableViewController: UITableViewController, UISearchBarDelegate 
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if let text = searchbar.text, !text.isEmpty{
-            self.categories = self.storageManager.getCategory(by: text)
-            self.tableView.reloadData()
-        }else{
-            storage.categories { (res, error) in
-                self.categories = res
-                self.tableView.reloadData()
-            }
-        }
+        self.state.setCategoriesFilter!(searchbar.text)
+        self.tableView.reloadData()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        storage.categories { (res, error) in
-            self.categories = res
-            self.tableView.reloadData()
-        }
+        self.state.setCategoriesFilter!(nil)
+        self.tableView.reloadData()
     }
 }

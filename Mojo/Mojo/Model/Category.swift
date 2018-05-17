@@ -8,6 +8,12 @@
 
 import Foundation
 
+protocol CategoryProtocol{
+    var id: String { get }
+    var name: String { get }
+    var colorHex: String { get }
+}
+
 struct Category: Codable{
     var id: String
     var name: String

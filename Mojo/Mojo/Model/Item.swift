@@ -14,3 +14,9 @@ struct Item: Codable{
     var colorHex: String
     var done: Bool
 }
+
+protocol ItemProtocol{
+    var id: String { get }
+    var name: String { get }
+    var done: Bool { get }
+}

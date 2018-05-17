@@ -9,23 +9,49 @@
 import UIKit
 
 class ItemsTableViewController: UITableViewController, UISearchBarDelegate {
-    
-    var storageManager = StorageManager(.realm)
-    var storage: Storage!
-    var category: Category?
-    var items: [Item] = []
+   
+    var state: ItemsTableViewControllerState!
     
     @IBOutlet weak var searchbar: UISearchBar!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.storage = storageManager.getStorage()
-        self.items = category?.items ?? []
         searchbar.delegate = self
+        self.tableView.separatorStyle = .none
+        self.tableView.rowHeight = 100
+        self.navigationItem.title = self.state.category?().name
+        originalColorNavBar =
+            self.navigationController?.navigationBar.barTintColor
+        originalTintColorNavBar =
+            self.navigationController?.navigationBar.tintColor
+        originalTitleAttributes = self.navigationController?.navigationBar.titleTextAttributes ?? [:]
+        
+        self.tableView.tableFooterView = UIView()
     }
-
+    
+    var originalColorNavBar: UIColor?
+    var originalTintColorNavBar: UIColor?
+    var originalTitleAttributes: [NSAttributedStringKey: Any] = [:]
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.barTintColor = UIColor(hexString: self.state.category!().colorHex) ?? .white
+        let textColor = UIColor(contrastingBlackOrWhiteColorOn: self.navigationController!.navigationBar.barTintColor!, isFlat: true)
+        self.navigationController?.navigationBar.tintColor = textColor
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : textColor]
+        searchbar.barTintColor = self.navigationController?.navigationBar.barTintColor
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.navigationController?.navigationBar.barTintColor = originalColorNavBar
+         self.navigationController?.navigationBar.tintColor = originalTintColorNavBar
+        self.navigationController?.navigationBar.titleTextAttributes = originalTitleAttributes
     }
 
     @IBAction func createItem(_ sender: Any){
@@ -33,21 +59,12 @@ class ItemsTableViewController: UITableViewController, UISearchBarDelegate {
         alert.addAction(UIAlertAction(title: "Create", style: .default, handler: { (action) in
             if let textfieldValue = alert.textFields?.first?.text{
                 
-                let newItem = Item(id: UUID().uuidString, name: textfieldValue, colorHex: "", done: false)
-             
-                var changedItems = self.items
-                changedItems.append(newItem)
-                
-                self.storage.saveItems(changedItems, to: self.category!){ (added, error) in
+                self.state.createTaskHandler!(textfieldValue){ (success, error) in
                     if let error = error{
                         self.showError(title: "Error occur while creating category", error: error)
-                    }else{
-                        self.items = changedItems
-                        self.tableView.reloadData()
                     }
-                    
+                    self.tableView.reloadData()
                 }
-        
         }}))
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -68,32 +85,35 @@ class ItemsTableViewController: UITableViewController, UISearchBarDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "item", for: indexPath) as UITableViewCell
         
-        cell.textLabel?.text = items[indexPath.row].name
+        let item = self.state.task!(indexPath.row)
+        
+        cell.textLabel?.text = item.name
+        
+        var itemColor = UIColor.white
+        if let categoryColor = UIColor(hexString: self.state.category!().colorHex)
+        {
+            itemColor = categoryColor.darken(byPercentage: CGFloat(CGFloat(indexPath.row)/CGFloat(self.state.countTasks!()))) ?? .white
+        }
+        
+        cell.backgroundColor = itemColor
+        
+        cell.textLabel?.textColor = UIColor(contrastingBlackOrWhiteColorOn: cell.backgroundColor!, isFlat: true)
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return self.state.countTasks!()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if let text = searchbar.text, !text.isEmpty{
-            self.items = self.storageManager.getItem(by: text, in: category!)
-            self.tableView.reloadData()
-        }else{
-            storage.items(handler: { (res, error) in
-                self.items = res
-                self.tableView.reloadData()
-            })
-        }
+        self.state.setTasksFilter!(searchBar.text)
+        tableView.reloadData()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        storage.items(handler: { (res, error) in
-            self.items = res
-            self.tableView.reloadData()
-        })
+        self.state.setTasksFilter!(nil)
+        tableView.reloadData()
     }
 }
 

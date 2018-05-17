@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PlistStorage: Storage {
+class PlistStorage {
     func items(handler: ([Item], Error?) -> Void) {
         fatalError()
     }

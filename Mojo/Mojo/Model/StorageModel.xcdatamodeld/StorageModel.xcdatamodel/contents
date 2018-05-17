@@ -1,30 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14133" systemVersion="17E199" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="CategoryCoreData" representedClassName=".CategoryCoreData" syncable="YES" codeGenerationType="class">
-        <attribute name="colorHex" attributeType="String" syncable="YES"/>
-        <attribute name="id" attributeType="String" syncable="YES"/>
-        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="categoryColorHex" attributeType="String" syncable="YES"/>
+        <attribute name="categoryId" attributeType="String" syncable="YES"/>
+        <attribute name="categoryName" attributeType="String" syncable="YES"/>
         <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TaskCoreData" inverseName="category" inverseEntity="TaskCoreData" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
-                <constraint value="id"/>
+                <constraint value="categoryId"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
     <entity name="TaskCoreData" representedClassName=".TaskCoreData" syncable="YES" codeGenerationType="class">
-        <attribute name="colorHex" attributeType="String" syncable="YES"/>
-        <attribute name="done" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="id" attributeType="String" syncable="YES"/>
-        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="taskDone" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="taskId" attributeType="String" syncable="YES"/>
+        <attribute name="taskName" attributeType="String" syncable="YES"/>
         <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CategoryCoreData" inverseName="tasks" inverseEntity="CategoryCoreData" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
-                <constraint value="id"/>
+                <constraint value="taskId"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="CategoryCoreData" positionX="-13158" positionY="-3454" width="128" height="103"/>
-        <element name="TaskCoreData" positionX="-13383" positionY="-3420" width="128" height="118"/>
+        <element name="CategoryCoreData" positionX="-13158" positionY="-3454" width="128" height="105"/>
+        <element name="TaskCoreData" positionX="-13383" positionY="-3420" width="128" height="105"/>
     </elements>
 </model>

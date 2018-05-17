@@ -8,31 +8,35 @@
 
 /* Begin PBXBuildFile section */
 		28849C4620BFAEBEBF473E32 /* Pods_Mojo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EB9197B79A8F38789703979 /* Pods_Mojo.framework */; };
-		BF39C36A20AC61FD00FE1154 /* RealmStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF39C36920AC61FD00FE1154 /* RealmStorage.swift */; };
+		BF293EB320ADC44500F162A5 /* CategoriesTableViewControllerRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF293EB220ADC44500F162A5 /* CategoriesTableViewControllerRealm.swift */; };
+		BF293EB520ADDDC500F162A5 /* CoreDataDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF293EB420ADDDC500F162A5 /* CoreDataDataSource.swift */; };
+		BF293EB820ADE6C500F162A5 /* CategoriesTableViewControllerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF293EB720ADE6C500F162A5 /* CategoriesTableViewControllerState.swift */; };
+		BF293EBA20ADE6E100F162A5 /* ItemsTableViewControllerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF293EB920ADE6E100F162A5 /* ItemsTableViewControllerState.swift */; };
+		BF39C36A20AC61FD00FE1154 /* RealmTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF39C36920AC61FD00FE1154 /* RealmTypes.swift */; };
 		BFEC4E3B20AAD15D000A2CC0 /* StorageModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BFEC4E3920AAD15D000A2CC0 /* StorageModel.xcdatamodeld */; };
-		BFEC4E3F20AAD494000A2CC0 /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEC4E3E20AAD494000A2CC0 /* CoreDataStorage.swift */; };
 		BFF5396B20A9692D000B74DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF5396A20A9692D000B74DA /* AppDelegate.swift */; };
-		BFF5396D20A9692D000B74DA /* CategoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF5396C20A9692D000B74DA /* CategoriesTableViewController.swift */; };
+		BFF5396D20A9692D000B74DA /* RealmDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF5396C20A9692D000B74DA /* RealmDataSource.swift */; };
 		BFF5397020A9692D000B74DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFF5396E20A9692D000B74DA /* Main.storyboard */; };
 		BFF5397220A9692F000B74DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFF5397120A9692F000B74DA /* Assets.xcassets */; };
 		BFF5397520A9692F000B74DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFF5397320A9692F000B74DA /* LaunchScreen.storyboard */; };
 		BFF5397D20A96A5B000B74DA /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF5397C20A96A5B000B74DA /* Category.swift */; };
 		BFF5397F20A9838A000B74DA /* ItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF5397E20A9838A000B74DA /* ItemsTableViewController.swift */; };
 		BFF5398420A98759000B74DA /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF5398320A98759000B74DA /* Item.swift */; };
-		BFF5398620A98760000B74DA /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF5398520A98760000B74DA /* Storage.swift */; };
-		BFF5398820A98765000B74DA /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF5398720A98765000B74DA /* StorageManager.swift */; };
 		BFF5398A20A9876A000B74DA /* PlistStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF5398920A9876A000B74DA /* PlistStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		46D46EE042E2D353E60402F5 /* Pods-Mojo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mojo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mojo/Pods-Mojo.debug.xcconfig"; sourceTree = "<group>"; };
 		8EB9197B79A8F38789703979 /* Pods_Mojo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mojo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BF39C36920AC61FD00FE1154 /* RealmStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmStorage.swift; sourceTree = "<group>"; };
+		BF293EB220ADC44500F162A5 /* CategoriesTableViewControllerRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesTableViewControllerRealm.swift; sourceTree = "<group>"; };
+		BF293EB420ADDDC500F162A5 /* CoreDataDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataDataSource.swift; sourceTree = "<group>"; };
+		BF293EB720ADE6C500F162A5 /* CategoriesTableViewControllerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesTableViewControllerState.swift; sourceTree = "<group>"; };
+		BF293EB920ADE6E100F162A5 /* ItemsTableViewControllerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsTableViewControllerState.swift; sourceTree = "<group>"; };
+		BF39C36920AC61FD00FE1154 /* RealmTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmTypes.swift; sourceTree = "<group>"; };
 		BFEC4E3A20AAD15D000A2CC0 /* StorageModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StorageModel.xcdatamodel; sourceTree = "<group>"; };
-		BFEC4E3E20AAD494000A2CC0 /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
 		BFF5396720A9692D000B74DA /* Mojo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mojo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFF5396A20A9692D000B74DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BFF5396C20A9692D000B74DA /* CategoriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesTableViewController.swift; sourceTree = "<group>"; };
+		BFF5396C20A9692D000B74DA /* RealmDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataSource.swift; sourceTree = "<group>"; };
 		BFF5396F20A9692D000B74DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BFF5397120A9692F000B74DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BFF5397420A9692F000B74DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -40,8 +44,6 @@
 		BFF5397C20A96A5B000B74DA /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		BFF5397E20A9838A000B74DA /* ItemsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsTableViewController.swift; sourceTree = "<group>"; };
 		BFF5398320A98759000B74DA /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
-		BFF5398520A98760000B74DA /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
-		BFF5398720A98765000B74DA /* StorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		BFF5398920A9876A000B74DA /* PlistStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlistStorage.swift; sourceTree = "<group>"; };
 		F956F57B6549B020B8BC478D /* Pods-Mojo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mojo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mojo/Pods-Mojo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +60,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF293EB620ADE68600F162A5 /* ControllerStates */ = {
+			isa = PBXGroup;
+			children = (
+				BFF5396C20A9692D000B74DA /* RealmDataSource.swift */,
+				BF293EB420ADDDC500F162A5 /* CoreDataDataSource.swift */,
+				BF293EB720ADE6C500F162A5 /* CategoriesTableViewControllerState.swift */,
+				BF293EB920ADE6E100F162A5 /* ItemsTableViewControllerState.swift */,
+			);
+			path = ControllerStates;
+			sourceTree = "<group>";
+		};
 		BFF5395E20A9692D000B74DA = {
 			isa = PBXGroup;
 			children = (
@@ -91,7 +104,8 @@
 		BFF5398020A9872E000B74DA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				BFF5396C20A9692D000B74DA /* CategoriesTableViewController.swift */,
+				BF293EB620ADE68600F162A5 /* ControllerStates */,
+				BF293EB220ADC44500F162A5 /* CategoriesTableViewControllerRealm.swift */,
 				BFF5397E20A9838A000B74DA /* ItemsTableViewController.swift */,
 			);
 			path = Controller;
@@ -112,12 +126,9 @@
 			children = (
 				BFF5397C20A96A5B000B74DA /* Category.swift */,
 				BFF5398320A98759000B74DA /* Item.swift */,
-				BFF5398520A98760000B74DA /* Storage.swift */,
-				BFF5398720A98765000B74DA /* StorageManager.swift */,
 				BFF5398920A9876A000B74DA /* PlistStorage.swift */,
 				BFEC4E3920AAD15D000A2CC0 /* StorageModel.xcdatamodeld */,
-				BFEC4E3E20AAD494000A2CC0 /* CoreDataStorage.swift */,
-				BF39C36920AC61FD00FE1154 /* RealmStorage.swift */,
+				BF39C36920AC61FD00FE1154 /* RealmTypes.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -255,17 +266,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFEC4E3F20AAD494000A2CC0 /* CoreDataStorage.swift in Sources */,
-				BFF5398620A98760000B74DA /* Storage.swift in Sources */,
+				BF293EB320ADC44500F162A5 /* CategoriesTableViewControllerRealm.swift in Sources */,
+				BF293EB820ADE6C500F162A5 /* CategoriesTableViewControllerState.swift in Sources */,
 				BFF5398420A98759000B74DA /* Item.swift in Sources */,
-				BF39C36A20AC61FD00FE1154 /* RealmStorage.swift in Sources */,
-				BFF5396D20A9692D000B74DA /* CategoriesTableViewController.swift in Sources */,
+				BF39C36A20AC61FD00FE1154 /* RealmTypes.swift in Sources */,
+				BFF5396D20A9692D000B74DA /* RealmDataSource.swift in Sources */,
 				BFF5396B20A9692D000B74DA /* AppDelegate.swift in Sources */,
 				BFEC4E3B20AAD15D000A2CC0 /* StorageModel.xcdatamodeld in Sources */,
 				BFF5397F20A9838A000B74DA /* ItemsTableViewController.swift in Sources */,
+				BF293EB520ADDDC500F162A5 /* CoreDataDataSource.swift in Sources */,
+				BF293EBA20ADE6E100F162A5 /* ItemsTableViewControllerState.swift in Sources */,
 				BFF5397D20A96A5B000B74DA /* Category.swift in Sources */,
 				BFF5398A20A9876A000B74DA /* PlistStorage.swift in Sources */,
-				BFF5398820A98765000B74DA /* StorageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
