@@ -10,6 +10,10 @@ import Foundation
 import ChameleonFramework
 
 class PlistDataSource: CategoriesTableViewControllerState, ItemsTableViewControllerState{
+    var deleteCategory: ((CategoryProtocol, (Bool, Error?) -> Void) -> Void)?
+    
+    var deleteItem: ((ItemProtocol, (Bool, Error?) -> Void) -> Void)?
+    
     var setTaskDone: ((ItemProtocol, Bool, (Bool, Error?) -> Void) -> Void)?
     
     var createCategoryHandler: ((String, (Bool, Error?) -> Void) -> Void)?
@@ -75,6 +79,26 @@ class PlistDataSource: CategoriesTableViewControllerState, ItemsTableViewControl
         
         loadCategories()
         self.categories = allCategories
+        
+        deleteCategory = { (cat, handler) in
+            let idx = self.categories.index(where: {$0.id == cat.id})
+            self.categories.remove(at: idx!)
+            
+            let absoluteidx = self.allCategories.index(where: {$0.id == cat.id})
+            self.allCategories.remove(at: absoluteidx!)
+            
+            self.saveCategories(handler: handler)
+        }
+        
+        deleteItem = { (item, handler) in
+            let index = self.allCategories.index(where: {$0.id == self.selectedCategory!.id})!
+            let taskIndex = self.allCategories[index].items.index(where: {$0.id == item.id })!
+            
+            self.allCategories[index].items.remove(at: taskIndex)
+            self.selectedCategory!.items = self.allCategories[index].items
+            
+            self.saveCategories(handler: handler)
+        }
     }
 
     func loadCategories(){
@@ -89,7 +113,8 @@ class PlistDataSource: CategoriesTableViewControllerState, ItemsTableViewControl
     }
     
     func creatCategory(name: String, handler: (Bool, Error?) -> Void) -> Void{
-        self.allCategories.append(Category(id: UUID().uuidString, name: name, colorHex: UIColor.randomFlat.hexValue(), items: []))
+        let newCat = Category(id: UUID().uuidString, name: name, colorHex: UIColor.randomFlat.hexValue(), items: [])
+        self.allCategories.append(newCat)
         self.categories = self.allCategories
         saveCategories(handler: handler)
     }

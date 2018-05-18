@@ -8,13 +8,15 @@
 
 import UIKit
 import ChameleonFramework
+import SwipeCellKit
 
-class CategoriesTableViewController: UITableViewController, UISearchBarDelegate {
+class CategoriesTableViewController: UITableViewController, UISearchBarDelegate, SwipeTableViewCellDelegate {
+   
     @IBOutlet weak var searchbar: UISearchBar!
    
       var state: CategoriesTableViewControllerState = PlistDataSource()
     //var state: CategoriesTableViewControllerState = CoreDataSource()
-   // var state: CategoriesTableViewControllerState = RealmDataSource()
+    //var state: CategoriesTableViewControllerState = RealmDataSource()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +27,7 @@ class CategoriesTableViewController: UITableViewController, UISearchBarDelegate 
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
         self.tableView.rowHeight = 100
         self.tableView.separatorStyle = .none
+        self.navigationItem.title = "Mojo"
         
          searchbar.barTintColor = self.navigationController?.navigationBar.barTintColor
     }
@@ -63,14 +66,33 @@ class CategoriesTableViewController: UITableViewController, UISearchBarDelegate 
         self.present(ctr, animated: true, completion: nil)
     }
     
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right else { return nil }
+        
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+            self.state.deleteCategory!(self.state.getCategory!(indexPath.row)){(success, error) in
+                if let error = error{
+                    self.showError(title: "Cant delete category", error: error)
+                }else{
+                    self.tableView.reloadData()
+                }
+            }
+        }
+        
+        // customize the action appearance
+        deleteAction.image = UIImage(named: "delete")
+        
+        return [deleteAction]
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "category", for: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "category", for: indexPath) as! SwipeTableViewCell
         let category = self.state.getCategory!(indexPath.row)
         
         cell.textLabel?.text = category.name
         cell.backgroundColor = UIColor(hexString: category.colorHex) ?? .white
         cell.textLabel?.textColor = UIColor(contrastingBlackOrWhiteColorOn: cell.backgroundColor!, isFlat: true)
-       
+        cell.delegate = self
         return cell
     }
     

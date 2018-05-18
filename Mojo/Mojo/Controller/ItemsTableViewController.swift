@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SwipeCellKit
 
-class ItemsTableViewController: UITableViewController, UISearchBarDelegate {
+class ItemsTableViewController: UITableViewController, UISearchBarDelegate, SwipeTableViewCellDelegate {
    
     var state: ItemsTableViewControllerState!
     
@@ -83,8 +84,29 @@ class ItemsTableViewController: UITableViewController, UISearchBarDelegate {
         self.present(ctr, animated: true, completion: nil)
     }
     
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right else { return nil }
+        
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+            self.state.deleteItem!(self.state.task!(indexPath.row)){(success, error) in
+                if let error = error{
+                    self.showError(title: "Cant delete item", error: error)
+                }else{
+                    self.tableView.reloadData()
+                }
+            }
+        }
+        
+        // customize the action appearance
+        deleteAction.image = UIImage(named: "delete")
+        
+        return [deleteAction]
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "item", for: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "item", for: indexPath) as! SwipeTableViewCell
+        
+        cell.delegate = self
         
         let item = self.state.task!(indexPath.row)
         

@@ -12,6 +12,9 @@ import RealmSwift
 
 //todo: to nonullable struct
 class RealmDataSource: CategoriesTableViewControllerState, ItemsTableViewControllerState{
+    var deleteCategory: ((CategoryProtocol, (Bool, Error?) -> Void) -> Void)?
+    var deleteItem: ((ItemProtocol, (Bool, Error?) -> Void) -> Void)?
+    
     var setTaskDone: ((ItemProtocol, Bool, (Bool, Error?) -> Void) -> Void)?
     
      var setSelectedCategory: ((Int) -> Void)?
@@ -45,6 +48,9 @@ class RealmDataSource: CategoriesTableViewControllerState, ItemsTableViewControl
         setTasksFilter = filterTasks
         category = { return self.selectedCategory! }
         task = { idx in return self.tasks![idx] }
+        
+        deleteItem = removeTask
+        deleteCategory = removeCategory
         
         NSLog(realm.configuration.fileURL?.absoluteString ?? "no url")
     }
@@ -112,6 +118,28 @@ class RealmDataSource: CategoriesTableViewControllerState, ItemsTableViewControl
                 handler(true, nil)
             }}catch{
                 handler(false, error)
+        }
+    }
+    
+    func removeTask( task: ItemProtocol, handler: (Bool, Error?) -> Void) -> Void{
+        do{
+            try realm.write {
+                realm.delete(task as! TaskRealm)
+            }
+             handler(false, nil)
+        }catch{
+            handler(false, error)
+        }
+    }
+    
+    func removeCategory( category: CategoryProtocol, handler: (Bool, Error?) -> Void) -> Void{
+        do{
+            try realm.write {
+                realm.delete(category as! CategoryRealm)
+            }
+            handler(false, nil)
+        }catch{
+            handler(false, error)
         }
     }
     

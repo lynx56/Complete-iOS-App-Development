@@ -13,5 +13,6 @@ protocol CategoriesTableViewControllerState {
     var countCategories: (()->Int)? { get }
     var getCategory: ((Int)->CategoryProtocol)? { get }
     var setCategoriesFilter: ((String?)->Void)? { get }
-    var setSelectedCategory: ((Int)->Void)? { get }
+    var setSelectedCategory: ((Int)->Void)? { get }    
+    var deleteCategory: ((CategoryProtocol, (Bool, Error?)->Void) -> Void)? { get }
 }

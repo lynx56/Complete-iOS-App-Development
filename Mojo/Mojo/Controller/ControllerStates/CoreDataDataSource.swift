@@ -11,6 +11,10 @@ import ChameleonFramework
 import CoreData
 
 class CoreDataSource: CategoriesTableViewControllerState, ItemsTableViewControllerState{
+    var deleteCategory: ((CategoryProtocol, (Bool, Error?) -> Void) -> Void)?
+    
+    var deleteItem: ((ItemProtocol, (Bool, Error?) -> Void) -> Void)?
+    
     var setTaskDone: ((ItemProtocol, Bool, (Bool, Error?) -> Void) -> Void)?
     
     lazy var persistentContainer: NSPersistentContainer = {
@@ -54,6 +58,19 @@ class CoreDataSource: CategoriesTableViewControllerState, ItemsTableViewControll
         setTasksFilter = filterTasks
         category = { return self.selectedCategory! }
         task = { idx in return self.tasks[idx] }
+        deleteCategory = { (cat, handler) in
+            let idx = self.categories.index(of: cat as! CategoryCoreData)
+            self.categories.remove(at: idx!)
+            self.saveContext()
+            handler(true, nil)
+        }
+        
+        deleteItem = { (item, handler) in
+             let idx = self.tasks.index(of: item as! TaskCoreData)!
+             self.tasks.remove(at: idx)
+            self.saveContext()
+            handler(true, nil)
+        }
         
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
     }

@@ -9,4 +9,5 @@ target 'Mojo' do
   pod 'Realm'
   pod 'RealmSwift'
   pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
+  pod 'SwipeCellKit'
 end
