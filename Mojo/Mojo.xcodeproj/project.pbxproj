@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		28849C4620BFAEBEBF473E32 /* Pods_Mojo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EB9197B79A8F38789703979 /* Pods_Mojo.framework */; };
+		BF0D1ED520AEB4DB00BBF50C /* PlistDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0D1ED420AEB4DB00BBF50C /* PlistDataSource.swift */; };
 		BF293EB320ADC44500F162A5 /* CategoriesTableViewControllerRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF293EB220ADC44500F162A5 /* CategoriesTableViewControllerRealm.swift */; };
 		BF293EB520ADDDC500F162A5 /* CoreDataDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF293EB420ADDDC500F162A5 /* CoreDataDataSource.swift */; };
 		BF293EB820ADE6C500F162A5 /* CategoriesTableViewControllerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF293EB720ADE6C500F162A5 /* CategoriesTableViewControllerState.swift */; };
@@ -22,12 +23,12 @@
 		BFF5397D20A96A5B000B74DA /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF5397C20A96A5B000B74DA /* Category.swift */; };
 		BFF5397F20A9838A000B74DA /* ItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF5397E20A9838A000B74DA /* ItemsTableViewController.swift */; };
 		BFF5398420A98759000B74DA /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF5398320A98759000B74DA /* Item.swift */; };
-		BFF5398A20A9876A000B74DA /* PlistStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF5398920A9876A000B74DA /* PlistStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		46D46EE042E2D353E60402F5 /* Pods-Mojo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mojo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mojo/Pods-Mojo.debug.xcconfig"; sourceTree = "<group>"; };
 		8EB9197B79A8F38789703979 /* Pods_Mojo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mojo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF0D1ED420AEB4DB00BBF50C /* PlistDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistDataSource.swift; sourceTree = "<group>"; };
 		BF293EB220ADC44500F162A5 /* CategoriesTableViewControllerRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesTableViewControllerRealm.swift; sourceTree = "<group>"; };
 		BF293EB420ADDDC500F162A5 /* CoreDataDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataDataSource.swift; sourceTree = "<group>"; };
 		BF293EB720ADE6C500F162A5 /* CategoriesTableViewControllerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesTableViewControllerState.swift; sourceTree = "<group>"; };
@@ -44,7 +45,6 @@
 		BFF5397C20A96A5B000B74DA /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		BFF5397E20A9838A000B74DA /* ItemsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsTableViewController.swift; sourceTree = "<group>"; };
 		BFF5398320A98759000B74DA /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
-		BFF5398920A9876A000B74DA /* PlistStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlistStorage.swift; sourceTree = "<group>"; };
 		F956F57B6549B020B8BC478D /* Pods-Mojo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mojo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mojo/Pods-Mojo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,6 +67,7 @@
 				BF293EB420ADDDC500F162A5 /* CoreDataDataSource.swift */,
 				BF293EB720ADE6C500F162A5 /* CategoriesTableViewControllerState.swift */,
 				BF293EB920ADE6E100F162A5 /* ItemsTableViewControllerState.swift */,
+				BF0D1ED420AEB4DB00BBF50C /* PlistDataSource.swift */,
 			);
 			path = ControllerStates;
 			sourceTree = "<group>";
@@ -126,7 +127,6 @@
 			children = (
 				BFF5397C20A96A5B000B74DA /* Category.swift */,
 				BFF5398320A98759000B74DA /* Item.swift */,
-				BFF5398920A9876A000B74DA /* PlistStorage.swift */,
 				BFEC4E3920AAD15D000A2CC0 /* StorageModel.xcdatamodeld */,
 				BF39C36920AC61FD00FE1154 /* RealmTypes.swift */,
 			);
@@ -276,8 +276,8 @@
 				BFF5397F20A9838A000B74DA /* ItemsTableViewController.swift in Sources */,
 				BF293EB520ADDDC500F162A5 /* CoreDataDataSource.swift in Sources */,
 				BF293EBA20ADE6E100F162A5 /* ItemsTableViewControllerState.swift in Sources */,
+				BF0D1ED520AEB4DB00BBF50C /* PlistDataSource.swift in Sources */,
 				BFF5397D20A96A5B000B74DA /* Category.swift in Sources */,
-				BFF5398A20A9876A000B74DA /* PlistStorage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,10 +8,9 @@
 
 import Foundation
 
-struct Item: Codable{
+struct Item: Codable, ItemProtocol{
     var id: String
     var name: String
-    var colorHex: String
     var done: Bool
 }
 

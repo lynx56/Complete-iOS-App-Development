@@ -87,8 +87,6 @@ class CoreDataSource: CategoriesTableViewControllerState, ItemsTableViewControll
         }catch{
             print(error)
         }
-        
-        return []
     }
     
     func filterItems(by predicate: NSPredicate?, sort: [NSSortDescriptor]?){
@@ -102,8 +100,6 @@ class CoreDataSource: CategoriesTableViewControllerState, ItemsTableViewControll
         }catch{
             print(error)
         }
-        
-        return []
     }
 
     func saveCategory(name: String, handler: (Bool, Error?)->Void){

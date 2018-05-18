@@ -14,7 +14,7 @@ protocol CategoryProtocol{
     var colorHex: String { get }
 }
 
-struct Category: Codable{
+struct Category: Codable, CategoryProtocol{
     var id: String
     var name: String
     var colorHex: String
