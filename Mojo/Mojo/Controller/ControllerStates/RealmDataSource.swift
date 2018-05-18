@@ -12,7 +12,9 @@ import RealmSwift
 
 //todo: to nonullable struct
 class RealmDataSource: CategoriesTableViewControllerState, ItemsTableViewControllerState{
-    var setSelectedCategory: ((Int) -> Void)?
+    var setTaskDone: ((ItemProtocol, Bool, (Bool, Error?) -> Void) -> Void)?
+    
+     var setSelectedCategory: ((Int) -> Void)?
     
     //MARK: CategoriesTableViewControllerState
     var createCategoryHandler: ((_ name: String, _ handler: (Bool, Error?)->Void)->Void)?
@@ -30,6 +32,7 @@ class RealmDataSource: CategoriesTableViewControllerState, ItemsTableViewControl
     let realm = try! Realm()
     
     init(){
+        setTaskDone = updateTask
         createCategoryHandler = saveCategory
         countCategories = { return self.categories?.count ?? 0 }
         getCategory = { (idx) in return self.categories![idx] }
@@ -98,6 +101,17 @@ class RealmDataSource: CategoriesTableViewControllerState, ItemsTableViewControl
         catch{
             print(error)
             handler(false, error)
+        }
+    }
+    
+    func updateTask(item: ItemProtocol, done: Bool, handler: (Bool, Error?) -> Void) -> Void{
+        do{
+            try realm.write {
+                let idx = tasks!.index(of: item as! TaskRealm)!
+                tasks![idx].done = done
+                handler(true, nil)
+            }}catch{
+                handler(false, error)
         }
     }
     

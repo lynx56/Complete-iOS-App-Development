@@ -11,6 +11,8 @@ import ChameleonFramework
 import CoreData
 
 class CoreDataSource: CategoriesTableViewControllerState, ItemsTableViewControllerState{
+    var setTaskDone: ((ItemProtocol, Bool, (Bool, Error?) -> Void) -> Void)?
+    
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "StorageModel")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
@@ -46,7 +48,7 @@ class CoreDataSource: CategoriesTableViewControllerState, ItemsTableViewControll
         filterCategories(by: nil, sort: nil)
         setSelectedCategory = { selectedCategory in self.selectedCategory = self.categories[selectedCategory]}
         setCategoriesFilter = setFilter
-            
+        setTaskDone = updateTask
         createTaskHandler = saveTask
         countTasks = { return self.tasks.count ?? 0 }
         setTasksFilter = filterTasks
@@ -130,6 +132,13 @@ class CoreDataSource: CategoriesTableViewControllerState, ItemsTableViewControll
          handler(true, nil)
     }
     
+    func updateTask(task: ItemProtocol, done: Bool, handler: (Bool, Error?)->Void){
+        (task as! TaskCoreData).done = done
+        self.saveContext()
+        handler(true, nil)
+    }
+    
+    
     func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {
@@ -179,6 +188,15 @@ extension CategoryCoreData: CategoryProtocol{
 }
 
 extension TaskCoreData: ItemProtocol{
+    var done: Bool {
+        get {
+            return self.taskDone 
+        }
+        set {
+            self.taskDone = newValue
+        }
+    }
+    
     var id: String {
         get{
             return self.taskId ?? ""
@@ -190,12 +208,4 @@ extension TaskCoreData: ItemProtocol{
             return self.taskName ?? ""
         }
     }
-    
-    var done: Bool {
-        get{
-            return self.taskDone ?? false
-        }
-    }
-    
-    
 }

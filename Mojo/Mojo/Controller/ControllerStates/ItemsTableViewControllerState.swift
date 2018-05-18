@@ -14,4 +14,5 @@ protocol ItemsTableViewControllerState {
     var setTasksFilter: ((String?)->Void)? { get }
     var category: (()->CategoryProtocol)? { get }
     var task: ((Int)->ItemProtocol)? { get }
+    var setTaskDone: ((ItemProtocol, Bool, (Bool, Error?)->Void) -> Void)? { get }
 }

@@ -26,6 +26,7 @@ class ItemsTableViewController: UITableViewController, UISearchBarDelegate {
         originalTitleAttributes = self.navigationController?.navigationBar.titleTextAttributes ?? [:]
         
         self.tableView.tableFooterView = UIView()
+        
     }
     
     var originalColorNavBar: UIColor?
@@ -95,6 +96,12 @@ class ItemsTableViewController: UITableViewController, UISearchBarDelegate {
             itemColor = categoryColor.darken(byPercentage: CGFloat(CGFloat(indexPath.row)/CGFloat(self.state.countTasks!()))) ?? .white
         }
         
+        if item.done{
+            cell.accessoryType = .checkmark
+        }else{
+            cell.accessoryType = .none
+        }
+        
         cell.backgroundColor = itemColor
         
         cell.textLabel?.textColor = UIColor(contrastingBlackOrWhiteColorOn: cell.backgroundColor!, isFlat: true)
@@ -104,6 +111,23 @@ class ItemsTableViewController: UITableViewController, UISearchBarDelegate {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.state.countTasks!()
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var item = self.state.task!(indexPath.row)
+        let selectedIndexPath = indexPath
+        let done: Bool = !item.done
+        self.state.setTaskDone!(item, done){ (result, error) in
+            if let error = error{
+                self.showError(title: "Cant change task", error: error)
+            }else{
+                if selectedIndexPath == indexPath{
+                    self.tableView.reloadRows(at: [selectedIndexPath], with: .automatic)
+                }else{
+                    self.tableView.reloadData()
+                }
+            }
+        }
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

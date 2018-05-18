@@ -33,7 +33,6 @@ class TaskRealm: Object, ItemProtocol{
     @objc dynamic var id: String = ""
     @objc dynamic var name: String = ""
     @objc dynamic var done: Bool = false
-    
     var parentCategory = LinkingObjects(fromType: CategoryRealm.self, property: "items")
     
     override static func primaryKey() -> String? {

@@ -12,7 +12,9 @@ import ChameleonFramework
 class CategoriesTableViewController: UITableViewController, UISearchBarDelegate {
     @IBOutlet weak var searchbar: UISearchBar!
    
-    var state: CategoriesTableViewControllerState = PlistDataSource()
+      var state: CategoriesTableViewControllerState = PlistDataSource()
+    //var state: CategoriesTableViewControllerState = CoreDataSource()
+   // var state: CategoriesTableViewControllerState = RealmDataSource()
     
     override func viewDidLoad() {
         super.viewDidLoad()

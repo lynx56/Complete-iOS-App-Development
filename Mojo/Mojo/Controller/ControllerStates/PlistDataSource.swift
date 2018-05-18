@@ -10,6 +10,8 @@ import Foundation
 import ChameleonFramework
 
 class PlistDataSource: CategoriesTableViewControllerState, ItemsTableViewControllerState{
+    var setTaskDone: ((ItemProtocol, Bool, (Bool, Error?) -> Void) -> Void)?
+    
     var createCategoryHandler: ((String, (Bool, Error?) -> Void) -> Void)?
     
     var countCategories: (() -> Int)?
@@ -43,7 +45,7 @@ class PlistDataSource: CategoriesTableViewControllerState, ItemsTableViewControl
         }
         
         print(path)
-        
+        setTaskDone = self.updateTask
         createCategoryHandler = creatCategory
         countCategories = { return self.categories.count }
         getCategory = { (idx) in return self.categories[idx] }
@@ -96,6 +98,16 @@ class PlistDataSource: CategoriesTableViewControllerState, ItemsTableViewControl
         let index = self.allCategories.index(where: {$0.id == self.selectedCategory!.id})!
         self.allCategories[index].items.append(Item(id: UUID().uuidString, name: name, done: false))
         self.selectedCategory = self.allCategories[index]
+        saveCategories(handler: handler)
+    }
+    
+    func updateTask(_ task: ItemProtocol, done: Bool, _ handler: (Bool, Error?) -> Void){
+        let index = self.allCategories.index(where: {$0.id == self.selectedCategory!.id})!
+        let taskIndex = self.allCategories[index].items.index(where: {$0.id == task.id })!
+        var item = (task as! Item)
+        item.done = done
+        self.allCategories[index].items[taskIndex] = item
+        self.selectedCategory!.items = self.allCategories[index].items
         saveCategories(handler: handler)
     }
     
