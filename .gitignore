@@ -2,3 +2,5 @@
 BitcoinTicker/BitcoinTicker/Model/Private\.swift
 
 PrivateChat/PrivateChat/GoogleService-Info\.plist
+
+*.mlmodel

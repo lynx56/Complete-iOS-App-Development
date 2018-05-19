@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SeeFood/ViewController.swift"
+            timestampString = "548344775.339489"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SeeFood/ImageRecognitionMaster.swift"
+            timestampString = "548344775.339919"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__ObjC.VNRequest, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in SeeFood.ImageRecognitionMaster.recognize(image: __ObjC.UIImage, completion: (Swift.Array&lt;SeeFood.RecognitionResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "SeeFood"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Developer/Udemy/SeeFood/SeeFood/ImageRecognitionMaster.swift"
+                  timestampString = "548344775.426306"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "464">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__ObjC.VNClassificationObservation) -&gt; SeeFood.RecognitionResult in closure #1 (__ObjC.VNRequest, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in SeeFood.ImageRecognitionMaster.recognize(image: __ObjC.UIImage, completion: (Swift.Array&lt;SeeFood.RecognitionResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "SeeFood"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Developer/Udemy/SeeFood/SeeFood/ImageRecognitionMaster.swift"
+                  timestampString = "548344775.42846"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

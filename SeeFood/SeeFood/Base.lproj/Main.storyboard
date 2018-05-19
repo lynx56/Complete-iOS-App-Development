@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="k35-gb-jL9">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SeeFood" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fbL-AN-zTB">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </imageView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="uW3-i7-jn9">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="uW3-i7-jn9" secondAttribute="trailing" id="3hr-AQ-1CE"/>
+                            <constraint firstItem="uW3-i7-jn9" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="4yb-Qw-b3S"/>
+                            <constraint firstItem="fbL-AN-zTB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="KTu-1m-zh5"/>
+                            <constraint firstItem="uW3-i7-jn9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="O1T-1I-5Oa"/>
+                            <constraint firstAttribute="bottom" secondItem="uW3-i7-jn9" secondAttribute="bottom" id="TMu-nO-lMJ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fbL-AN-zTB" secondAttribute="bottom" id="Xz1-2y-S0N"/>
+                            <constraint firstItem="fbL-AN-zTB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Z86-zC-Xz2"/>
+                            <constraint firstAttribute="trailing" secondItem="fbL-AN-zTB" secondAttribute="trailing" id="qF9-Fa-IAD"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="FxO-N3-htj">
+                        <barButtonItem key="leftBarButtonItem" title="Photos" id="HFs-rb-nIa">
+                            <connections>
+                                <action selector="showPhotoLibrary:" destination="BYZ-38-t0r" id="dgn-hz-Qn9"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="c9B-Vt-k9R">
+                            <connections>
+                                <action selector="showCamera:" destination="BYZ-38-t0r" id="7oY-dq-O1k"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="activityIndicator" destination="uW3-i7-jn9" id="574-BL-166"/>
+                        <outlet property="imageView" destination="fbL-AN-zTB" id="Cmo-Oc-Yrv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1076" y="132.68365817091455"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="AFw-6L-mtS">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="k35-gb-jL9" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Bx6-DU-C5Z">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Jmg-NZ-Drs"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RhG-OE-Z1H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="133.59999999999999" y="-564.46776611694156"/>
+        </scene>
+    </scenes>
+</document>
