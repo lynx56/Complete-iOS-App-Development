@@ -7,21 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF6206E320B0D17F0015F82A /* SudokuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6206E220B0D17F0015F82A /* SudokuViewController.swift */; };
+		BF6206E520B0D21A0015F82A /* DrawableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6206E420B0D21A0015F82A /* DrawableImageView.swift */; };
+		BF6206E720B0D4830015F82A /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6206E620B0D4830015F82A /* UIView+.swift */; };
+		BF69873520B2D8B8001B6ED4 /* ImageRecognitionMaster3.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF69873420B2D8B8001B6ED4 /* ImageRecognitionMaster3.swift */; };
 		BFB8DE3E20B0B86E0086DE33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB8DE3D20B0B86E0086DE33 /* AppDelegate.swift */; };
-		BFB8DE4020B0B86E0086DE33 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB8DE3F20B0B86E0086DE33 /* ViewController.swift */; };
 		BFB8DE4320B0B86E0086DE33 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFB8DE4120B0B86E0086DE33 /* Main.storyboard */; };
 		BFB8DE4520B0B8700086DE33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFB8DE4420B0B8700086DE33 /* Assets.xcassets */; };
 		BFB8DE4820B0B8700086DE33 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFB8DE4620B0B8700086DE33 /* LaunchScreen.storyboard */; };
+		BFB8DE5020B0B87A0086DE33 /* MNIST.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BFB8DE4F20B0B87A0086DE33 /* MNIST.mlmodel */; };
+		BFB8DE5220B0BB140086DE33 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB8DE5120B0BB140086DE33 /* ImageCollectionViewCell.swift */; };
+		BFC35AA420B1999E003CC80F /* MN.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BFC35AA320B1999D003CC80F /* MN.mlmodel */; };
+		BFEA09B320B1BE8F00757727 /* w23.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFEA09B220B1BE8F00757727 /* w23.txt */; };
+		BFEA09B520B1CE1C00757727 /* w12.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFEA09B420B1CE1C00757727 /* w12.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BF6206E220B0D17F0015F82A /* SudokuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuViewController.swift; sourceTree = "<group>"; };
+		BF6206E420B0D21A0015F82A /* DrawableImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawableImageView.swift; sourceTree = "<group>"; };
+		BF6206E620B0D4830015F82A /* UIView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		BF69873420B2D8B8001B6ED4 /* ImageRecognitionMaster3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageRecognitionMaster3.swift; sourceTree = "<group>"; };
 		BFB8DE3A20B0B86E0086DE33 /* Sudoku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sudoku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFB8DE3D20B0B86E0086DE33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BFB8DE3F20B0B86E0086DE33 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BFB8DE4220B0B86E0086DE33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BFB8DE4420B0B8700086DE33 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BFB8DE4720B0B8700086DE33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BFB8DE4920B0B8700086DE33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BFB8DE4F20B0B87A0086DE33 /* MNIST.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MNIST.mlmodel; sourceTree = "<group>"; };
+		BFB8DE5120B0BB140086DE33 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		BFC35AA320B1999D003CC80F /* MN.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MN.mlmodel; sourceTree = "<group>"; };
+		BFEA09B220B1BE8F00757727 /* w23.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = w23.txt; sourceTree = "<group>"; };
+		BFEA09B420B1CE1C00757727 /* w12.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = w12.txt; sourceTree = "<group>"; usesTabs = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,12 +70,20 @@
 		BFB8DE3C20B0B86E0086DE33 /* Sudoku */ = {
 			isa = PBXGroup;
 			children = (
+				BF69873420B2D8B8001B6ED4 /* ImageRecognitionMaster3.swift */,
 				BFB8DE3D20B0B86E0086DE33 /* AppDelegate.swift */,
-				BFB8DE3F20B0B86E0086DE33 /* ViewController.swift */,
 				BFB8DE4120B0B86E0086DE33 /* Main.storyboard */,
 				BFB8DE4420B0B8700086DE33 /* Assets.xcassets */,
 				BFB8DE4620B0B8700086DE33 /* LaunchScreen.storyboard */,
+				BFB8DE4F20B0B87A0086DE33 /* MNIST.mlmodel */,
+				BFC35AA320B1999D003CC80F /* MN.mlmodel */,
 				BFB8DE4920B0B8700086DE33 /* Info.plist */,
+				BFEA09B420B1CE1C00757727 /* w12.txt */,
+				BFEA09B220B1BE8F00757727 /* w23.txt */,
+				BFB8DE5120B0BB140086DE33 /* ImageCollectionViewCell.swift */,
+				BF6206E220B0D17F0015F82A /* SudokuViewController.swift */,
+				BF6206E420B0D21A0015F82A /* DrawableImageView.swift */,
+				BF6206E620B0D4830015F82A /* UIView+.swift */,
 			);
 			path = Sudoku;
 			sourceTree = "<group>";
@@ -96,6 +120,7 @@
 				TargetAttributes = {
 					BFB8DE3920B0B86E0086DE33 = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 0930;
 					};
 				};
 			};
@@ -122,8 +147,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFEA09B320B1BE8F00757727 /* w23.txt in Resources */,
 				BFB8DE4820B0B8700086DE33 /* LaunchScreen.storyboard in Resources */,
 				BFB8DE4520B0B8700086DE33 /* Assets.xcassets in Resources */,
+				BFEA09B520B1CE1C00757727 /* w12.txt in Resources */,
 				BFB8DE4320B0B86E0086DE33 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -135,8 +162,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFB8DE4020B0B86E0086DE33 /* ViewController.swift in Sources */,
+				BF6206E520B0D21A0015F82A /* DrawableImageView.swift in Sources */,
+				BF6206E320B0D17F0015F82A /* SudokuViewController.swift in Sources */,
+				BFB8DE5020B0B87A0086DE33 /* MNIST.mlmodel in Sources */,
+				BF69873520B2D8B8001B6ED4 /* ImageRecognitionMaster3.swift in Sources */,
+				BF6206E720B0D4830015F82A /* UIView+.swift in Sources */,
+				BFB8DE5220B0BB140086DE33 /* ImageCollectionViewCell.swift in Sources */,
 				BFB8DE3E20B0B86E0086DE33 /* AppDelegate.swift in Sources */,
+				BFC35AA420B1999E003CC80F /* MN.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,15 +313,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5BEQK45V59;
 				INFOPLIST_FILE = Sudoku/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Gulnaz.Sudoku;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -298,9 +335,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5BEQK45V59;
 				INFOPLIST_FILE = Sudoku/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

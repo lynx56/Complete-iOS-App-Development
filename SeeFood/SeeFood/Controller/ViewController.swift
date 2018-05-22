@@ -16,7 +16,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     var pickerViewController: UIImagePickerController!
     
-    var master = ImageRecognitionMaster()
+  //  var master: ImageRecognitionMasterProtocol = BlumixRecognitionMaster()
+    var master: ImageRecognitionMasterProtocol = ImageRecognitionMaster()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,8 +50,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             master.recognize(image: image, completion: { (results, error) in
                 DispatchQueue.main.async {
                     self.activityIndicator.stopAnimating()
-                    let array = results.filter({$0.confidence != nil}).sorted(by: {$0.confidence! > $1.confidence! }).prefix(3)
-                    print(array)
+                    let array = results.filter({$0.confidence != nil}).sorted(by: {$0.confidence! > $1.confidence! }).filter({$0.confidence != nil && $0.confidence! > 0.7})
+                 
                     if array.contains(where: {$0.id.contains("hotdog")}){
                         self.navigationItem.title = "Hot Dog!"
                         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.blue]

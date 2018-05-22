@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF084C4C20B40AB3008B75DE /* Private.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF084C4B20B40AB3008B75DE /* Private.swift */; };
+		BF084C4E20B41414008B75DE /* BlumixRecognitionMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF084C4D20B41414008B75DE /* BlumixRecognitionMaster.swift */; };
+		BF084C5020B41436008B75DE /* ImageRecognitionMasterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF084C4F20B41436008B75DE /* ImageRecognitionMasterProtocol.swift */; };
+		BF084C5220B4144A008B75DE /* RecognitionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF084C5120B4144A008B75DE /* RecognitionResult.swift */; };
+		BF084C5420B41460008B75DE /* ImageRecognitionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF084C5320B41460008B75DE /* ImageRecognitionError.swift */; };
+		BF084C5620B41473008B75DE /* String+Unique.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF084C5520B41473008B75DE /* String+Unique.swift */; };
+		BF084C5C20B41560008B75DE /* VisualRecognitionV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF084C5B20B41560008B75DE /* VisualRecognitionV3.framework */; };
+		BF084C5D20B41560008B75DE /* VisualRecognitionV3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF084C5B20B41560008B75DE /* VisualRecognitionV3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BF0D1EE320AEFFA700BBF50C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0D1EE220AEFFA700BBF50C /* AppDelegate.swift */; };
 		BF0D1EE520AEFFA700BBF50C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0D1EE420AEFFA700BBF50C /* ViewController.swift */; };
 		BF0D1EE820AEFFA700BBF50C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF0D1EE620AEFFA700BBF50C /* Main.storyboard */; };
@@ -16,7 +24,28 @@
 		BF0D1EF720AF022600BBF50C /* ImageRecognitionMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0D1EF620AF022600BBF50C /* ImageRecognitionMaster.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		BF084C5E20B41560008B75DE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BF084C5D20B41560008B75DE /* VisualRecognitionV3.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		BF084C4B20B40AB3008B75DE /* Private.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Private.swift; sourceTree = "<group>"; };
+		BF084C4D20B41414008B75DE /* BlumixRecognitionMaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlumixRecognitionMaster.swift; sourceTree = "<group>"; };
+		BF084C4F20B41436008B75DE /* ImageRecognitionMasterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRecognitionMasterProtocol.swift; sourceTree = "<group>"; };
+		BF084C5120B4144A008B75DE /* RecognitionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognitionResult.swift; sourceTree = "<group>"; };
+		BF084C5320B41460008B75DE /* ImageRecognitionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRecognitionError.swift; sourceTree = "<group>"; };
+		BF084C5520B41473008B75DE /* String+Unique.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Unique.swift"; sourceTree = "<group>"; };
+		BF084C5B20B41560008B75DE /* VisualRecognitionV3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VisualRecognitionV3.framework; path = Carthage/Build/iOS/VisualRecognitionV3.framework; sourceTree = "<group>"; };
 		BF0D1EDF20AEFFA700BBF50C /* SeeFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeeFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF0D1EE220AEFFA700BBF50C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF0D1EE420AEFFA700BBF50C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -33,15 +62,50 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF084C5C20B41560008B75DE /* VisualRecognitionV3.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF084C5720B414A2008B75DE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BF0D1EF420AF01DF00BBF50C /* Inceptionv3.mlmodel */,
+				BF0D1EF620AF022600BBF50C /* ImageRecognitionMaster.swift */,
+				BF084C4B20B40AB3008B75DE /* Private.swift */,
+				BF084C4D20B41414008B75DE /* BlumixRecognitionMaster.swift */,
+				BF084C4F20B41436008B75DE /* ImageRecognitionMasterProtocol.swift */,
+				BF084C5120B4144A008B75DE /* RecognitionResult.swift */,
+				BF084C5320B41460008B75DE /* ImageRecognitionError.swift */,
+				BF084C5520B41473008B75DE /* String+Unique.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BF084C5820B414C1008B75DE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BF0D1EE420AEFFA700BBF50C /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		BF084C5920B414D1008B75DE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BF0D1EE620AEFFA700BBF50C /* Main.storyboard */,
+				BF0D1EE920AEFFA900BBF50C /* Assets.xcassets */,
+				BF0D1EEB20AEFFA900BBF50C /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		BF0D1ED620AEFFA700BBF50C = {
 			isa = PBXGroup;
 			children = (
+				BF084C5B20B41560008B75DE /* VisualRecognitionV3.framework */,
 				BF0D1EE120AEFFA700BBF50C /* SeeFood */,
 				BF0D1EE020AEFFA700BBF50C /* Products */,
 			);
@@ -58,14 +122,11 @@
 		BF0D1EE120AEFFA700BBF50C /* SeeFood */ = {
 			isa = PBXGroup;
 			children = (
-				BF0D1EE220AEFFA700BBF50C /* AppDelegate.swift */,
-				BF0D1EE420AEFFA700BBF50C /* ViewController.swift */,
-				BF0D1EE620AEFFA700BBF50C /* Main.storyboard */,
-				BF0D1EE920AEFFA900BBF50C /* Assets.xcassets */,
-				BF0D1EEB20AEFFA900BBF50C /* LaunchScreen.storyboard */,
+				BF084C5820B414C1008B75DE /* Controller */,
+				BF084C5920B414D1008B75DE /* View */,
+				BF084C5720B414A2008B75DE /* Model */,
 				BF0D1EEE20AEFFA900BBF50C /* Info.plist */,
-				BF0D1EF420AF01DF00BBF50C /* Inceptionv3.mlmodel */,
-				BF0D1EF620AF022600BBF50C /* ImageRecognitionMaster.swift */,
+				BF0D1EE220AEFFA700BBF50C /* AppDelegate.swift */,
 			);
 			path = SeeFood;
 			sourceTree = "<group>";
@@ -80,6 +141,7 @@
 				BF0D1EDB20AEFFA700BBF50C /* Sources */,
 				BF0D1EDC20AEFFA700BBF50C /* Frameworks */,
 				BF0D1EDD20AEFFA700BBF50C /* Resources */,
+				BF084C5E20B41560008B75DE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -142,8 +204,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF0D1EE520AEFFA700BBF50C /* ViewController.swift in Sources */,
+				BF084C4E20B41414008B75DE /* BlumixRecognitionMaster.swift in Sources */,
+				BF084C5020B41436008B75DE /* ImageRecognitionMasterProtocol.swift in Sources */,
 				BF0D1EF520AF01DF00BBF50C /* Inceptionv3.mlmodel in Sources */,
+				BF084C4C20B40AB3008B75DE /* Private.swift in Sources */,
+				BF084C5620B41473008B75DE /* String+Unique.swift in Sources */,
+				BF084C5220B4144A008B75DE /* RecognitionResult.swift in Sources */,
 				BF0D1EE320AEFFA700BBF50C /* AppDelegate.swift in Sources */,
+				BF084C5420B41460008B75DE /* ImageRecognitionError.swift in Sources */,
 				BF0D1EF720AF022600BBF50C /* ImageRecognitionMaster.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -290,6 +358,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5BEQK45V59;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = SeeFood/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -308,6 +380,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5BEQK45V59;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = SeeFood/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

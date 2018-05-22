@@ -11,12 +11,7 @@ import UIKit
 import Vision
 import CoreML
 
-struct RecognitionResult{
-    var id: String
-    var confidence: Float?
-}
-
-class ImageRecognitionMaster{
+class ImageRecognitionMaster: ImageRecognitionMasterProtocol{
     func recognize(image: UIImage, completion: @escaping ([RecognitionResult], Error?)->Void){
         guard let ciImage = CIImage(image: image) else {
             completion([], ImageRecognitionError.invalidImage)
@@ -38,7 +33,7 @@ class ImageRecognitionMaster{
                 return
             }
             
-            completion(results.map({RecognitionResult(id: $0.identifier, confidence: $0.confidence)}) , nil)
+            completion(results.map({RecognitionResult(id: $0.identifier, confidence: Double($0.confidence))}) , nil)
               
         }
             
@@ -52,8 +47,4 @@ class ImageRecognitionMaster{
         }
     }
 
-enum ImageRecognitionError: Error{
-    case modelInvalid
-    case processImageFailed
-    case invalidImage
-}
+

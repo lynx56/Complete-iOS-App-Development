@@ -23,6 +23,19 @@ extension UIView{
         return nil
     }
     
+    func findSubviewsOfType<T>(_ type: T.Type)->[UIView?]{
+        var allSubviews: [UIView?] = [UIView?]()
+        if self is T{
+            return [self]
+        }
+        else{
+            for subview in self.subviews{
+                allSubviews +=  (subview as UIView).findSubviewsOfType(type)
+            }
+            return allSubviews
+        }
+    }    
+    
     func findSuperViewOfType<T>(_ type: T.Type)->T?{
         if self is T{
             return (self as! T)

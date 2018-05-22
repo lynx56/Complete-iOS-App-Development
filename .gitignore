@@ -4,3 +4,7 @@ BitcoinTicker/BitcoinTicker/Model/Private\.swift
 PrivateChat/PrivateChat/GoogleService-Info\.plist
 
 *.mlmodel
+
+Sudoku/Sudoku/ImageRecognitionMaster3\.swift
+
+SeeFood/SeeFood/Model/Private\.swift
