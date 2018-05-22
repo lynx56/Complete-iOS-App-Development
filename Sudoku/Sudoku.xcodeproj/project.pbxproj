@@ -11,13 +11,15 @@
 		BF6206E520B0D21A0015F82A /* DrawableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6206E420B0D21A0015F82A /* DrawableImageView.swift */; };
 		BF6206E720B0D4830015F82A /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6206E620B0D4830015F82A /* UIView+.swift */; };
 		BF69873520B2D8B8001B6ED4 /* ImageRecognitionMaster3.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF69873420B2D8B8001B6ED4 /* ImageRecognitionMaster3.swift */; };
+		BF83680320B445E4004298A3 /* Solution.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8367FE20B445E2004298A3 /* Solution.m */; };
+		BF83680420B445E4004298A3 /* SudokuGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = BF83680020B445E3004298A3 /* SudokuGenerator.m */; };
+		BF83680520B445E4004298A3 /* Puzzle.m in Sources */ = {isa = PBXBuildFile; fileRef = BF83680120B445E3004298A3 /* Puzzle.m */; };
+		BF83680620B445E4004298A3 /* Position.m in Sources */ = {isa = PBXBuildFile; fileRef = BF83680220B445E4004298A3 /* Position.m */; };
 		BFB8DE3E20B0B86E0086DE33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB8DE3D20B0B86E0086DE33 /* AppDelegate.swift */; };
 		BFB8DE4320B0B86E0086DE33 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFB8DE4120B0B86E0086DE33 /* Main.storyboard */; };
 		BFB8DE4520B0B8700086DE33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFB8DE4420B0B8700086DE33 /* Assets.xcassets */; };
 		BFB8DE4820B0B8700086DE33 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFB8DE4620B0B8700086DE33 /* LaunchScreen.storyboard */; };
-		BFB8DE5020B0B87A0086DE33 /* MNIST.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BFB8DE4F20B0B87A0086DE33 /* MNIST.mlmodel */; };
 		BFB8DE5220B0BB140086DE33 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB8DE5120B0BB140086DE33 /* ImageCollectionViewCell.swift */; };
-		BFC35AA420B1999E003CC80F /* MN.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BFC35AA320B1999D003CC80F /* MN.mlmodel */; };
 		BFEA09B320B1BE8F00757727 /* w23.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFEA09B220B1BE8F00757727 /* w23.txt */; };
 		BFEA09B520B1CE1C00757727 /* w12.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFEA09B420B1CE1C00757727 /* w12.txt */; };
 /* End PBXBuildFile section */
@@ -27,15 +29,22 @@
 		BF6206E420B0D21A0015F82A /* DrawableImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawableImageView.swift; sourceTree = "<group>"; };
 		BF6206E620B0D4830015F82A /* UIView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		BF69873420B2D8B8001B6ED4 /* ImageRecognitionMaster3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageRecognitionMaster3.swift; sourceTree = "<group>"; };
+		BF8367FA20B445E0004298A3 /* Sudoku-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sudoku-Bridging-Header.h"; sourceTree = "<group>"; };
+		BF8367FB20B445E1004298A3 /* Position.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Position.h; sourceTree = "<group>"; };
+		BF8367FC20B445E1004298A3 /* Solution.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Solution.h; sourceTree = "<group>"; };
+		BF8367FD20B445E2004298A3 /* Puzzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Puzzle.h; sourceTree = "<group>"; };
+		BF8367FE20B445E2004298A3 /* Solution.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Solution.m; sourceTree = "<group>"; };
+		BF8367FF20B445E3004298A3 /* SudokuGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SudokuGenerator.h; sourceTree = "<group>"; };
+		BF83680020B445E3004298A3 /* SudokuGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SudokuGenerator.m; sourceTree = "<group>"; };
+		BF83680120B445E3004298A3 /* Puzzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Puzzle.m; sourceTree = "<group>"; };
+		BF83680220B445E4004298A3 /* Position.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Position.m; sourceTree = "<group>"; };
 		BFB8DE3A20B0B86E0086DE33 /* Sudoku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sudoku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFB8DE3D20B0B86E0086DE33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFB8DE4220B0B86E0086DE33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BFB8DE4420B0B8700086DE33 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BFB8DE4720B0B8700086DE33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BFB8DE4920B0B8700086DE33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BFB8DE4F20B0B87A0086DE33 /* MNIST.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MNIST.mlmodel; sourceTree = "<group>"; };
 		BFB8DE5120B0BB140086DE33 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
-		BFC35AA320B1999D003CC80F /* MN.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MN.mlmodel; sourceTree = "<group>"; };
 		BFEA09B220B1BE8F00757727 /* w23.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = w23.txt; sourceTree = "<group>"; };
 		BFEA09B420B1CE1C00757727 /* w12.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = w12.txt; sourceTree = "<group>"; usesTabs = 0; };
 /* End PBXFileReference section */
@@ -51,6 +60,54 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF8367F920B439DB004298A3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BF83680820B44670004298A3 /* External */,
+				BF8367FA20B445E0004298A3 /* Sudoku-Bridging-Header.h */,
+				BF69873420B2D8B8001B6ED4 /* ImageRecognitionMaster3.swift */,
+				BFEA09B420B1CE1C00757727 /* w12.txt */,
+				BFEA09B220B1BE8F00757727 /* w23.txt */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BF83680720B44662004298A3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BF6206E220B0D17F0015F82A /* SudokuViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		BF83680820B44670004298A3 /* External */ = {
+			isa = PBXGroup;
+			children = (
+				BF8367FB20B445E1004298A3 /* Position.h */,
+				BF83680220B445E4004298A3 /* Position.m */,
+				BF8367FD20B445E2004298A3 /* Puzzle.h */,
+				BF83680120B445E3004298A3 /* Puzzle.m */,
+				BF8367FC20B445E1004298A3 /* Solution.h */,
+				BF8367FE20B445E2004298A3 /* Solution.m */,
+				BF8367FF20B445E3004298A3 /* SudokuGenerator.h */,
+				BF83680020B445E3004298A3 /* SudokuGenerator.m */,
+			);
+			path = External;
+			sourceTree = "<group>";
+		};
+		BF83680920B4469E004298A3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BFB8DE4420B0B8700086DE33 /* Assets.xcassets */,
+				BFB8DE4120B0B86E0086DE33 /* Main.storyboard */,
+				BFB8DE4620B0B8700086DE33 /* LaunchScreen.storyboard */,
+				BFB8DE5120B0BB140086DE33 /* ImageCollectionViewCell.swift */,
+				BF6206E420B0D21A0015F82A /* DrawableImageView.swift */,
+				BF6206E620B0D4830015F82A /* UIView+.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		BFB8DE3120B0B86E0086DE33 = {
 			isa = PBXGroup;
 			children = (
@@ -70,20 +127,11 @@
 		BFB8DE3C20B0B86E0086DE33 /* Sudoku */ = {
 			isa = PBXGroup;
 			children = (
-				BF69873420B2D8B8001B6ED4 /* ImageRecognitionMaster3.swift */,
+				BF8367F920B439DB004298A3 /* Model */,
+				BF83680920B4469E004298A3 /* View */,
+				BF83680720B44662004298A3 /* Controller */,
 				BFB8DE3D20B0B86E0086DE33 /* AppDelegate.swift */,
-				BFB8DE4120B0B86E0086DE33 /* Main.storyboard */,
-				BFB8DE4420B0B8700086DE33 /* Assets.xcassets */,
-				BFB8DE4620B0B8700086DE33 /* LaunchScreen.storyboard */,
-				BFB8DE4F20B0B87A0086DE33 /* MNIST.mlmodel */,
-				BFC35AA320B1999D003CC80F /* MN.mlmodel */,
 				BFB8DE4920B0B8700086DE33 /* Info.plist */,
-				BFEA09B420B1CE1C00757727 /* w12.txt */,
-				BFEA09B220B1BE8F00757727 /* w23.txt */,
-				BFB8DE5120B0BB140086DE33 /* ImageCollectionViewCell.swift */,
-				BF6206E220B0D17F0015F82A /* SudokuViewController.swift */,
-				BF6206E420B0D21A0015F82A /* DrawableImageView.swift */,
-				BF6206E620B0D4830015F82A /* UIView+.swift */,
 			);
 			path = Sudoku;
 			sourceTree = "<group>";
@@ -162,14 +210,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF83680320B445E4004298A3 /* Solution.m in Sources */,
 				BF6206E520B0D21A0015F82A /* DrawableImageView.swift in Sources */,
 				BF6206E320B0D17F0015F82A /* SudokuViewController.swift in Sources */,
-				BFB8DE5020B0B87A0086DE33 /* MNIST.mlmodel in Sources */,
 				BF69873520B2D8B8001B6ED4 /* ImageRecognitionMaster3.swift in Sources */,
 				BF6206E720B0D4830015F82A /* UIView+.swift in Sources */,
+				BF83680620B445E4004298A3 /* Position.m in Sources */,
 				BFB8DE5220B0BB140086DE33 /* ImageCollectionViewCell.swift in Sources */,
 				BFB8DE3E20B0B86E0086DE33 /* AppDelegate.swift in Sources */,
-				BFC35AA420B1999E003CC80F /* MN.mlmodel in Sources */,
+				BF83680520B445E4004298A3 /* Puzzle.m in Sources */,
+				BF83680420B445E4004298A3 /* SudokuGenerator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,7 +374,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Gulnaz.Sudoku;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Sudoku/Model/Sudoku-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -346,6 +396,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Gulnaz.Sudoku;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Sudoku/Model/Sudoku-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

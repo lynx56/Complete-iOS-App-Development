@@ -8,23 +8,49 @@
 
 import UIKit
 
-class DrawableImageView: UIImageView {
+class DrawableImageView: UIView, UserEditedView{
+    func setValid(_ valid: Bool) {
+        if !valid{
+            print("set color red")
+        }else{
+            print("set color black")
+        }
+    }
+    
     
     var lastPoint = CGPoint.zero
     var color: UIColor = UIColor.black
-    var brushWidth: CGFloat = 5.0
+    var brushWidth: CGFloat = 2.0
     var opacity: CGFloat = 1.0
     var swiped = false
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.darkGray.cgColor
-        self.isUserInteractionEnabled = true
-        
-        brushWidth = min(self.frame.size.width, self.frame.size.height) / 35.0
+    var value: Int?{
+        didSet{
+            valueChanged?(value)
+        }
     }
-
+    
+    var valueChanged: ((Int?)->Void)?
+    
+    var mainImageView: UIImageView!
+    var tempImageView: UIImageView!
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        mainImageView = UIImageView(frame: frame)
+        tempImageView = UIImageView(frame: frame)
+        mainImageView.isUserInteractionEnabled = true
+        tempImageView.isUserInteractionEnabled = true
+        self.addSubview(mainImageView)
+        self.addSubview(tempImageView)
+        
+        //brushWidth = min(self.frame.size.width, self.frame.size.height) / 35.0
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
             lastPoint = touch.location(in: self)
@@ -40,7 +66,7 @@ class DrawableImageView: UIImageView {
         // 1
         UIGraphicsBeginImageContext(self.frame.size)
         let context = UIGraphicsGetCurrentContext()
-        self.image?.draw(in: CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height))
+        self.tempImageView.image?.draw(in: CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height))
         
         // 2
         context?.move(to: fromPoint)
@@ -57,7 +83,7 @@ class DrawableImageView: UIImageView {
         context?.strokePath()
         
         // 5
-        self.image = UIGraphicsGetImageFromCurrentImageContext()
+        self.tempImageView.image = UIGraphicsGetImageFromCurrentImageContext()
         self.alpha = opacity
         UIGraphicsEndImageContext()
         
@@ -81,27 +107,20 @@ class DrawableImageView: UIImageView {
             drawLineFrom(fromPoint: lastPoint, toPoint: lastPoint)
         }
         
-    /*    let backgroundImage = UIImage.from(color: .white)
-        
         // Merge tempImageView into mainImageView
-        UIGraphicsBeginImageContext(self.frame.size)
-        backgroundImage.draw(in: CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height), blendMode: .normal, alpha: 1.0)
-        self.image?.draw(in: CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height), blendMode: .normal, alpha: opacity)
-        self.image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()*/
-    }
-}
-
-
-extension UIImage {
-    static func from(color: UIColor) -> UIImage {
-        let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
-        UIGraphicsBeginImageContext(rect.size)
-        let context = UIGraphicsGetCurrentContext()
-        context!.setFillColor(color.cgColor)
-        context!.fill(rect)
-        let img = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsBeginImageContext(mainImageView.frame.size)
+        mainImageView.image?.draw(in: CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height), blendMode: .normal, alpha: 1.0)
+        tempImageView.image?.draw(in: CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height), blendMode: .normal, alpha: opacity)
+        mainImageView.image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return img!
+        
+        tempImageView.image = nil
     }
 }
+
+protocol UserEditedView{
+    var value: Int? { get }
+    var tag: Int { get }
+    func setValid(_ :Bool)
+}
+
