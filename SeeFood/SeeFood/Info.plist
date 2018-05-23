@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Save your photo to share friends</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Let&apos;s take some photo for finding hotdog!</string>
 	<key>NSPhotoLibraryUsageDescription</key>
