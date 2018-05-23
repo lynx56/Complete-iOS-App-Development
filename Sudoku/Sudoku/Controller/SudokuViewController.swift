@@ -20,33 +20,21 @@ class SudokuViewController: UIViewController {
     var results: [Int: Int?] = [:]
     var puzzle: Puzzle!
     var master: ImageRecognitionMaster3!
+    var generator = SudokuGenerator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         master = ImageRecognitionMaster3()
         
-        let generator = SudokuGenerator()
         puzzle = generator.generate(PuzzleDifficultyEasy)!
-        createGrid(puzzle.grid)
         
-        let button = UIButton(frame: CGRect(x: self.view.frame.minX, y: self.view.frame.maxY - 50, width: self.view.bounds.width, height: 50))
-        button.setTitle("Recognize!", for: .normal)
-        button.setTitleColor(UIColor.blue, for: .normal)
-        button.addTarget(self, action: #selector(recognize), for: .touchUpInside)
-        self.view.addSubview(button)
+        createGrid(puzzle.grid)
         
         let buttonView = UIView(frame: CGRect(x: 0, y: grid.frame.maxY + 20, width: self.view.bounds.width/3, height: self.view.bounds.width/3))
         
         self.addButtonsPanel(to: buttonView)
         
         self.view.addSubview(buttonView)
-        
-        
-      //  cells = mainStack.findSubviewsOfType(DrawableImageView.self).sorted(by: {$0!.tag < $1!.tag}) as! [DrawableImageView]
-        
-   //     previewCells = previewStack.findSubviewsOfType(UILabel.self).sorted(by: {$0!.tag < $1!.tag}) as! [UILabel]
-        
-     //   previewStack.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(recognize)))
     }
     
     func createGrid(_ solution: Solution){
@@ -127,31 +115,57 @@ class SudokuViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    @objc func recognize(_ target: Any){
-        if let drawableCells = (grid.findSubviewsOfType(DrawableImageView.self) as? [DrawableImageView])?.filter({$0.mainImageView.image != nil}){
+    @IBAction func check(_ sender: Any) {
+        if let drawableCells = (grid.findSubviewsOfType(DrawableImageView.self) as? [DrawableImageView])?.filter({$0.image != nil && $0.value == nil}){
             let group = DispatchGroup()
             for cell in drawableCells{
                 group.enter()
-            process(image: cell.mainImageView.image!) { (result, error) in
-                cell.value = result
-                group.leave()
+                process(image: cell.image!) { (result, error) in
+                    cell.value = result
+                    group.leave()
+                }
             }
-          }
             group.notify(queue: .main) {
                 self.validate()
             }
         }
     }
     
+    @IBAction func newPuzzle(_ sender: UIBarButtonItem) {
+        let optionsController = PuzzleDifficultOptionsTableViewController(style: .plain)
+        optionsController.options = [ (value: PuzzleDifficultyEasy, title: "Easy"),
+                                      (value: PuzzleDifficultyMedium, title: "Medium"),
+                                      (value: PuzzleDifficultyHard, title: "Hard") ]
+        
+        optionsController.optionSelected = { (option) in
+            self.puzzle = self.generator.generate(option.value)
+            self.grid.removeFromSuperview()
+            self.createGrid(self.puzzle.grid)
+            self.title = option.title
+        }
+        
+        optionsController.modalPresentationStyle = .popover
+        
+        optionsController.popoverPresentationController?.barButtonItem = sender
+        optionsController.preferredContentSize = CGSize(width: 200, height: 120)
+      //  optionsController.titleForSection = "Сhoose complexity"
+       
+        self.present(optionsController, animated: true, completion: nil)
+    }
+    
     func validate(){
         for subview in self.grid.subviews{
-            if let userEditedView = subview.findSubviewOfType(UserEditedView.self){
+            if let userEditedView = subview.findSubviewOfType(DrawableImageView.self){
                 let tag = UInt(userEditedView.tag)
-
-                userEditedView.setValid(puzzle.grid.position(at: tag).value.intValue == puzzle.solution.position(at: tag).value.intValue)
+                
+                let isValid = puzzle.grid.position(at: tag).value.intValue == puzzle.solution.position(at: tag).value.intValue || userEditedView.value == nil
+                
+                let color = isValid ? UIColor.white : UIColor.red
+                userEditedView.backgroundColor = color
             }
         }
     }
+    
     
     func process(image: UIImage, completion: @escaping (Int?, ImageRecognitionError?)->Void){
         master.recognize(image: image, completion:completion)

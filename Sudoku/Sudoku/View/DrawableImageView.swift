@@ -9,118 +9,128 @@
 import UIKit
 
 class DrawableImageView: UIView, UserEditedView{
-    func setValid(_ valid: Bool) {
-        if !valid{
-            print("set color red")
-        }else{
-            print("set color black")
-        }
-    }
-    
-    
-    var lastPoint = CGPoint.zero
-    var color: UIColor = UIColor.black
-    var brushWidth: CGFloat = 2.0
-    var opacity: CGFloat = 1.0
-    var swiped = false
     var value: Int?{
         didSet{
             valueChanged?(value)
         }
     }
     
+    var image: UIImage?{
+        get{
+            return preRenderImage
+        }
+    }
+    
     var valueChanged: ((Int?)->Void)?
     
-    var mainImageView: UIImageView!
-    var tempImageView: UIImageView!
+    var drawColor = UIColor.black    // Color for drawing
+    var lineWidth: CGFloat = 5                // Line width
+    
+    private var lastPoint: CGPoint!            // Point for storing the last position
+    private var bezierPath: UIBezierPath!    // Bezier path
+    private var pointCounter: Int = 0        // Counter of ponts
+    private let pointLimit: Int = 128        // Limit of points
+    private var preRenderImage: UIImage!    // Pre render image
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        mainImageView = UIImageView(frame: frame)
-        tempImageView = UIImageView(frame: frame)
-        mainImageView.isUserInteractionEnabled = true
-        tempImageView.isUserInteractionEnabled = true
-        self.addSubview(mainImageView)
-        self.addSubview(tempImageView)
-        
-        //brushWidth = min(self.frame.size.width, self.frame.size.height) / 35.0
+        self.backgroundColor = .white
+        initBezierPath()
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
+        
+        initBezierPath()
+    }
+    
+    func initBezierPath() {
+        bezierPath = UIBezierPath()
+        bezierPath.lineCapStyle = .round
+        bezierPath.lineJoinStyle = .round
+    }
+    
+    func renderToImage() {
+        
+        UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, 0.0)
+        if preRenderImage != nil {
+            preRenderImage.draw(in: self.bounds)
+        }
+        
+        bezierPath.lineWidth = lineWidth
+        self.drawColor.setFill()
+        drawColor.setStroke()
+        bezierPath.stroke()
+        
+        preRenderImage = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+    }
+    
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        
+        if preRenderImage != nil {
+            preRenderImage.draw(in: self.bounds)
+        }
+        
+        bezierPath.lineWidth = lineWidth
+        drawColor.setFill()
+        drawColor.setStroke()
+        bezierPath.stroke()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let touch = touches.first {
-            lastPoint = touch.location(in: self)
-        }
+        let touch: AnyObject? = touches.first
+        lastPoint = touch!.location(in: self)
+        pointCounter = 0
     }
     
-    func drawLineFrom(fromPoint: CGPoint, toPoint: CGPoint) {
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?){
+        let touch: AnyObject? = touches.first
+        var newPoint = touch!.location(in: self)
         
-        if self.frame.height - self.frame.width > 5{
-            return
+        bezierPath.move(to: lastPoint)
+        bezierPath.addLine(to: newPoint)
+        lastPoint = newPoint
+        
+        pointCounter = pointCounter + 1
+        
+        if pointCounter == pointLimit {
+            pointCounter = 0
+            renderToImage()
+            setNeedsDisplay()
+            bezierPath.removeAllPoints()
         }
-        
-        // 1
-        UIGraphicsBeginImageContext(self.frame.size)
-        let context = UIGraphicsGetCurrentContext()
-        self.tempImageView.image?.draw(in: CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height))
-        
-        // 2
-        context?.move(to: fromPoint)
-        context?.addLine(to: toPoint)
-        
-        // 3
-        context?.setLineCap(.round)
-        context?.setLineWidth(brushWidth)
-        context?.setStrokeColor(UIColor.black.cgColor)
-        
-        context?.setBlendMode(.normal)
-        
-        // 4
-        context?.strokePath()
-        
-        // 5
-        self.tempImageView.image = UIGraphicsGetImageFromCurrentImageContext()
-        self.alpha = opacity
-        UIGraphicsEndImageContext()
-        
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        // 6
-        swiped = true
-        if let touch = touches.first {
-            let currentPoint = touch.location(in: self)
-            drawLineFrom(fromPoint: lastPoint, toPoint: currentPoint)
-          //  print("from\(lastPoint) to: \(currentPoint)")
-            // 7
-            lastPoint = currentPoint
+        else {
+            setNeedsDisplay()
         }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if !swiped {
-            // draw a single point
-            drawLineFrom(fromPoint: lastPoint, toPoint: lastPoint)
-        }
-        
-        // Merge tempImageView into mainImageView
-        UIGraphicsBeginImageContext(mainImageView.frame.size)
-        mainImageView.image?.draw(in: CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height), blendMode: .normal, alpha: 1.0)
-        tempImageView.image?.draw(in: CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height), blendMode: .normal, alpha: opacity)
-        mainImageView.image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        tempImageView.image = nil
+        pointCounter = 0
+        renderToImage()
+        setNeedsDisplay()
+        bezierPath.removeAllPoints()
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?)  {
+        touchesEnded(touches, with: event)
+    }
+    
+    func clear() {
+        preRenderImage = nil
+        bezierPath.removeAllPoints()
+        setNeedsDisplay()
+    }
+    
+    func hasLines() -> Bool {
+        return preRenderImage != nil || !bezierPath.isEmpty
     }
 }
 
 protocol UserEditedView{
     var value: Int? { get }
     var tag: Int { get }
-    func setValid(_ :Bool)
 }
 

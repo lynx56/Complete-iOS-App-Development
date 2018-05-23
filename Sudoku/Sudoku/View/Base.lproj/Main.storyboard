@@ -97,9 +97,15 @@
                     <navigationItem key="navigationItem" title="Easy" id="Mnp-jI-T7p">
                         <barButtonItem key="leftBarButtonItem" title="New" id="YuC-Jk-iDe">
                             <color key="tintColor" red="0.97636467220000001" green="0.97653168440000004" blue="0.9763541818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="newPuzzle:" destination="t7v-Fr-IgA" id="E1g-JG-Uxe"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Check" id="OCa-Ij-DQO">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="check:" destination="t7v-Fr-IgA" id="LMf-rF-9Sy"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
