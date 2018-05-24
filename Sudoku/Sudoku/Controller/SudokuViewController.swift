@@ -44,42 +44,56 @@ class SudokuViewController: UIViewController {
         grid = UIView(frame: CGRect(origin: origin, size: CGSize(width: size, height: size)))
         let sizeOfSquares = (grid.bounds.width - 2.0) / 9.0
         
-        for i in 0..<9{
-            for j in 0..<9{
-                var label = UIView()
+        for bigViewRow in 0..<3{
+            for bigRowColumn in 0..<3{
+                let bigViewFrame = CGRect(x: CGFloat(bigRowColumn) * sizeOfSquares * 3, y: CGFloat(bigViewRow) * sizeOfSquares * 3, width: sizeOfSquares*3 + 2.0, height: sizeOfSquares*3 + 2.0)
                 
-                let pos = solution.getAtX(UInt(j), y: UInt(i))!
-                let frame = CGRect(x: CGFloat(j) * sizeOfSquares, y: CGFloat(i) * sizeOfSquares, width: sizeOfSquares + 2.0, height: sizeOfSquares + 2.0)
-                label.tag = i * 9 + j
-                
-                if (pos.value.intValue != 0 && !pos.temporary){
-                    label = UIView()
-                    let textLabel = UILabel(frame: CGRect(origin: .zero, size: frame.size))
-                    textLabel.text = pos.value.stringValue
-                    textLabel.textAlignment = NSTextAlignment.center
-                    textLabel.font = UIFont.systemFont(ofSize: 27)
-                    label.addSubview(textLabel)
-                    label.frame = frame
-                }else{
-                    let drawView = DrawableImageView(frame: CGRect(origin: .zero, size: frame.size))
-                    drawView.isUserInteractionEnabled = true
-                    drawView.tag = label.tag
-                    label.isUserInteractionEnabled = true
-                    label.addSubview(drawView)
-                    let preview = UILabel(frame: CGRect(origin: .zero, size: CGSize(width: 20, height: 20)))
-                    preview.text = ""
-                    drawView.valueChanged = { (newValue) in
-                        preview.text = newValue?.description
-                        self.puzzle.grid.position(at: UInt(label.tag)).value = NSNumber(value: newValue ?? 0)
+                let bigView = UIView(frame: bigViewFrame)
+                for i in 0..<3{
+                    for j in 0..<3{
+                        var label = UIView()
+                        
+                        let globalPosition = i * 9 + j + bigRowColumn * 3 + bigViewRow * 27
+                        
+                        let pos = solution.getAtX(UInt(j + bigRowColumn * 3), y: UInt(i + bigViewRow * 3))!
+                        
+                        let frame = CGRect(x: CGFloat(j) * sizeOfSquares, y: CGFloat(i) * sizeOfSquares, width: sizeOfSquares + 2.0, height: sizeOfSquares + 2.0)
+                        
+                        label.tag = globalPosition
+                     
+                        if (pos.value.intValue != 0 && !pos.temporary){
+                            label = UIView()
+                            let textLabel = UILabel(frame: CGRect(origin: .zero, size: frame.size))
+                            textLabel.text = pos.value.stringValue
+                            textLabel.textAlignment = NSTextAlignment.center
+                            textLabel.font = UIFont.systemFont(ofSize: 27)
+                            label.addSubview(textLabel)
+                            label.frame = frame
+                        }else{
+                            let drawView = DrawableImageView(frame: CGRect(origin: .zero, size: frame.size))
+                            drawView.isUserInteractionEnabled = true
+                            drawView.tag = label.tag
+                            label.isUserInteractionEnabled = true
+                            label.addSubview(drawView)
+                            let preview = UILabel(frame: CGRect(origin: .zero, size: CGSize(width: 20, height: 20)))
+                            preview.text = ""
+                            drawView.valueChanged = { (newValue) in
+                                preview.text = newValue?.description
+                                self.puzzle.grid.position(at: UInt(label.tag)).value = NSNumber(value: newValue ?? 0)
+                            }
+                            label.addSubview(preview)
+                            label.frame = frame
+                        }
+                        
+                        label.layer.borderColor = UIColor.lightGray.cgColor
+                        label.layer.borderWidth = 2
+                        
+                        bigView.addSubview(label)
                     }
-                    label.addSubview(preview)
-                    label.frame = frame
                 }
-               
-                label.layer.borderColor = UIColor.lightGray.cgColor
-                label.layer.borderWidth = 2
-            
-                grid.addSubview(label)
+                bigView.layer.borderColor = UIColor.darkGray.cgColor
+                bigView.layer.borderWidth = 2
+                grid.addSubview(bigView)
             }
         }
         
@@ -154,15 +168,13 @@ class SudokuViewController: UIViewController {
     }
     
     func validate(){
-        for subview in self.grid.subviews{
-            if let userEditedView = subview.findSubviewOfType(DrawableImageView.self){
+        for userEditedView in (self.grid.findSubviewsOfType(DrawableImageView.self) as? [DrawableImageView])!{
                 let tag = UInt(userEditedView.tag)
                 
                 let isValid = puzzle.grid.position(at: tag).value.intValue == puzzle.solution.position(at: tag).value.intValue || userEditedView.value == nil
                 
                 let color = isValid ? UIColor.white : UIColor.red
                 userEditedView.backgroundColor = color
-            }
         }
     }
     
