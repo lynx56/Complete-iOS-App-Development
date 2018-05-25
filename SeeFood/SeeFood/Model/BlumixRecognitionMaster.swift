@@ -33,7 +33,7 @@ class BlumixRecognitionMaster: ImageRecognitionMasterProtocol{
         }) { (classifiedImages) in
             
            let results = classifiedImages.images.first?.classifiers.first?.classes.map({ RecognitionResult(id: $0.className, confidence: $0.score)})
-            
+
             completion(results ?? [], nil)
         }
     }

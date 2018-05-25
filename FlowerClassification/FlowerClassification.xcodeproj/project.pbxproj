@@ -8,20 +8,53 @@
 
 /* Begin PBXBuildFile section */
 		BF491AC820B6D18C00A1ACC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF491AC720B6D18C00A1ACC0 /* AppDelegate.swift */; };
-		BF491ACA20B6D18C00A1ACC0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF491AC920B6D18C00A1ACC0 /* ViewController.swift */; };
 		BF491ACD20B6D18C00A1ACC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF491ACB20B6D18C00A1ACC0 /* Main.storyboard */; };
 		BF491ACF20B6D18E00A1ACC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF491ACE20B6D18E00A1ACC0 /* Assets.xcassets */; };
 		BF491AD220B6D18E00A1ACC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF491AD020B6D18E00A1ACC0 /* LaunchScreen.storyboard */; };
+		BF491B0020B6D26B00A1ACC0 /* RecognitionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF491AF620B6D26B00A1ACC0 /* RecognitionResult.swift */; };
+		BF491B0220B6D26B00A1ACC0 /* ImageRecognitionMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF491AF820B6D26B00A1ACC0 /* ImageRecognitionMaster.swift */; };
+		BF491B0420B6D26B00A1ACC0 /* ImageRecognitionMasterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF491AFA20B6D26B00A1ACC0 /* ImageRecognitionMasterProtocol.swift */; };
+		BF491B0620B6D26B00A1ACC0 /* ImageRecognitionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF491AFC20B6D26B00A1ACC0 /* ImageRecognitionError.swift */; };
+		BF491B0820B6D26B00A1ACC0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF491AFF20B6D26B00A1ACC0 /* ViewController.swift */; };
+		BF491B0C20B6ED6E00A1ACC0 /* WikiApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF491B0B20B6ED6E00A1ACC0 /* WikiApi.swift */; };
+		BF491B6D20B711DE00A1ACC0 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF491B6C20B711DE00A1ACC0 /* SDWebImage.framework */; };
+		BF491B6E20B711DE00A1ACC0 /* SDWebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF491B6C20B711DE00A1ACC0 /* SDWebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BF491B7120B711FF00A1ACC0 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF491B7020B711FF00A1ACC0 /* SwiftyJSON.framework */; };
+		BF491B7220B711FF00A1ACC0 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF491B7020B711FF00A1ACC0 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BFAA71BB20B80FE3001ABD7D /* FlowerClassifier2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BFAA71BA20B80FE3001ABD7D /* FlowerClassifier2.mlmodel */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BF491B6F20B711DE00A1ACC0 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BF491B7220B711FF00A1ACC0 /* SwiftyJSON.framework in Embed Frameworks */,
+				BF491B6E20B711DE00A1ACC0 /* SDWebImage.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		BF491AC420B6D18C00A1ACC0 /* FlowerClassification.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlowerClassification.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF491AC720B6D18C00A1ACC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BF491AC920B6D18C00A1ACC0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BF491ACC20B6D18C00A1ACC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BF491ACE20B6D18E00A1ACC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF491AD120B6D18E00A1ACC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF491AD320B6D18E00A1ACC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF491AF620B6D26B00A1ACC0 /* RecognitionResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecognitionResult.swift; sourceTree = "<group>"; };
+		BF491AF820B6D26B00A1ACC0 /* ImageRecognitionMaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageRecognitionMaster.swift; sourceTree = "<group>"; };
+		BF491AFA20B6D26B00A1ACC0 /* ImageRecognitionMasterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageRecognitionMasterProtocol.swift; sourceTree = "<group>"; };
+		BF491AFC20B6D26B00A1ACC0 /* ImageRecognitionError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageRecognitionError.swift; sourceTree = "<group>"; };
+		BF491AFF20B6D26B00A1ACC0 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BF491B0B20B6ED6E00A1ACC0 /* WikiApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiApi.swift; sourceTree = "<group>"; };
+		BF491B6C20B711DE00A1ACC0 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = Carthage/Build/iOS/SDWebImage.framework; sourceTree = "<group>"; };
+		BF491B7020B711FF00A1ACC0 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		BFAA71BA20B80FE3001ABD7D /* FlowerClassifier2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = FlowerClassifier2.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +62,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF491B7120B711FF00A1ACC0 /* SwiftyJSON.framework in Frameworks */,
+				BF491B6D20B711DE00A1ACC0 /* SDWebImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,6 +73,8 @@
 		BF491ABB20B6D18C00A1ACC0 = {
 			isa = PBXGroup;
 			children = (
+				BF491B7020B711FF00A1ACC0 /* SwiftyJSON.framework */,
+				BF491B6C20B711DE00A1ACC0 /* SDWebImage.framework */,
 				BF491AC620B6D18C00A1ACC0 /* FlowerClassification */,
 				BF491AC520B6D18C00A1ACC0 /* Products */,
 			);
@@ -54,14 +91,36 @@
 		BF491AC620B6D18C00A1ACC0 /* FlowerClassification */ = {
 			isa = PBXGroup;
 			children = (
+				BF491AFE20B6D26B00A1ACC0 /* Controller */,
+				BF491AF520B6D26B00A1ACC0 /* Model */,
 				BF491AC720B6D18C00A1ACC0 /* AppDelegate.swift */,
-				BF491AC920B6D18C00A1ACC0 /* ViewController.swift */,
 				BF491ACB20B6D18C00A1ACC0 /* Main.storyboard */,
 				BF491ACE20B6D18E00A1ACC0 /* Assets.xcassets */,
 				BF491AD020B6D18E00A1ACC0 /* LaunchScreen.storyboard */,
 				BF491AD320B6D18E00A1ACC0 /* Info.plist */,
 			);
 			path = FlowerClassification;
+			sourceTree = "<group>";
+		};
+		BF491AF520B6D26B00A1ACC0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BF491AF620B6D26B00A1ACC0 /* RecognitionResult.swift */,
+				BF491AF820B6D26B00A1ACC0 /* ImageRecognitionMaster.swift */,
+				BF491AFA20B6D26B00A1ACC0 /* ImageRecognitionMasterProtocol.swift */,
+				BF491AFC20B6D26B00A1ACC0 /* ImageRecognitionError.swift */,
+				BF491B0B20B6ED6E00A1ACC0 /* WikiApi.swift */,
+				BFAA71BA20B80FE3001ABD7D /* FlowerClassifier2.mlmodel */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BF491AFE20B6D26B00A1ACC0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BF491AFF20B6D26B00A1ACC0 /* ViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,6 +133,7 @@
 				BF491AC020B6D18C00A1ACC0 /* Sources */,
 				BF491AC120B6D18C00A1ACC0 /* Frameworks */,
 				BF491AC220B6D18C00A1ACC0 /* Resources */,
+				BF491B6F20B711DE00A1ACC0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -135,8 +195,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF491ACA20B6D18C00A1ACC0 /* ViewController.swift in Sources */,
+				BF491B0620B6D26B00A1ACC0 /* ImageRecognitionError.swift in Sources */,
+				BF491B0420B6D26B00A1ACC0 /* ImageRecognitionMasterProtocol.swift in Sources */,
+				BF491B0220B6D26B00A1ACC0 /* ImageRecognitionMaster.swift in Sources */,
+				BF491B0820B6D26B00A1ACC0 /* ViewController.swift in Sources */,
+				BF491B0020B6D26B00A1ACC0 /* RecognitionResult.swift in Sources */,
+				BF491B0C20B6ED6E00A1ACC0 /* WikiApi.swift in Sources */,
 				BF491AC820B6D18C00A1ACC0 /* AppDelegate.swift in Sources */,
+				BFAA71BB20B80FE3001ABD7D /* FlowerClassifier2.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,7 +279,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -267,7 +333,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -282,6 +348,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5BEQK45V59;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = FlowerClassification/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -300,6 +370,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5BEQK45V59;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = FlowerClassification/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

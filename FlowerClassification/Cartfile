@@ -1,0 +1,2 @@
+github "rs/SDWebImage"
+github "SwiftyJSON/SwiftyJSON" ~> 4.0
