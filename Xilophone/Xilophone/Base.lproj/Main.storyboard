@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Xilophone" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bd3fb482d82c43ce74d1cfb06e69aecc" translatesAutoresizingMaskIntoConstraints="NO" id="p2P-Kl-XrB">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Isolated Xylophone Object" translatesAutoresizingMaskIntoConstraints="NO" id="xbe-hO-uDE">
+                                <rect key="frame" x="34.5" y="17" width="306.5" height="633"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="xbe-hO-uDE" secondAttribute="height" multiplier="46:95" id="fMO-7a-vua"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="0o6-rG-7qU">
+                                <rect key="frame" x="34.5" y="17" width="306.5" height="633"/>
+                                <subviews>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XvX-lf-i2w" userLabel="1">
+                                        <rect key="frame" x="0.0" y="0.0" width="306.5" height="64.5"/>
+                                        <connections>
+                                            <action selector="play:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xI8-mC-9P2"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MQg-P0-7UQ" userLabel="2">
+                                        <rect key="frame" x="0.0" y="81.5" width="306.5" height="64"/>
+                                        <connections>
+                                            <action selector="play:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kQP-ax-hSk"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nl4-JE-CyR" userLabel="3">
+                                        <rect key="frame" x="0.0" y="162.5" width="306.5" height="64.5"/>
+                                        <connections>
+                                            <action selector="play:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sll-ls-uBI"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SBn-wH-JSR" userLabel="4">
+                                        <rect key="frame" x="0.0" y="244" width="306.5" height="64"/>
+                                        <connections>
+                                            <action selector="play:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rS3-4Z-wTV"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HTM-WR-RPC" userLabel="5">
+                                        <rect key="frame" x="0.0" y="325" width="306.5" height="64.5"/>
+                                        <connections>
+                                            <action selector="play:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bS9-Nl-vcM"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zvn-cP-RPa" userLabel="6">
+                                        <rect key="frame" x="0.0" y="406.5" width="306.5" height="64"/>
+                                        <connections>
+                                            <action selector="play:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vn9-ox-vMZ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dNX-K9-Eyi" userLabel="7">
+                                        <rect key="frame" x="0.0" y="487.5" width="306.5" height="64.5"/>
+                                        <connections>
+                                            <action selector="play:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IQB-W8-XfE"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iej-Ls-lco" userLabel="8">
+                                        <rect key="frame" x="0.0" y="569" width="306.5" height="64"/>
+                                        <connections>
+                                            <action selector="play:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2MB-0v-NZs"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.58105844259999995" green="0.12855249639999999" blue="0.57453137639999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="xbe-hO-uDE" secondAttribute="bottom" constant="17" id="3kg-98-ZJg"/>
+                            <constraint firstAttribute="trailing" secondItem="p2P-Kl-XrB" secondAttribute="trailing" id="801-h4-9i2"/>
+                            <constraint firstItem="xbe-hO-uDE" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="B4y-kI-p0k"/>
+                            <constraint firstItem="xbe-hO-uDE" firstAttribute="height" relation="lessThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="height" id="GzS-Qx-s3g"/>
+                            <constraint firstItem="xbe-hO-uDE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="O4k-t3-hKX"/>
+                            <constraint firstAttribute="bottom" secondItem="p2P-Kl-XrB" secondAttribute="bottom" id="RVW-5R-tWT"/>
+                            <constraint firstItem="0o6-rG-7qU" firstAttribute="width" secondItem="xbe-hO-uDE" secondAttribute="width" id="Y55-I6-c6a"/>
+                            <constraint firstItem="p2P-Kl-XrB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="gvg-Nr-hkq"/>
+                            <constraint firstItem="p2P-Kl-XrB" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="nUA-UJ-4uK"/>
+                            <constraint firstItem="0o6-rG-7qU" firstAttribute="height" secondItem="xbe-hO-uDE" secondAttribute="height" id="rTl-3r-cwQ"/>
+                            <constraint firstItem="0o6-rG-7qU" firstAttribute="leading" secondItem="xbe-hO-uDE" secondAttribute="leading" id="u55-FC-0HZ"/>
+                            <constraint firstItem="0o6-rG-7qU" firstAttribute="top" secondItem="xbe-hO-uDE" secondAttribute="top" id="v6a-8q-qXB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="33.733133433283363"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Isolated Xylophone Object" width="1324" height="2705"/>
+        <image name="bd3fb482d82c43ce74d1cfb06e69aecc" width="3467" height="5331"/>
+    </resources>
+</document>
