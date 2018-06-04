@@ -25,8 +25,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var libraryButton: UIBarButtonItem!
     
   //  var master: ImageRecognitionMasterProtocol = BlumixRecognitionMaster()
-    var master: ImageRecognitionMasterProtocol = ImageRecognitionMasterInception()
-        //ImageRecognitionMaster()
+    var master: ImageRecognitionMasterProtocol = ImageRecognitionMaster()
     
     override func viewDidLoad() {
         super.viewDidLoad()

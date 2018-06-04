@@ -70,6 +70,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF431A4120C5A83600902FD2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BF491ACB20B6D18C00A1ACC0 /* Main.storyboard */,
+				BF491ACE20B6D18E00A1ACC0 /* Assets.xcassets */,
+				BF491AD020B6D18E00A1ACC0 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		BF491ABB20B6D18C00A1ACC0 = {
 			isa = PBXGroup;
 			children = (
@@ -93,10 +103,8 @@
 			children = (
 				BF491AFE20B6D26B00A1ACC0 /* Controller */,
 				BF491AF520B6D26B00A1ACC0 /* Model */,
+				BF431A4120C5A83600902FD2 /* View */,
 				BF491AC720B6D18C00A1ACC0 /* AppDelegate.swift */,
-				BF491ACB20B6D18C00A1ACC0 /* Main.storyboard */,
-				BF491ACE20B6D18E00A1ACC0 /* Assets.xcassets */,
-				BF491AD020B6D18E00A1ACC0 /* LaunchScreen.storyboard */,
 				BF491AD320B6D18E00A1ACC0 /* Info.plist */,
 			);
 			path = FlowerClassification;
