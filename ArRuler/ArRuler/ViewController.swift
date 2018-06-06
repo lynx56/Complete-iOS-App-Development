@@ -73,13 +73,16 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
     
     func mesure(){
+        if mesurePoints.count != 2{
+            return
+        }
         if let first = mesurePoints.first?.position, let last = mesurePoints.last?.position{
             let a = last.x - first.x
             let b = last.y - first.y
             let c = last.z - first.z
             let distance = abs(sqrt(sqr(a) + sqr(b) + sqr(c)))
             
-            let textPosition = SCNVector3(a/2.0, last.y + 0.01, last.z)
+            let textPosition = SCNVector3(last.x, last.y + 0.01, last.z - 0.01)
             
             updateText("\(distance)", at: textPosition)
         }
