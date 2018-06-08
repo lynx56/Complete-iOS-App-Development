@@ -13,6 +13,7 @@ import ARKit
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
+    var dices = [SCNNode]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +24,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
         
+       // sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
         // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+        let scene = SCNScene(named: "art.scnassets/scene.scn")!
         
         // Set the scene to the view
         sceneView.scene = scene
@@ -35,6 +37,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
+        
+        configuration.planeDetection = .horizontal
 
         // Run the view's session
         sceneView.session.run(configuration)
@@ -47,34 +51,72 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.session.pause()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Release any cached data, images, etc that aren't in use.
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first{
+            let location = touch.location(in: self.sceneView)
+            let hitTestResult = self.sceneView.hitTest(location, types: ARHitTestResult.ResultType.existingPlaneUsingExtent)
+            
+            if let hitResult = hitTestResult.first{
+                let diceScene = SCNScene(named: "art.scnassets/diceCollada.scn")
+                
+                if let diceNode = diceScene?.rootNode.childNode(withName: "Dice", recursively: true){
+                    diceNode.position = SCNVector3.init(
+                        x: hitResult.worldTransform.columns.3.x,
+                        y: hitResult.worldTransform.columns.3.y + diceNode.boundingSphere.radius,
+                        z: hitResult.worldTransform.columns.3.z)
+                    
+                    sceneView.scene.rootNode.addChildNode(diceNode)
+                    
+                    rollDice(diceNode)
+                    
+                    self.dices.append(diceNode)
+                }
+                
+            }
+        }
     }
-
-    // MARK: - ARSCNViewDelegate
     
-/*
-    // Override to create and configure nodes for anchors added to the view's session.
-    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-        let node = SCNNode()
-     
-        return node
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        if let planeAnchor = anchor as? ARPlaneAnchor{
+            print("plane detected")
+            let plane = SCNPlane(width: CGFloat(planeAnchor.extent.x), height: CGFloat(planeAnchor.extent.z))
+            
+            let planeNode = SCNNode()
+            planeNode.position = SCNVector3(x: planeAnchor.center.x, y:0, z: planeAnchor.center.z)
+            planeNode.transform = SCNMatrix4MakeRotation(-Float.pi/2, 1, 0, 0)
+            let gridMaterial = SCNMaterial()
+            gridMaterial.diffuse.contents = UIImage(named: "art.scnassets/grid.png")
+            
+            plane.materials = [gridMaterial]
+            planeNode.geometry = plane
+            
+            node.addChildNode(planeNode)
+    
+        }else{
+            return
+        }
     }
-*/
     
-    func session(_ session: ARSession, didFailWithError error: Error) {
-        // Present an error message to the user
+ 
+    @IBAction func roll(_ sender: Any) {
+        for dice in dices{
+            rollDice(dice)
+        }
+    }
+    
+    private func rollDice(_ dice: SCNNode){
+        let randomX = CGFloat(Float(arc4random_uniform(4) + 5) * (Float.pi/2))
+        let randomZ = CGFloat(Float(arc4random_uniform(4) + 5) * (Float.pi/2))
         
+        dice.runAction(SCNAction.rotateBy(x: randomX, y: 0, z: randomZ, duration: 0.5))
+    }
+   
+    @IBAction func removeDices(_ sender: Any) {
+         for dice in dices{
+            dice.removeFromParentNode()
+        }
+        
+        dices.removeAll()
     }
     
-    func sessionWasInterrupted(_ session: ARSession) {
-        // Inform the user that the session has been interrupted, for example, by presenting an overlay
-        
-    }
-    
-    func sessionInterruptionEnded(_ session: ARSession) {
-        // Reset tracking and/or remove existing anchors if consistent tracking is required
-        
-    }
 }
