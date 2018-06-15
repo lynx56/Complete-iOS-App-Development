@@ -6,6 +6,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -91,7 +92,152 @@
                     <view key="view" contentMode="scaleToFill" id="rix-SR-1gB">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kU3-2V-yel">
+                                <rect key="frame" x="0.0" y="64" width="768" height="768"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bc9-4B-GPd">
+                                <rect key="frame" x="0.0" y="831" width="768" height="193"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="34l-V0-Eii">
+                                        <rect key="frame" x="249" y="48.5" width="270" height="96"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eL5-Qc-e8M" userLabel="Edit">
+                                                <rect key="frame" x="0.0" y="0.0" width="30" height="96"/>
+                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="VVX-bn-YoT">
+                                                <rect key="frame" x="30" y="0.0" width="240" height="96"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="YLh-1a-chV">
+                                                        <rect key="frame" x="0.0" y="0.0" width="240" height="48"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jmA-tT-Tfj" userLabel="1">
+                                                                <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="jmA-tT-Tfj" secondAttribute="height" multiplier="1:1" id="e3Z-Hg-YUq"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                                <state key="normal" title="1"/>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qXi-ti-akB">
+                                                                <rect key="frame" x="48" y="0.0" width="48" height="48"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="qXi-ti-akB" secondAttribute="height" multiplier="1:1" id="5L0-Qv-7q1"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                                <state key="normal" title="2"/>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hT3-XC-ek9" userLabel="3">
+                                                                <rect key="frame" x="96" y="0.0" width="48" height="48"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="hT3-XC-ek9" secondAttribute="height" multiplier="1:1" id="iU4-Wk-ncS"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                                <state key="normal" title="3"/>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5t3-IA-wOk" userLabel="4">
+                                                                <rect key="frame" x="144" y="0.0" width="48" height="48"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="5t3-IA-wOk" secondAttribute="height" multiplier="1:1" id="7xP-02-gu2"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                                <state key="normal" title="4"/>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ypr-Pq-Ztw" userLabel="5">
+                                                                <rect key="frame" x="192" y="0.0" width="48" height="48"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="Ypr-Pq-Ztw" secondAttribute="height" multiplier="1:1" id="cKl-Jm-FkF"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                                <state key="normal" title="5"/>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="hT3-XC-ek9" firstAttribute="width" secondItem="hT3-XC-ek9" secondAttribute="height" multiplier="1:1" id="3TX-KN-43d"/>
+                                                            <constraint firstItem="Ypr-Pq-Ztw" firstAttribute="width" secondItem="Ypr-Pq-Ztw" secondAttribute="height" multiplier="1:1" id="LJs-op-q87"/>
+                                                            <constraint firstItem="5t3-IA-wOk" firstAttribute="width" secondItem="5t3-IA-wOk" secondAttribute="height" multiplier="1:1" id="LbV-Mf-sAV"/>
+                                                            <constraint firstItem="qXi-ti-akB" firstAttribute="width" secondItem="qXi-ti-akB" secondAttribute="height" multiplier="1:1" id="Qts-9S-Sy2"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="WHs-EY-soE">
+                                                        <rect key="frame" x="0.0" y="48" width="240" height="48"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j1l-hJ-eHL" userLabel="6">
+                                                                <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="j1l-hJ-eHL" secondAttribute="height" multiplier="1:1" id="WAQ-to-SS3"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                                <state key="normal" title="6"/>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdP-fd-8BT" userLabel="7">
+                                                                <rect key="frame" x="48" y="0.0" width="48" height="48"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="gdP-fd-8BT" secondAttribute="height" multiplier="1:1" id="SpY-NA-xd7"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                                <state key="normal" title="7"/>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8k-YY-soE" userLabel="8">
+                                                                <rect key="frame" x="96" y="0.0" width="48" height="48"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="Z8k-YY-soE" secondAttribute="height" multiplier="1:1" id="lrx-RQ-7P0"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                                <state key="normal" title="8"/>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WcK-Zp-k2t" userLabel="9">
+                                                                <rect key="frame" x="144" y="0.0" width="48" height="48"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="WcK-Zp-k2t" secondAttribute="height" multiplier="1:1" id="UAB-Vg-Pvd"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                                <state key="normal" title="9"/>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Khv-17-iqD" userLabel="x">
+                                                                <rect key="frame" x="192" y="0.0" width="48" height="48"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="Khv-17-iqD" secondAttribute="height" multiplier="1:1" id="Vnw-an-Zch"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                                <state key="normal" title="x"/>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="j1l-hJ-eHL" firstAttribute="width" secondItem="j1l-hJ-eHL" secondAttribute="height" multiplier="1:1" id="0Gb-8f-3t2"/>
+                                                            <constraint firstItem="Z8k-YY-soE" firstAttribute="width" secondItem="Z8k-YY-soE" secondAttribute="height" multiplier="1:1" id="RMm-7J-dXG"/>
+                                                            <constraint firstItem="gdP-fd-8BT" firstAttribute="width" secondItem="gdP-fd-8BT" secondAttribute="height" multiplier="1:1" id="Uri-l0-xir"/>
+                                                            <constraint firstItem="WcK-Zp-k2t" firstAttribute="width" secondItem="WcK-Zp-k2t" secondAttribute="height" multiplier="1:1" id="VtM-1f-rSc"/>
+                                                            <constraint firstItem="Khv-17-iqD" firstAttribute="width" secondItem="Khv-17-iqD" secondAttribute="height" multiplier="1:1" id="r2A-yH-iBE"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="96" id="0Q0-iJ-26z"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="34l-V0-Eii" firstAttribute="centerY" secondItem="Bc9-4B-GPd" secondAttribute="centerY" id="dnE-8V-bEU"/>
+                                    <constraint firstItem="34l-V0-Eii" firstAttribute="centerX" secondItem="Bc9-4B-GPd" secondAttribute="centerX" id="sWi-fh-Owu"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kU3-2V-yel" firstAttribute="leading" secondItem="8se-9M-qpf" secondAttribute="leading" id="1kb-hN-TP3"/>
+                            <constraint firstItem="kU3-2V-yel" firstAttribute="trailing" secondItem="8se-9M-qpf" secondAttribute="trailing" id="Cc1-1Z-ffh"/>
+                            <constraint firstItem="Bc9-4B-GPd" firstAttribute="trailing" secondItem="8se-9M-qpf" secondAttribute="trailing" id="MSk-18-gIC"/>
+                            <constraint firstItem="Bc9-4B-GPd" firstAttribute="leading" secondItem="8se-9M-qpf" secondAttribute="leading" id="Poe-o0-Xco"/>
+                            <constraint firstItem="kU3-2V-yel" firstAttribute="height" secondItem="rix-SR-1gB" secondAttribute="height" multiplier="3/4" id="Tmd-UG-JGX"/>
+                            <constraint firstItem="Bc9-4B-GPd" firstAttribute="bottom" secondItem="8se-9M-qpf" secondAttribute="bottom" id="YZv-GJ-5cc"/>
+                            <constraint firstItem="kU3-2V-yel" firstAttribute="top" secondItem="8se-9M-qpf" secondAttribute="top" id="k8K-Zu-FFl"/>
+                            <constraint firstItem="Bc9-4B-GPd" firstAttribute="top" secondItem="kU3-2V-yel" secondAttribute="bottom" constant="-1" id="sl4-AS-Mpb"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="8se-9M-qpf"/>
                     </view>
                     <navigationItem key="navigationItem" title="Easy" id="Mnp-jI-T7p">
@@ -111,7 +257,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pp7-lg-DDd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1095.2" y="1039.4302848575712"/>
+            <point key="canvasLocation" x="1094.53125" y="1038.8671875"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3y6-ha-ZPx">

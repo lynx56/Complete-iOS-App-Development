@@ -9,11 +9,7 @@
 import UIKit
 
 class SudokuViewController: UIViewController {
-    
- //   @IBOutlet weak var mainStack: UIStackView!
-  //  @IBOutlet weak var previewStack: UIStackView!
-    
-    
+  
     var cells: [DrawableImageView] = []
     var previewCells: [UILabel] = []
     var grid: UIView!
@@ -21,6 +17,7 @@ class SudokuViewController: UIViewController {
     var puzzle: Puzzle!
     var master: ImageRecognitionMaster3!
     var generator = SudokuGenerator()
+    var buttonView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +27,7 @@ class SudokuViewController: UIViewController {
         
         createGrid(puzzle.grid)
         
-        let buttonView = UIView(frame: CGRect(x: 0, y: grid.frame.maxY + 20, width: self.view.bounds.width/3, height: self.view.bounds.width/3))
+        buttonView = UIView(frame: CGRect(x: 0, y: grid.frame.maxY + 20, width: self.view.bounds.width/3, height: self.view.bounds.width/3))
         
         self.addButtonsPanel(to: buttonView)
         
@@ -106,23 +103,46 @@ class SudokuViewController: UIViewController {
         for i in 0..<2{
             for j in 0..<5{
                 let frame = CGRect(x: CGFloat(j) * sizeOfSquares, y: CGFloat(i) * sizeOfSquares, width: sizeOfSquares + 2.0, height: sizeOfSquares + 2.0)
-                let view = UIView(frame: frame)
+               
                 let tag = i * 5 + j + 1
                 
-                let textLabel = UILabel(frame: CGRect(origin: .zero, size: frame.size))
-                textLabel.text = tag == 10 ? "X": tag.description
-                textLabel.textAlignment = NSTextAlignment.center
-                textLabel.font = UIFont.systemFont(ofSize: 27)
-                textLabel.tag = tag
-                view.tag = tag
-                view.addSubview(textLabel)
+                let draggableView: DraggableView = numeroView(with: frame, and: tag)
+                draggableView.releaseOnLocation = numeroRelease
+                let backView: UIView = numeroView(with: frame, and: tag)
+                draggableView.layer.borderColor = UIColor.clear.cgColor
                 
-                view.layer.borderColor = UIColor.lightGray.cgColor
-                view.layer.borderWidth = 2
-                
-                buttonView.addSubview(view)
+                buttonView.addSubview(backView)
+                buttonView.addSubview(draggableView)
             }
         }
+    }
+    
+    func numeroRelease(view2: DraggableView, on location: CGPoint){
+        let p = buttonView.convert(view2.frame.origin, to: self.view)
+     
+        print(p)
+        
+        //let point = self.view.convert(buttonView.convert(view2.center, to: self.buttonView), to: self.view)
+        //print(location)
+    }
+    
+    func numeroView<T: UIView>(with frame: CGRect, and tag: Int)->T{
+        let view = T(frame: frame)
+        view.tag = tag
+        let textLabel = UILabel(frame: CGRect(origin: .zero, size: frame.size))
+        textLabel.text = tag == 10 ? "X": tag.description
+        textLabel.textAlignment = NSTextAlignment.center
+        textLabel.font = UIFont.systemFont(ofSize: 27)
+        textLabel.tag = tag
+        view.tag = tag
+        view.addSubview(textLabel)
+        
+        view.layer.borderColor = UIColor.lightGray.cgColor
+        view.layer.borderWidth = 2
+        
+        view.isUserInteractionEnabled = true
+        
+        return view
     }
     
     override func didReceiveMemoryWarning() {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF58B70120CC0DBA0047D5CC /* DraggableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF58B70020CC0DBA0047D5CC /* DraggableView.swift */; };
 		BF6206E320B0D17F0015F82A /* SudokuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6206E220B0D17F0015F82A /* SudokuViewController.swift */; };
 		BF6206E520B0D21A0015F82A /* DrawableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6206E420B0D21A0015F82A /* DrawableImageView.swift */; };
 		BF6206E720B0D4830015F82A /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6206E620B0D4830015F82A /* UIView+.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BF58B70020CC0DBA0047D5CC /* DraggableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggableView.swift; sourceTree = "<group>"; };
 		BF6206E220B0D17F0015F82A /* SudokuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuViewController.swift; sourceTree = "<group>"; };
 		BF6206E420B0D21A0015F82A /* DrawableImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawableImageView.swift; sourceTree = "<group>"; };
 		BF6206E620B0D4830015F82A /* UIView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
@@ -75,8 +77,8 @@
 		BF83680720B44662004298A3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				BF6206E220B0D17F0015F82A /* SudokuViewController.swift */,
 				BFB2BD2E20B56C980066597F /* PuzzleDifficultOptionsTableViewController.swift */,
+				BF6206E220B0D17F0015F82A /* SudokuViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -104,6 +106,7 @@
 				BFB8DE4620B0B8700086DE33 /* LaunchScreen.storyboard */,
 				BF6206E420B0D21A0015F82A /* DrawableImageView.swift */,
 				BF6206E620B0D4830015F82A /* UIView+.swift */,
+				BF58B70020CC0DBA0047D5CC /* DraggableView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -210,6 +213,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF58B70120CC0DBA0047D5CC /* DraggableView.swift in Sources */,
 				BF83680320B445E4004298A3 /* Solution.m in Sources */,
 				BF6206E520B0D21A0015F82A /* DrawableImageView.swift in Sources */,
 				BF6206E320B0D17F0015F82A /* SudokuViewController.swift in Sources */,

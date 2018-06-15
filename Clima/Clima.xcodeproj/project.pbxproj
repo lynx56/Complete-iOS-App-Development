@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B668B91B6D5923447F36C73A /* Pods_Clima.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA26488D0A4B38E950228472 /* Pods_Clima.framework */; };
+		BF0BBCD620CAD7AA003F65FE /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0BBCD520CAD7AA003F65FE /* UIViewController+.swift */; };
 		BF311D79209084BC00106EA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF311D78209084BC00106EA4 /* AppDelegate.swift */; };
 		BF311D7B209084BC00106EA4 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF311D7A209084BC00106EA4 /* WeatherViewController.swift */; };
 		BF311D7E209084BC00106EA4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF311D7C209084BC00106EA4 /* Main.storyboard */; };
@@ -16,7 +17,6 @@
 		BF311D8B2090866A00106EA4 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF311D8A2090866A00106EA4 /* Weather.swift */; };
 		BF3400E72090AB800076CE92 /* OpenWeatherMapWeatherProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3400E62090AB800076CE92 /* OpenWeatherMapWeatherProvider.swift */; };
 		BF3400E92090B2210076CE92 /* ChangeCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3400E82090B2210076CE92 /* ChangeCityViewController.swift */; };
-		BF3400EB2090B4340076CE92 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3400EA2090B4340076CE92 /* UIViewController+.swift */; };
 		BF3400F12090BCA20076CE92 /* WeatherProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3400F02090BCA20076CE92 /* WeatherProvider.swift */; };
 		BF3400FD2090BE610076CE92 /* UITextField+ACEAutocompleteBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3400FC2090BE610076CE92 /* UITextField+ACEAutocompleteBar.m */; };
 		BF3401012090BE750076CE92 /* ACEAutocompleteInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3401002090BE750076CE92 /* ACEAutocompleteInputView.m */; };
@@ -25,6 +25,7 @@
 /* Begin PBXFileReference section */
 		32283089997A362B7F72F65B /* Pods-Clima.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Clima.release.xcconfig"; path = "Pods/Target Support Files/Pods-Clima/Pods-Clima.release.xcconfig"; sourceTree = "<group>"; };
 		ADECAAD6866784E032923330 /* Pods-Clima.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Clima.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Clima/Pods-Clima.debug.xcconfig"; sourceTree = "<group>"; };
+		BF0BBCD520CAD7AA003F65FE /* UIViewController+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		BF311D75209084BC00106EA4 /* Clima.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clima.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF311D78209084BC00106EA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF311D7A209084BC00106EA4 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
@@ -35,7 +36,6 @@
 		BF311D8A2090866A00106EA4 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		BF3400E62090AB800076CE92 /* OpenWeatherMapWeatherProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherMapWeatherProvider.swift; sourceTree = "<group>"; };
 		BF3400E82090B2210076CE92 /* ChangeCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCityViewController.swift; sourceTree = "<group>"; };
-		BF3400EA2090B4340076CE92 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		BF3400F02090BCA20076CE92 /* WeatherProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherProvider.swift; sourceTree = "<group>"; };
 		BF3400FB2090BE610076CE92 /* UITextField+ACEAutocompleteBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+ACEAutocompleteBar.h"; sourceTree = "<group>"; };
 		BF3400FC2090BE610076CE92 /* UITextField+ACEAutocompleteBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+ACEAutocompleteBar.m"; sourceTree = "<group>"; };
@@ -134,9 +134,9 @@
 		BF3400EF2090BC520076CE92 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				BF0BBCD520CAD7AA003F65FE /* UIViewController+.swift */,
 				BF3400FB2090BE610076CE92 /* UITextField+ACEAutocompleteBar.h */,
 				BF3400FC2090BE610076CE92 /* UITextField+ACEAutocompleteBar.m */,
-				BF3400EA2090B4340076CE92 /* UIViewController+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -268,8 +268,8 @@
 				BF311D7B209084BC00106EA4 /* WeatherViewController.swift in Sources */,
 				BF3400FD2090BE610076CE92 /* UITextField+ACEAutocompleteBar.m in Sources */,
 				BF3400E72090AB800076CE92 /* OpenWeatherMapWeatherProvider.swift in Sources */,
-				BF3400EB2090B4340076CE92 /* UIViewController+.swift in Sources */,
 				BF311D8B2090866A00106EA4 /* Weather.swift in Sources */,
+				BF0BBCD620CAD7AA003F65FE /* UIViewController+.swift in Sources */,
 				BF3401012090BE750076CE92 /* ACEAutocompleteInputView.m in Sources */,
 				BF3400E92090B2210076CE92 /* ChangeCityViewController.swift in Sources */,
 				BF311D79209084BC00106EA4 /* AppDelegate.swift in Sources */,
