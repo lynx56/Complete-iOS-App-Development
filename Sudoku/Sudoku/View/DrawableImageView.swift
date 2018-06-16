@@ -22,6 +22,7 @@ class DrawableImageView: UIView, UserEditedView{
     }
     
     var valueChanged: ((Int?)->Void)?
+    var endDrawing: ((DrawableImageView)->Void)?
     
     var drawColor = UIColor.black    // Color for drawing
     var lineWidth: CGFloat = 5                // Line width
@@ -112,6 +113,7 @@ class DrawableImageView: UIView, UserEditedView{
         renderToImage()
         setNeedsDisplay()
         bezierPath.removeAllPoints()
+        endDrawing?(self)
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?)  {

@@ -57,31 +57,12 @@ class SudokuViewController: UIViewController {
                         let frame = CGRect(x: CGFloat(j) * sizeOfSquares, y: CGFloat(i) * sizeOfSquares, width: sizeOfSquares + 2.0, height: sizeOfSquares + 2.0)
                         
                         label.tag = globalPosition
-                     
-                        if (pos.value.intValue != 0 && !pos.temporary){
-                            label = UIView()
-                            let textLabel = UILabel(frame: CGRect(origin: .zero, size: frame.size))
-                            textLabel.text = pos.value.stringValue
-                            textLabel.textAlignment = NSTextAlignment.center
-                            textLabel.font = UIFont.systemFont(ofSize: 27)
-                            label.addSubview(textLabel)
-                            label.frame = frame
-                        }else{
-                            let drawView = DrawableImageView(frame: CGRect(origin: .zero, size: frame.size))
-                            drawView.isUserInteractionEnabled = true
-                            drawView.tag = label.tag
-                            label.isUserInteractionEnabled = true
-                            label.addSubview(drawView)
-                            let preview = UILabel(frame: CGRect(origin: .zero, size: CGSize(width: 20, height: 20)))
-                            preview.text = ""
-                            drawView.valueChanged = { (newValue) in
-                                preview.text = newValue?.description
-                                self.puzzle.grid.position(at: UInt(label.tag)).value = NSNumber(value: newValue ?? 0)
-                            }
-                            label.addSubview(preview)
-                            label.frame = frame
-                        }
                         
+                        let subviewFrame = CGRect(origin: .zero, size: frame.size)
+                        let subview = (pos.value.intValue != 0 && !pos.temporary) ? createTextViewOn(frame: subviewFrame, andText: pos.value.stringValue) : createDrawingView(on: subviewFrame, andTag: label.tag)
+                    
+                        label.addSubview(subview)
+                        label.frame = frame
                         label.layer.borderColor = UIColor.lightGray.cgColor
                         label.layer.borderWidth = 2
                         
@@ -95,6 +76,44 @@ class SudokuViewController: UIViewController {
         }
         
         self.view.addSubview(grid)
+    }
+    
+    func createTextViewOn(frame: CGRect, andText text: String)->UILabel{
+        let textLabel = UILabel(frame: frame)
+        textLabel.text = text
+        textLabel.textAlignment = NSTextAlignment.center
+        textLabel.font = UIFont.systemFont(ofSize: 27)
+
+        return textLabel
+    }
+    
+    func createDrawingView(on frame: CGRect, andTag tag: Int)->DrawableImageView{
+        let drawView = DrawableImageView(frame: frame)
+        drawView.isUserInteractionEnabled = true
+        drawView.valueChanged = { (newValue) in
+            self.puzzle.grid.position(at: UInt(tag)).value = NSNumber(value: newValue ?? 0)
+        }
+        
+        drawView.endDrawing = { (view) in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                view.alpha = 0.5
+                self.process(image: view.image!) { (result, error) in
+                    view.value = result
+                    let label = UILabel(frame: view.frame)
+                    label.text = "\(result!)"
+                    label.font = UIFont.boldSystemFont(ofSize: 40)
+                    label.textAlignment = NSTextAlignment.center
+                
+                    UIView.animate(withDuration: 2, animations: {
+                        view.alpha = 0
+                    })
+        
+                    view.superview!.addSubview(label)
+                }
+            }
+        }
+        
+        return drawView
     }
     
     func addButtonsPanel(to buttonView: UIView){
