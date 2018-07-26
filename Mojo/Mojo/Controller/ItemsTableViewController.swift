@@ -115,7 +115,7 @@ class ItemsTableViewController: UITableViewController, UISearchBarDelegate, Swip
         var itemColor = UIColor.white
         if let categoryColor = UIColor(hexString: self.state.category!().colorHex)
         {
-            itemColor = categoryColor.darken(byPercentage: CGFloat(CGFloat(indexPath.row)/CGFloat(self.state.countTasks!()))) ?? .white
+            itemColor = categoryColor.darken(byPercentage: CGFloat(CGFloat(indexPath.row)/CGFloat(self.state.countTasks!())) - 0.1) ?? .white
         }
         
         if item.done{
