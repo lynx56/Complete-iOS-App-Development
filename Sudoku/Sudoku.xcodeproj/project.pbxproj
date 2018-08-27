@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF01403F21332ABE0026C09F /* UIView+InterfacBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01403E21332ABD0026C09F /* UIView+InterfacBuilder.swift */; };
+		BF0140412133D0A70026C09F /* Stopwatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0140402133D0A70026C09F /* Stopwatch.swift */; };
 		BF58B70120CC0DBA0047D5CC /* DraggableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF58B70020CC0DBA0047D5CC /* DraggableView.swift */; };
 		BF6206E320B0D17F0015F82A /* SudokuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6206E220B0D17F0015F82A /* SudokuViewController.swift */; };
 		BF6206E520B0D21A0015F82A /* DrawableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6206E420B0D21A0015F82A /* DrawableImageView.swift */; };
@@ -26,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BF01403E21332ABD0026C09F /* UIView+InterfacBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+InterfacBuilder.swift"; sourceTree = "<group>"; };
+		BF0140402133D0A70026C09F /* Stopwatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stopwatch.swift; sourceTree = "<group>"; };
 		BF58B70020CC0DBA0047D5CC /* DraggableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggableView.swift; sourceTree = "<group>"; };
 		BF6206E220B0D17F0015F82A /* SudokuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuViewController.swift; sourceTree = "<group>"; };
 		BF6206E420B0D21A0015F82A /* DrawableImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawableImageView.swift; sourceTree = "<group>"; };
@@ -79,6 +83,7 @@
 			children = (
 				BFB2BD2E20B56C980066597F /* PuzzleDifficultOptionsTableViewController.swift */,
 				BF6206E220B0D17F0015F82A /* SudokuViewController.swift */,
+				BF0140402133D0A70026C09F /* Stopwatch.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -107,6 +112,7 @@
 				BF6206E420B0D21A0015F82A /* DrawableImageView.swift */,
 				BF6206E620B0D4830015F82A /* UIView+.swift */,
 				BF58B70020CC0DBA0047D5CC /* DraggableView.swift */,
+				BF01403E21332ABD0026C09F /* UIView+InterfacBuilder.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -214,6 +220,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF58B70120CC0DBA0047D5CC /* DraggableView.swift in Sources */,
+				BF0140412133D0A70026C09F /* Stopwatch.swift in Sources */,
 				BF83680320B445E4004298A3 /* Solution.m in Sources */,
 				BF6206E520B0D21A0015F82A /* DrawableImageView.swift in Sources */,
 				BF6206E320B0D17F0015F82A /* SudokuViewController.swift in Sources */,
@@ -223,6 +230,7 @@
 				BF83680620B445E4004298A3 /* Position.m in Sources */,
 				BFB8DE3E20B0B86E0086DE33 /* AppDelegate.swift in Sources */,
 				BF83680520B445E4004298A3 /* Puzzle.m in Sources */,
+				BF01403F21332ABE0026C09F /* UIView+InterfacBuilder.swift in Sources */,
 				BF83680420B445E4004298A3 /* SudokuGenerator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

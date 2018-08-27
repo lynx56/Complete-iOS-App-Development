@@ -33,6 +33,9 @@ class DrawableImageView: UIView, UserEditedView{
     private let pointLimit: Int = 128        // Limit of points
     private var preRenderImage: UIImage!    // Pre render image
     
+    
+    var gestureBegan: ((DrawableImageView)->Void)?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
@@ -82,12 +85,16 @@ class DrawableImageView: UIView, UserEditedView{
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        touchesWasMoved = false
         let touch: AnyObject? = touches.first
         lastPoint = touch!.location(in: self)
         pointCounter = 0
+        gestureBegan?(self)
     }
     
+    var touchesWasMoved: Bool = false
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?){
+        touchesWasMoved = true
         let touch: AnyObject? = touches.first
         var newPoint = touch!.location(in: self)
         
@@ -113,7 +120,9 @@ class DrawableImageView: UIView, UserEditedView{
         renderToImage()
         setNeedsDisplay()
         bezierPath.removeAllPoints()
-        endDrawing?(self)
+        if touchesWasMoved{
+            endDrawing?(self)
+        }
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?)  {

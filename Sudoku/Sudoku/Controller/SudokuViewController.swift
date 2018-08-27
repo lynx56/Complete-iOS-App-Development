@@ -8,38 +8,53 @@
 
 import UIKit
 
-class SudokuViewController: UIViewController {
-  
+class SudokuViewController: UIViewController,  StopwatchDelegate{
     var cells: [DrawableImageView] = []
+    var selectedCell: DrawableImageView?
     var previewCells: [UILabel] = []
-    var grid: UIView!
     var results: [Int: Int?] = [:]
-    var puzzle: Puzzle!
+    var puzzle: Puzzle!{
+        didSet{
+            self.difficultyLabel.text = puzzle.difficulty.title
+        }
+    }
     var master: ImageRecognitionMaster3!
     var generator = SudokuGenerator()
-    var buttonView = UIView()
     
+    @IBOutlet weak var difficultyLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var gridView: UIView!
+    var grid: UIView!
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         master = ImageRecognitionMaster3()
-        
         puzzle = generator.generate(PuzzleDifficultyEasy)!
-        
-        createGrid(puzzle.grid)
-        
-        buttonView = UIView(frame: CGRect(x: 0, y: grid.frame.maxY + 20, width: self.view.bounds.width/3, height: self.view.bounds.width/3))
-        
-        self.addButtonsPanel(to: buttonView)
-        
-        self.view.addSubview(buttonView)
+        timer.delegete = self
+    }
+ 
+    override func viewDidLayoutSubviews() {
+        if grid?.bounds.size != self.gridView.bounds.size{
+            createGrid(puzzle.grid)
+        }
     }
     
+    var timer = Stopwatch()
+    
+    func updateTime(newTime: String) {
+        DispatchQueue.main.async {
+            self.timeLabel.text = newTime
+        }
+    }
+
     func createGrid(_ solution: Solution){
-        var size = min(self.view.bounds.width, self.view.bounds.height)
+        DispatchQueue.main.async {
+                self.timer.startTimer()
+        }
+       cells.removeAll()
+       grid = UIView(frame: self.gridView.bounds)
         
-        let origin = CGPoint(x: self.view.safeAreaInsets.left, y: self.view.safeAreaInsets.top + UIApplication.shared.statusBarFrame.height + CGFloat(self.navigationController?.navigationBar.frame.height ?? 0.0))
-        grid = UIView(frame: CGRect(origin: origin, size: CGSize(width: size, height: size)))
-        let sizeOfSquares = (grid.bounds.width - 2.0) / 9.0
+       let sizeOfSquares = (grid.bounds.width - 2.0) / 9.0
         
         for bigViewRow in 0..<3{
             for bigRowColumn in 0..<3{
@@ -59,7 +74,21 @@ class SudokuViewController: UIViewController {
                         label.tag = globalPosition
                         
                         let subviewFrame = CGRect(origin: .zero, size: frame.size)
-                        let subview = (pos.value.intValue != 0 && !pos.temporary) ? createTextViewOn(frame: subviewFrame, andText: pos.value.stringValue) : createDrawingView(on: subviewFrame, andTag: label.tag)
+                        let subview: UIView!
+                        
+                        if (pos.value.intValue != 0 && !pos.temporary){
+                            subview = createTextViewOn(frame: subviewFrame, andText: pos.value.stringValue)
+                        }else{
+                           let draggabbleView = createDrawingView(on: subviewFrame, andTag: label.tag)
+                            draggabbleView.gestureBegan = { (dv) in
+                                self.selectedCell?.layer.borderWidth = 0
+                                dv.layer.borderColor = UIColor.blue.cgColor
+                                dv.layer.borderWidth = 3
+                                self.selectedCell = dv
+                            }
+                            subview = draggabbleView
+                            cells.append(draggabbleView)
+                        }
                     
                         label.addSubview(subview)
                         label.frame = frame
@@ -75,7 +104,7 @@ class SudokuViewController: UIViewController {
             }
         }
         
-        self.view.addSubview(grid)
+        self.gridView.addSubview(grid)
     }
     
     func createTextViewOn(frame: CGRect, andText text: String)->UILabel{
@@ -93,6 +122,7 @@ class SudokuViewController: UIViewController {
         drawView.valueChanged = { (newValue) in
             self.puzzle.grid.position(at: UInt(tag)).value = NSNumber(value: newValue ?? 0)
         }
+        drawView.tag = tag
         
         drawView.endDrawing = { (view) in
             DispatchQueue.main.asyncAfter(deadline: .now() + 1){
@@ -116,72 +146,8 @@ class SudokuViewController: UIViewController {
         return drawView
     }
     
-    func addButtonsPanel(to buttonView: UIView){
-        let sizeOfSquares = (buttonView.bounds.width - 2.0) / 5.0
-       
-        for i in 0..<2{
-            for j in 0..<5{
-                let frame = CGRect(x: CGFloat(j) * sizeOfSquares, y: CGFloat(i) * sizeOfSquares, width: sizeOfSquares + 2.0, height: sizeOfSquares + 2.0)
-               
-                let tag = i * 5 + j + 1
-                
-                let draggableView: DraggableView = numeroView(with: frame, and: tag)
-                draggableView.releaseOnLocation = numeroRelease
-                let backView: UIView = numeroView(with: frame, and: tag)
-                draggableView.layer.borderColor = UIColor.clear.cgColor
-                
-                buttonView.addSubview(backView)
-                buttonView.addSubview(draggableView)
-            }
-        }
-    }
-    
-    func numeroRelease(view2: DraggableView, on location: CGPoint){
-        let p = buttonView.convert(view2.frame.origin, to: self.view)
-     
-        print(p)
-        
-        //let point = self.view.convert(buttonView.convert(view2.center, to: self.buttonView), to: self.view)
-        //print(location)
-    }
-    
-    func numeroView<T: UIView>(with frame: CGRect, and tag: Int)->T{
-        let view = T(frame: frame)
-        view.tag = tag
-        let textLabel = UILabel(frame: CGRect(origin: .zero, size: frame.size))
-        textLabel.text = tag == 10 ? "X": tag.description
-        textLabel.textAlignment = NSTextAlignment.center
-        textLabel.font = UIFont.systemFont(ofSize: 27)
-        textLabel.tag = tag
-        view.tag = tag
-        view.addSubview(textLabel)
-        
-        view.layer.borderColor = UIColor.lightGray.cgColor
-        view.layer.borderWidth = 2
-        
-        view.isUserInteractionEnabled = true
-        
-        return view
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-    @IBAction func check(_ sender: Any) {
-        if let drawableCells = (grid.findSubviewsOfType(DrawableImageView.self) as? [DrawableImageView])?.filter({$0.image != nil && $0.value == nil}){
-            let group = DispatchGroup()
-            for cell in drawableCells{
-                group.enter()
-                process(image: cell.image!) { (result, error) in
-                    cell.value = result
-                    group.leave()
-                }
-            }
-            group.notify(queue: .main) {
-                self.validate()
-            }
-        }
     }
     
     @IBAction func newPuzzle(_ sender: UIBarButtonItem) {
@@ -192,9 +158,8 @@ class SudokuViewController: UIViewController {
         
         optionsController.optionSelected = { (option) in
             self.puzzle = self.generator.generate(option.value)
-            self.grid.removeFromSuperview()
+            self.grid?.removeFromSuperview()
             self.createGrid(self.puzzle.grid)
-            self.title = option.title
         }
         
         optionsController.modalPresentationStyle = .popover
@@ -217,8 +182,58 @@ class SudokuViewController: UIViewController {
         }
     }
     
+    @IBAction func setNumber(sender: UIButton){
+        guard let selectedCell = self.selectedCell
+            else { return }
+        
+        selectedCell.clear()
+        selectedCell.value = sender.tag
+        let index = cells.first(where: {$0.tag == selectedCell.tag})!.tag
+        
+        self.puzzle.grid.position(at: UInt(index)).value = NSNumber(value: sender.tag)
+    }
+    
+    @IBAction func check(_ sender: Any) {
+        if let drawableCells = (grid.findSubviewsOfType(DrawableImageView.self) as? [DrawableImageView])?.filter({$0.image != nil && $0.value == nil}){
+            let group = DispatchGroup()
+            for cell in drawableCells{
+                group.enter()
+                process(image: cell.image!) { (result, error) in
+                    cell.value = result
+                    group.leave()
+                }
+            }
+            group.notify(queue: .main) {
+                self.validate()
+            }
+        }
+    }
+    
+    @IBAction func erase(_ sender: Any) {
+        
+    }
+    
+    @IBAction func undo(_ sender: Any) {
+    }
     
     func process(image: UIImage, completion: @escaping (Int?, ImageRecognitionError?)->Void){
         master.recognize(image: image, completion:completion)
     }
 }
+
+
+extension PuzzleDifficulty{
+    var title: String{
+        switch self{
+        case PuzzleDifficultyEasy:
+            return "Easy"
+        case PuzzleDifficultyMedium:
+            return "Medium"
+        case PuzzleDifficultyHard:
+            return "Hard"
+        default:
+            return "Unknown"
+        }
+    }
+}
+
